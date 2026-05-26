@@ -125,3 +125,123 @@ body {
   animation: testimonial-right 45s linear infinite;
   will-change: transform;
 }
+
+/* Depth & glass utilities */
+.hero-noise {
+  background-image: radial-gradient(circle at 10% 20%, rgba(255,255,255,0.02) 0.5px, transparent 0.5px), radial-gradient(circle at 70% 80%, rgba(255,255,255,0.01) 0.5px, transparent 0.5px);
+  background-size: 30px 30px, 50px 50px;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+.glass-panel {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  backdrop-filter: blur(6px) saturate(120%);
+  -webkit-backdrop-filter: blur(6px) saturate(120%);
+}
+
+.card-tilt {
+  perspective: 900px;
+  transform-style: preserve-3d;
+}
+.card-tilt .card-inner {
+  transition: transform 0.45s cubic-bezier(.2,.9,.2,1), box-shadow 0.45s cubic-bezier(.2,.9,.2,1);
+  transform-origin: center;
+  will-change: transform;
+}
+.card-tilt:hover .card-inner {
+  transform: translateY(-10px) rotateX(4deg) scale(1.02);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
+}
+
+.depth-shadow {
+  box-shadow: 0 20px 40px rgba(11,8,10,0.12), 0 6px 14px rgba(11,8,10,0.06);
+}
+
+/* Subtle slow float for large background blobs (GPU friendly) */
+@keyframes slowFloat {
+  0% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(0, -8px, 0) scale(1.02); }
+  100% { transform: translate3d(0, 0, 0) scale(1); }
+}
+.bg-blob {
+  animation: slowFloat 12s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Section overlap helper */
+.section-overlap {
+  margin-top: -4rem; /* lift to overlap previous section */
+  position: relative;
+  z-index: 10;
+}
+
+/* Slight vignette for more depth */
+.vignette:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(60% 60% at 50% 40%, rgba(0,0,0,0.08), transparent 60%);
+}
+
+/* Lightweight reveal animations (CSS-only) */
+@keyframes reveal-up {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.reveal {
+  opacity: 0;
+  animation-name: reveal-up;
+  animation-duration: 700ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: cubic-bezier(.2,.9,.2,1);
+}
+.reveal.delay-1 { animation-delay: 150ms; }
+.reveal.delay-2 { animation-delay: 320ms; }
+.reveal.delay-3 { animation-delay: 520ms; }
+.reveal.delay-4 { animation-delay: 720ms; }
+.reveal.delay-5 { animation-delay: 920ms; }
+.reveal.delay-6 { animation-delay: 1100ms; }
+.reveal.delay-7 { animation-delay: 1300ms; }
+
+/* Wallpaper pattern utility (beige + repeated svg) */
+.pattern-e1 {
+  background-color: #e1d2b4;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cg fill='%23ab350b' fill-opacity='1'%3E%3Cpolygon fill-rule='evenodd' points='8 4 12 6 8 8 6 12 4 8 0 6 4 4 6 0 8 4'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 24px 24px;
+}
+
+/* Autumn wallpaper (white base) */
+.pattern-autumn {
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23901e13' fill-opacity='0.15'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 88px 24px;
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .marquee-content,
+  .testimonial-row-left,
+  .testimonial-row-right,
+  .bg-blob,
+  .reveal,
+  .card-tilt .card-inner {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+/* Reduce heavy blurs on small screens for performance */
+@media (max-width: 640px) {
+  .blur-\[120px\] { filter: blur(60px); }
+  .blur-\[60px\] { filter: blur(30px); }
+}
+
+/* Make sure will-change is used sparingly */
+.marquee-content, .testimonial-row-left, .testimonial-row-right, .bg-blob {
+  will-change: transform;
+}

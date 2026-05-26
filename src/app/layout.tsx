@@ -15,16 +15,14 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "AMICIZIA – Pizza, Pasta & mehr | Saarlouis",
+  title: "AMICIZIA – Pizza | Saarlouis",
   description:
-    "Familienbetrieb seit über 12 Jahren. Frische Pizza, Pasta und vieles mehr – den ganzen Tag. Lieferung & Abholung in Saarlouis.",
+    "Qualitative Pizza, den ganzen Tag. Abholung in Saarlouis.",
   keywords: [
     "AMICIZIA",
     "Pizza",
-    "Pasta",
     "Saarlouis",
     "Restaurant",
-    "Lieferung",
     "Abholung",
     "Italienisch",
   ],

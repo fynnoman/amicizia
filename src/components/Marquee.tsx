@@ -4,16 +4,13 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
 const familyQuotes = [
-	{ text: "Mehr Käse geht immer 🧀", author: "Mama" },
-	{ text: "Das Geheimnis? Geduld und Liebe.", author: "Papa" },
-	{ text: "Ich probier alles als Erste! 😋", author: "Tochter" },
-	{ text: "Pizza zum Frühstück? Warum nicht!", author: "Sohn" },
-	{ text: "Unsere Gäste sind unsere Familie ❤️", author: "Mama" },
-	{ text: "Jede Pasta wird frisch gemacht, immer.", author: "Papa" },
+	{ text: "Krosse Kruste, guter Geschmack.", author: "Gast" },
+	{ text: "Nur Pizza, immer frisch.", author: "Gast" },
+	{ text: "Der Ofen macht den Unterschied.", author: "Gast" },
 ];
 
 const marqueeText =
-	"PIZZA · PASTA · AMORE · FAMIGLIA · AMICIZIA · SAARLOUIS · FRISCH · LECKER · HANDGEMACHT · CON CUORE · ";
+	"PIZZA · AMORE · AMICIZIA · SAARLOUIS · FRISCH · KNUSPRIG · HANDGEMACHT · OFENFRISCH · ";
 
 export default function Marquee() {
 	const [currentQuote, setCurrentQuote] = useState(0);

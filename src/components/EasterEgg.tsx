@@ -9,40 +9,18 @@ const KONAMI_CODE = [
   "KeyB", "KeyA",
 ];
 
-const flyingEmojis = ["🍕", "🍝", "🧀", "🍅", "🫒", "🌶️", "🍕", "🍕"];
-
 export default function EasterEgg() {
   const [triggered, setTriggered] = useState(false);
   const [logoClicks, setLogoClicks] = useState(0);
   const [inputSequence, setInputSequence] = useState<string[]>([]);
-  const [particles, setParticles] = useState<Array<{
-    id: number;
-    emoji: string;
-    x: number;
-    y: number;
-    rotation: number;
-    scale: number;
-  }>>([]);
 
   const triggerEasterEgg = useCallback(() => {
     if (triggered) return;
     setTriggered(true);
 
-    // Create flying particles
-    const newParticles = Array.from({ length: 20 }).map((_, i) => ({
-      id: i,
-      emoji: flyingEmojis[i % flyingEmojis.length],
-      x: Math.random() * window.innerWidth,
-      y: -100,
-      rotation: Math.random() * 360,
-      scale: 0.5 + Math.random() * 1.5,
-    }));
-    setParticles(newParticles);
-
     // Reset after animation
     setTimeout(() => {
       setTriggered(false);
-      setParticles([]);
       setLogoClicks(0);
       setInputSequence([]);
     }, 4000);
@@ -97,33 +75,6 @@ export default function EasterEgg() {
             className="fixed inset-0 z-[100] bg-bordeaux pointer-events-none"
           />
 
-          {/* Flying particles */}
-          {particles.map((particle) => (
-            <motion.div
-              key={particle.id}
-              initial={{
-                x: particle.x,
-                y: -100,
-                rotate: 0,
-                scale: 0,
-              }}
-              animate={{
-                y: window.innerHeight + 200,
-                rotate: particle.rotation,
-                scale: [0, particle.scale, particle.scale, 0],
-                x: particle.x + (Math.random() - 0.5) * 300,
-              }}
-              transition={{
-                duration: 2 + Math.random() * 2,
-                delay: Math.random() * 0.5,
-                ease: "easeIn",
-              }}
-              className="fixed z-[101] pointer-events-none text-4xl md:text-6xl"
-            >
-              {particle.emoji}
-            </motion.div>
-          ))}
-
           {/* Message */}
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
@@ -133,11 +84,8 @@ export default function EasterEgg() {
             className="fixed inset-0 z-[102] flex items-center justify-center pointer-events-none"
           >
             <div className="bg-white rounded-3xl shadow-2xl px-12 py-8 text-center">
-              <span className="text-5xl block mb-3">🍕</span>
               <p className="text-2xl font-bold text-bordeaux">Buon Appetito!</p>
-              <p className="text-foreground/40 text-sm mt-1" style={{ fontFamily: "var(--font-caveat)" }}>
-                Du hast das Easter Egg gefunden!
-              </p>
+              <p className="text-foreground/40 text-sm mt-1">Du hast das Easter Egg gefunden.</p>
             </div>
           </motion.div>
         </>

@@ -6,9 +6,8 @@ import { useRef, useState } from "react";
 const categories = [
 	{ name: "Alle", key: "all" },
 	{ name: "Pizza", key: "pizza" },
-	{ name: "Pasta", key: "pasta" },
-	{ name: "Vorspeisen", key: "vorspeisen" },
-	{ name: "Extras", key: "extras" },
+	{ name: "Ciabatta", key: "ciabatta" },
+	{ name: "Wraps", key: "wrap" },
 ];
 
 const menuItems = [
@@ -18,7 +17,7 @@ const menuItems = [
 		price: "9,90",
 		category: "pizza",
 		popular: true,
-		ingredients: ["🍅", "🧀", "🌿"],
+		ingredients: ["Tomate", "Käse", "Basilikum"],
 	},
 	{
 		name: "Diavola",
@@ -26,7 +25,7 @@ const menuItems = [
 		price: "12,90",
 		category: "pizza",
 		popular: true,
-		ingredients: ["🍅", "🧀", "🌶️", "🥓"],
+		ingredients: ["Tomate", "Käse", "Salami", "Peperoni"],
 	},
 	{
 		name: "Quattro Formaggi",
@@ -34,15 +33,15 @@ const menuItems = [
 		price: "13,90",
 		category: "pizza",
 		popular: false,
-		ingredients: ["🧀", "🧀", "🧀", "🧀"],
+		ingredients: ["Käse", "Gorgonzola", "Parmesan", "Ricotta"],
 	},
 	{
 		name: "Prosciutto e Rucola",
-		description: "Tomatensauce, Mozzarella, Parmaschinken, Rucola, Parmesan",
+		description: "Tomatensauce, Mozzarella, Parmaschinken, Rucola",
 		price: "14,90",
 		category: "pizza",
 		popular: true,
-		ingredients: ["🍅", "🧀", "🥓", "🥬"],
+		ingredients: ["Tomate", "Käse", "Schinken", "Rucola"],
 	},
 	{
 		name: "Vegetariana",
@@ -50,79 +49,43 @@ const menuItems = [
 		price: "12,90",
 		category: "pizza",
 		popular: false,
-		ingredients: ["🍅", "🧀", "🫑", "🍄"],
+		ingredients: ["Tomate", "Käse", "Gemüse"],
 	},
-	{
-		name: "Spaghetti Bolognese",
-		description: "Hausgemachte Bolognese nach Familienrezept",
-		price: "11,90",
-		category: "pasta",
-		popular: true,
-		ingredients: ["🍝", "🍖", "🍅", "🧄"],
-	},
-	{
-		name: "Penne Arrabiata",
-		description: "Scharfe Tomatensauce mit Knoblauch und Chili",
-		price: "10,90",
-		category: "pasta",
-		popular: false,
-		ingredients: ["🍝", "🍅", "🌶️", "🧄"],
-	},
-	{
-		name: "Tagliatelle al Salmone",
-		description: "Bandnudeln mit Lachs in cremiger Sahnesauce",
-		price: "14,90",
-		category: "pasta",
-		popular: true,
-		ingredients: ["🍝", "🐟", "🧈", "🌿"],
-	},
-	{
-		name: "Lasagne al Forno",
-		description: "Klassische Lasagne mit Béchamel und Ragù",
-		price: "13,90",
-		category: "pasta",
-		popular: false,
-		ingredients: ["🍝", "🍖", "🧀", "🍅"],
-	},
+
+	// Ciabatta
 	{
 		name: "Ciabatta Verde",
-		description: "Frisches Ciabatta mit Kräutern und Olivenöl",
-		price: "9,90",
-		category: "vorspeisen",
+		description: "Ciabatta mit Kräutern und Olivenöl",
+		price: "8,90",
+		category: "ciabatta",
 		popular: false,
-		ingredients: ["🍞", "🌿", "🫒"],
+		ingredients: ["Brot", "Kräuter", "Olivenöl"],
 	},
 	{
 		name: "Ciabatta Piccante",
 		description: "Ciabatta mit scharfer Salami und Käse überbacken",
 		price: "12,90",
-		category: "vorspeisen",
+		category: "ciabatta",
 		popular: true,
-		ingredients: ["🍞", "🌶️", "🧀"],
+		ingredients: ["Brot", "Salami", "Käse"],
 	},
+
+	// Wraps
 	{
-		name: "Bruschetta Classica",
-		description: "Geröstetes Brot mit Tomaten, Knoblauch, Basilikum",
-		price: "8,90",
-		category: "vorspeisen",
-		popular: false,
-		ingredients: ["🍞", "🍅", "🧄", "🌿"],
-	},
-	{
-		name: "Tiramisu",
-		description: "Hausgemachtes Tiramisu nach Familienrezept",
-		price: "6,90",
-		category: "extras",
+		name: "Chicken Wrap",
+		description: "Gegrilltes Hühnchen, Salat, hausgemachte Sauce",
+		price: "9,50",
+		category: "wrap",
 		popular: true,
-		ingredients: ["☕", "🧁", "🍫"],
+		ingredients: ["Hühnchen", "Salat", "Sauce"],
 	},
 	{
-		name: "Getränke",
-		description: "Softdrinks, Wasser, Säfte – fragt uns einfach!",
-		price: "ab 2,50",
-		category: "extras",
+		name: "Veggie Wrap",
+		description: "Gegrilltes Gemüse, Hummus, Rucola",
+		price: "9,00",
+		category: "wrap",
 		popular: false,
-		ingredients: ["🥤", "💧", "🧃"],
+		ingredients: ["Gemüse", "Hummus", "Rucola"],
 	},
 ];
 
@@ -136,102 +99,104 @@ function MenuCard({
 	const [isHovered, setIsHovered] = useState(false);
 
 	return (
-		<motion.div
-			layout
-			initial={{ opacity: 0, y: 30 }}
-			animate={{ opacity: 1, y: 0 }}
-			exit={{ opacity: 0, scale: 0.95 }}
-			transition={{ duration: 0.4, delay: index * 0.04 }}
-			onMouseEnter={() => setIsHovered(true)}
-			onMouseLeave={() => setIsHovered(false)}
-			className="group bg-white rounded-2xl p-6 hover:shadow-xl transition-all duration-500 hover:-translate-y-1 relative overflow-hidden"
-		>
-			{item.popular && (
-				<div className="absolute top-4 right-4">
-					<span className="bg-bordeaux/10 text-bordeaux text-xs font-semibold px-3 py-1 rounded-full">
-						Beliebt ✦
-					</span>
-				</div>
-			)}
+		<div className="card-tilt">
+			<motion.div
+				layout
+				initial={{ opacity: 0, y: 30 }}
+				animate={{ opacity: 1, y: 0 }}
+				exit={{ opacity: 0, scale: 0.95 }}
+				transition={{ duration: 0.4, delay: index * 0.04 }}
+				onMouseEnter={() => setIsHovered(true)}
+				onMouseLeave={() => setIsHovered(false)}
+				className="card-inner group bg-white rounded-2xl p-6 transition-all duration-500 relative overflow-hidden"
+			>
+				{item.popular && (
+					<div className="absolute top-4 right-4">
+						<span className="bg-bordeaux/10 text-bordeaux text-xs font-semibold px-3 py-1 rounded-full">
+							Beliebt ✦
+						</span>
+					</div>
+				)}
 
-			{/* Ingredient icons animation */}
-			<div className="h-12 mb-3 flex items-center gap-1">
-				<AnimatePresence>
-					{isHovered ? (
-						item.ingredients.map((ingredient, i) => (
-							<motion.span
-								key={ingredient + i}
-								initial={{ scale: 0, y: 10, opacity: 0 }}
-								animate={{ scale: 1, y: 0, opacity: 1 }}
-								exit={{ scale: 0, y: -10, opacity: 0 }}
-								transition={{
-									type: "spring",
-									stiffness: 400,
-									damping: 15,
-									delay: i * 0.08,
-								}}
-								className="text-2xl inline-block"
-							>
-								{ingredient}
-							</motion.span>
-						))
-					) : (
-						<motion.div
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							className="flex items-center gap-1"
-						>
-							{item.ingredients.slice(0, 2).map((ingredient, i) => (
-								<span key={i} className="text-xl opacity-40">
+				{/* Ingredient icons animation */}
+				<div className="h-12 mb-3 flex items-center gap-1">
+					<AnimatePresence>
+						{isHovered ? (
+							item.ingredients.map((ingredient, i) => (
+								<motion.span
+									key={ingredient + i}
+									initial={{ scale: 0, y: 10, opacity: 0 }}
+									animate={{ scale: 1, y: 0, opacity: 1 }}
+									exit={{ scale: 0, y: -10, opacity: 0 }}
+									transition={{
+										type: "spring",
+										stiffness: 400,
+										damping: 15,
+										delay: i * 0.08,
+									}}
+									className="text-2xl inline-block"
+								>
 									{ingredient}
-								</span>
-							))}
-							{item.ingredients.length > 2 && (
-								<span className="text-xs text-foreground/20 ml-1">
-									+{item.ingredients.length - 2}
-								</span>
-							)}
-						</motion.div>
-					)}
-				</AnimatePresence>
-			</div>
+								</motion.span>
+							))
+						) : (
+							<motion.div
+								initial={{ opacity: 0 }}
+								animate={{ opacity: 1 }}
+								className="flex items-center gap-1"
+							>
+								{item.ingredients.slice(0, 2).map((ingredient, i) => (
+									<span key={i} className="text-xl opacity-40">
+										{ingredient}
+									</span>
+								))}
+								{item.ingredients.length > 2 && (
+									<span className="text-xs text-foreground/20 ml-1">
+										+{item.ingredients.length - 2}
+									</span>
+								)}
+							</motion.div>
+						)}
+					</AnimatePresence>
+				</div>
 
-			<h3 className="text-xl font-bold text-foreground group-hover:text-bordeaux transition-colors duration-300 mb-2">
-				{item.name}
-			</h3>
+				<h3 className="text-xl font-bold text-foreground group-hover:text-bordeaux transition-colors duration-300 mb-2">
+					{item.name}
+				</h3>
 
-			<p className="text-foreground/40 text-sm leading-relaxed mb-6">
-				{item.description}
-			</p>
+				<p className="text-foreground/40 text-sm leading-relaxed mb-6">
+					{item.description}
+				</p>
 
-			<div className="flex items-center justify-between">
-				<span className="text-2xl font-bold text-bordeaux">
-					{item.price} €
-				</span>
-				<motion.div
-					whileHover={{ scale: 1.1 }}
-					whileTap={{ scale: 0.95 }}
-					className="w-9 h-9 rounded-full bg-bordeaux/10 flex items-center justify-center group-hover:bg-bordeaux transition-all duration-300 cursor-pointer"
-				>
-					<svg
-						className="w-4 h-4 text-bordeaux group-hover:text-white transition-colors"
-						fill="none"
-						stroke="currentColor"
-						viewBox="0 0 24 24"
+				<div className="flex items-center justify-between">
+					<span className="text-2xl font-bold text-bordeaux">
+						{item.price} €
+					</span>
+					<motion.div
+						whileHover={{ scale: 1.1 }}
+						whileTap={{ scale: 0.95 }}
+						className="w-9 h-9 rounded-full bg-bordeaux/10 flex items-center justify-center group-hover:bg-bordeaux transition-all duration-300 cursor-pointer"
 					>
-						<path
-							strokeLinecap="round"
-							strokeLinejoin="round"
-							strokeWidth={2}
-							d="M14 5l7 7m0 0l-7 7m7-7H3"
-						/>
-					</svg>
-				</motion.div>
-			</div>
+						<svg
+							className="w-4 h-4 text-bordeaux group-hover:text-white transition-colors"
+							fill="none"
+							stroke="currentColor"
+							viewBox="0 0 24 24"
+						>
+							<path
+								strokeLinecap="round"
+								strokeLinejoin="round"
+								strokeWidth={2}
+								d="M14 5l7 7m0 0l-7 7m7-7H3"
+							/>
+						</svg>
+					</motion.div>
+				</div>
 
-			{/* Subtle gradient on hover */}
-			<div className="absolute inset-0 bg-gradient-to-t from-bordeaux/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
-		</motion.div>
+				{/* Subtle gradient on hover */}
+				<div className="absolute inset-0 bg-gradient-to-t from-bordeaux/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
+			</motion.div>
+		</div>
 	);
 }
 
@@ -276,9 +241,8 @@ export default function Menu() {
 						animate={isInView ? { opacity: 1 } : {}}
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="text-xl text-foreground/40 mb-2"
-						style={{ fontFamily: "var(--font-caveat)" }}
 					>
-						Hover über die Gerichte und schau was drin steckt! 🍳
+						Unsere Pizzen — frisch und bodenständig.
 					</motion.p>
 
 					<motion.div
@@ -334,25 +298,10 @@ export default function Menu() {
 					className="text-center mt-16"
 				>
 					<a
-						href="https://www.lieferando.de/speisekarte/amicizia-66111"
-						target="_blank"
-						rel="noopener noreferrer"
+						href="#order"
 						className="inline-flex items-center gap-3 px-10 py-4 bg-bordeaux text-white text-sm font-semibold tracking-wider uppercase rounded-full hover:bg-bordeaux-dark transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-bordeaux/25"
 					>
-						Komplette Karte auf Lieferando
-						<svg
-							className="w-4 h-4"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M14 5l7 7m0 0l-7 7m7-7H3"
-							/>
-						</svg>
+						Komplettes Pizza-Angebot
 					</a>
 				</motion.div>
 			</div>

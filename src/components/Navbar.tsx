@@ -58,9 +58,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://www.lieferando.de/speisekarte/amicizia-66111"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#order"
               className="px-6 py-2.5 bg-bordeaux text-white text-sm font-medium tracking-wider uppercase rounded-full hover:bg-bordeaux-dark transition-all duration-300 hover:scale-105"
             >
               Bestellen
@@ -131,9 +129,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              href="https://www.lieferando.de/speisekarte/amicizia-66111"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#order"
               onClick={() => setMobileOpen(false)}
               className="px-8 py-3 bg-bordeaux text-white text-lg font-medium tracking-wider rounded-full hover:bg-bordeaux-dark transition-all"
             >

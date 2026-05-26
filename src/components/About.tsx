@@ -11,7 +11,7 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-32 px-6 lg:px-12 overflow-hidden"
+      className="relative py-32 px-6 lg:px-12 overflow-hidden pattern-autumn"
     >
       {/* Background accent */}
       <div className="absolute top-0 right-0 w-1/3 h-full bg-cream -skew-x-12 translate-x-20 hidden lg:block" />
@@ -45,9 +45,8 @@ export default function About() {
               animate={isInView ? { opacity: 1, rotate: -1 } : {}}
               transition={{ duration: 0.6, delay: 0.15 }}
               className="text-2xl text-bordeaux/40 mb-8 -rotate-1"
-              style={{ fontFamily: "var(--font-caveat)" }}
             >
-              AMICIZIA = Freundschaft 🇮🇹
+              AMICIZIA — Authentische italienische Küche
             </motion.p>
 
             <motion.div
@@ -63,10 +62,8 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.3 }}
               className="text-lg text-foreground/70 leading-relaxed mb-6"
             >
-              Wir sind ein kleiner Foodspot mitten in Saarlouis – geführt mit
-              ganz viel Herz von unserer Familie. Hinter AMICIZIA stehen Mama,
-              Papa und unsere zwei Kinder – ein echter Familienbetrieb, bei dem
-              Leidenschaft für gutes Essen an erster Stelle steht.
+              Wir sind ein lokales Restaurant in Saarlouis. Leidenschaft für gutes Essen steht für
+              uns an erster Stelle.
             </motion.p>
 
             <motion.p
@@ -86,7 +83,6 @@ export default function About() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.45 }}
               className="text-lg text-foreground/50 leading-relaxed mb-8 italic"
-              style={{ fontFamily: "var(--font-caveat)" }}
             >
               &ldquo;Danke an alle, die uns schon unterstützen – und an alle,
               die uns noch entdecken werden&rdquo; ❤️
@@ -101,7 +97,7 @@ export default function About() {
             >
               {[
                 { value: "12+", label: "Jahre Erfahrung" },
-                { value: "4", label: "Familienmitglieder" },
+                { value: "—", label: "Team" },
                 { value: "∞", label: "Liebe im Essen" },
               ].map((stat, i) => (
                 <motion.div
@@ -130,62 +126,23 @@ export default function About() {
             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-bordeaux">
               <div className="absolute inset-0 flex items-center justify-center">
                 <div className="text-center text-white p-8">
-                  <motion.div
-                    animate={{ rotate: [0, 360] }}
-                    transition={{
-                      duration: 30,
-                      repeat: Infinity,
-                      ease: "linear",
-                    }}
-                    className="text-8xl mb-6"
-                  >
-                    🍕
-                  </motion.div>
-                  <p className="text-3xl font-bold tracking-wider mb-2">
-                    AMICIZIA
-                  </p>
-                  <p className="text-white/40 tracking-[0.2em] text-xs uppercase mb-4">
-                    Industriestraße 20 · Saarlouis
-                  </p>
-                  <p
-                    className="text-white/60 text-xl -rotate-3"
-                    style={{ fontFamily: "var(--font-caveat)" }}
-                  >
-                    con amore ❤️
-                  </p>
+                  <p className="text-3xl font-bold tracking-wider mb-2">AMICIZIA</p>
+                  <p className="text-white/40 tracking-[0.2em] text-xs uppercase mb-4">Industriestraße 20 · Saarlouis</p>
+                  <p className="text-white/60 text-xl -rotate-3">con amore</p>
                 </div>
               </div>
               <div className="absolute inset-4 border border-white/10 rounded-2xl" />
             </div>
 
-            {/* Floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.7 }}
-              whileHover={{ scale: 1.05 }}
-              className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5"
-            >
+            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5">
               <p className="text-xs text-foreground/40 mb-0.5">Geöffnet</p>
               <p className="text-lg font-bold text-bordeaux">Den ganzen Tag</p>
               <p className="text-xs text-foreground/30">Ab 10:00 Uhr</p>
-            </motion.div>
+            </div>
 
-            {/* Second floating badge */}
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.9 }}
-              whileHover={{ scale: 1.05, rotate: 5 }}
-              className="absolute -top-4 -right-4 bg-bordeaux rounded-2xl shadow-xl px-5 py-3"
-            >
-              <p
-                className="text-white text-lg"
-                style={{ fontFamily: "var(--font-caveat)" }}
-              >
-                Famiglia! 👨‍👩‍👧‍👦
-              </p>
-            </motion.div>
+            <div className="absolute -top-4 -right-4 bg-bordeaux rounded-2xl shadow-xl px-5 py-3">
+              <p className="text-white text-lg">AMICIZIA</p>
+            </div>
           </motion.div>
         </div>
       </div>

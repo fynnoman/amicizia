@@ -4,9 +4,9 @@ import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 
 const dailySpecials = [
-  { name: "Lasagne della Mamma", description: "Hausgemacht mit Liebe & extra Käse", emoji: "🍝" },
-  { name: "Pizza Truffle", description: "Trüffelcreme, Mozzarella, Rucola, Parmesan", emoji: "🍕" },
-  { name: "Risotto ai Funghi", description: "Cremiges Pilzrisotto mit frischen Kräutern", emoji: "🍚" },
+  { name: "Pizza Truffle", description: "Trüffelcreme, Mozzarella, Rucola, Parmesan" },
+  { name: "Margherita Spezial", description: "Basilikum, frischer Mozzarella, San Marzano" },
+  { name: "Prosciutto e Rucola", description: "Scharfer Prosciutto, Rucola & Parmesan" },
 ];
 
 export default function FreshTicker() {
@@ -15,9 +15,10 @@ export default function FreshTicker() {
   const [currentSpecial, setCurrentSpecial] = useState(0);
 
   useEffect(() => {
+    // slower rotation to reduce CPU on idle tabs
     const interval = setInterval(() => {
       setCurrentSpecial((prev) => (prev + 1) % dailySpecials.length);
-    }, 5000);
+    }, 9000);
     return () => clearInterval(interval);
   }, []);
 
@@ -57,13 +58,7 @@ export default function FreshTicker() {
                 transition={{ duration: 0.5 }}
                 className="flex items-center gap-6"
               >
-                <motion.span
-                  animate={{ rotate: [0, -10, 10, 0] }}
-                  transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                  className="text-5xl md:text-6xl hidden sm:block"
-                >
-                  {dailySpecials[currentSpecial].emoji}
-                </motion.span>
+                {/* decorative icon removed */}
                 <div>
                   <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
                     {dailySpecials[currentSpecial].name}
@@ -88,13 +83,7 @@ export default function FreshTicker() {
               ))}
             </div>
 
-            {/* Handwritten note */}
-            <p
-              className="text-white/30 text-lg mt-6 -rotate-2"
-              style={{ fontFamily: "var(--font-caveat)" }}
-            >
-              ↑ Papas Empfehlung heute!
-            </p>
+            <p className="text-white/30 text-lg mt-6">Unsere Empfehlungen heute</p>
           </div>
         </div>
       </motion.div>

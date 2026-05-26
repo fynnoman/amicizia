@@ -21,8 +21,8 @@ export default function Footer() {
               AMICIZIA
             </h3>
             <p className="text-white/50 leading-relaxed text-sm">
-              Ein Familienbetrieb mit Herz – seit über 12 Jahren. Frische Pizza,
-              Pasta und mehr, jeden Tag in Saarlouis.
+              Ein lokales Pizzarestaurant – seit über 12 Jahren. Frische Pizza,
+              jeden Tag in Saarlouis.
             </p>
           </motion.div>
 
@@ -77,12 +77,12 @@ export default function Footer() {
                 Instagram: @amicizia.saarlouis
               </a>
               <a
-                href="https://www.lieferando.de/speisekarte/amicizia-66111"
+                href="https://instagram.com/amicizia"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block hover:text-white transition-colors duration-300"
+                className="text-sm text-foreground/60 hover:text-bordeaux transition-colors"
               >
-                Lieferando Speisekarte
+                Instagram
               </a>
             </div>
           </motion.div>
@@ -100,7 +100,7 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
           <p>© {new Date().getFullYear()} AMICIZIA. Alle Rechte vorbehalten.</p>
           <p>
-            Mit ❤️ gemacht in Saarlouis
+            Mit Liebe gemacht in Saarlouis
           </p>
         </div>
       </div>

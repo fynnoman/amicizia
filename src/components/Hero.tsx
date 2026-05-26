@@ -1,85 +1,53 @@
-"use client";
-
-import { motion } from "framer-motion";
-
 export default function Hero() {
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background — static gradient, no heavy animations */}
-      <div className="absolute inset-0 bg-gradient-to-br from-bordeaux via-bordeaux to-bordeaux-dark">
-        <div className="absolute -top-1/4 -right-1/4 w-[600px] h-[600px] rounded-full bg-bordeaux-light/15 blur-[120px]" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-[500px] h-[500px] rounded-full bg-bordeaux-dark/20 blur-[120px]" />
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/Italienische_Küche_Teigrollen_Video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
+
+      {/* Background — layered for depth (reduced blur on small screens) */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-bordeaux/40 via-bordeaux/30 to-bordeaux-dark/50 pointer-events-none">
+        <div className="absolute -top-1/4 -right-1/4 w-[680px] h-[680px] rounded-full bg-bordeaux-light/10 blur-[60px] sm:blur-[120px] bg-blob" />
+        <div className="absolute -bottom-1/4 -left-1/4 w-[540px] h-[540px] rounded-full bg-bordeaux-dark/15 blur-[60px] sm:blur-[120px] bg-blob" />
+        <div className="absolute inset-0 hero-noise opacity-20" />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-6 w-full max-w-[90vw] mx-auto">
-        {/* Handwritten tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-xl md:text-2xl text-white/60 mb-6"
-          style={{ fontFamily: "var(--font-caveat)" }}
-        >
+      {/* Content — CSS-only reveals to avoid client JS */}
+      <div className="relative z-10 text-center px-6 w-full max-w-[90vw] mx-auto glass-panel depth-shadow p-8 rounded-3xl bg-bordeaux/25 border border-white/10 backdrop-blur-md">
+        <p className="reveal delay-1 text-xl md:text-2xl text-white/60 mb-6 font-handwriting">
           seit über 12 Jahren mit Herz
-        </motion.p>
+        </p>
 
-        {/* Main heading — responsive, no clipping */}
-        <motion.h1
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 1, 0.5, 1] }}
-          className="text-[clamp(3rem,12vw,11rem)] font-bold text-white tracking-[0.05em] leading-[0.9] mb-6"
-        >
+        <h1 className="reveal delay-2 text-[clamp(3rem,12vw,11rem)] font-bold text-white tracking-[0.05em] leading-[0.9] mb-6">
           AMICIZIA
-        </motion.h1>
+        </h1>
 
-        {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
-          className="text-white/35 text-xs md:text-sm tracking-[0.4em] uppercase mb-8"
-        >
-          Freundschaft · Familie · Essen
-        </motion.p>
+        <p className="reveal delay-3 text-white/35 text-xs md:text-sm tracking-[0.4em] uppercase mb-8">
+          Pizza · Tradition · Genuss
+        </p>
 
-        {/* Decorative line */}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          animate={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.9 }}
-          className="w-24 h-px bg-white/25 mx-auto mb-8"
-        />
+        <div className="reveal delay-4 w-24 h-px bg-white/25 mx-auto mb-8" />
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1 }}
-          className="text-white/70 text-base md:text-lg font-light mb-3"
-        >
-          Pizza · Pasta · con Amore
-        </motion.p>
+        <p className="reveal delay-5 text-white/70 text-base md:text-lg font-light mb-3">
+          Pizza · con Amore
+        </p>
 
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 1.1 }}
-          className="text-white/35 text-sm mb-12"
-        >
-          📍 Saarlouis · 🚗 Lieferung & Abholung · 🕒 Den ganzen Tag
-        </motion.p>
+        <p className="reveal delay-6 text-white/35 text-sm mb-12">
+          Saarlouis · Abholung · Täglich geöffnet
+        </p>
 
-        {/* CTA Buttons */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.3 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
+        <div className="reveal delay-7 flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="#menu"
             className="px-10 py-4 bg-white text-bordeaux text-sm font-semibold tracking-wider uppercase rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-white/10"
@@ -87,30 +55,23 @@ export default function Hero() {
             Speisekarte
           </a>
           <a
-            href="https://www.lieferando.de/speisekarte/amicizia-66111"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="#order"
             className="px-10 py-4 border border-white/20 text-white text-sm font-semibold tracking-wider uppercase rounded-full transition-all duration-300 hover:bg-white/10 hover:scale-[1.03] hover:border-white/40"
           >
-            Jetzt bestellen
+            Abholung
           </a>
-        </motion.div>
+        </div>
       </div>
 
       {/* Scroll indicator — simple CSS animation */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-      >
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
         <span className="text-white/25 text-[10px] tracking-[0.3em] uppercase">
           Scroll
         </span>
         <div className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center pt-2">
           <div className="w-0.5 h-1.5 bg-white/30 rounded-full animate-bounce" />
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }
