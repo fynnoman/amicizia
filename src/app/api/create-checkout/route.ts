@@ -70,7 +70,7 @@ export async function POST(req: Request) {
 			checkout_reference: reference,
 			description: encodeOrderForDescription(payload),
 			return_url: `${origin}/api/sumup-webhook`,
-			redirect_url: `${origin}/?bestellung=erfolg&ref=${encodeURIComponent(reference)}`,
+			redirect_url: `${origin}/bestellung/erfolg?ref=${encodeURIComponent(reference)}`,
 		});
 
 		if (!checkout.hosted_checkout_url) {

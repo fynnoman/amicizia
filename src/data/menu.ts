@@ -8,6 +8,13 @@ export type MenuItem = {
 	category: MenuCategoryKey;
 	popular?: boolean;
 	ingredients: string[];
+	emoji?: string;
+};
+
+export const categoryEmoji: Record<MenuCategoryKey, string> = {
+	pizza: "🍕",
+	ciabatta: "🥖",
+	wrap: "🌯",
 };
 
 export type MenuCategory = {
