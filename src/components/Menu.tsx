@@ -2,98 +2,13 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-
-const categories = [
-	{ name: "Alle", key: "all" },
-	{ name: "Pizza", key: "pizza" },
-	{ name: "Ciabatta", key: "ciabatta" },
-	{ name: "Wraps", key: "wrap" },
-];
-
-const menuItems = [
-	{
-		name: "Margherita",
-		description: "Tomatensauce, Mozzarella, frisches Basilikum",
-		price: "9,90",
-		category: "pizza",
-		popular: true,
-		ingredients: ["Tomate", "Käse", "Basilikum"],
-	},
-	{
-		name: "Diavola",
-		description: "Tomatensauce, Mozzarella, scharfe Salami, Peperoni",
-		price: "12,90",
-		category: "pizza",
-		popular: true,
-		ingredients: ["Tomate", "Käse", "Salami", "Peperoni"],
-	},
-	{
-		name: "Quattro Formaggi",
-		description: "Mozzarella, Gorgonzola, Parmesan, Ricotta",
-		price: "13,90",
-		category: "pizza",
-		popular: false,
-		ingredients: ["Käse", "Gorgonzola", "Parmesan", "Ricotta"],
-	},
-	{
-		name: "Prosciutto e Rucola",
-		description: "Tomatensauce, Mozzarella, Parmaschinken, Rucola",
-		price: "14,90",
-		category: "pizza",
-		popular: true,
-		ingredients: ["Tomate", "Käse", "Schinken", "Rucola"],
-	},
-	{
-		name: "Vegetariana",
-		description: "Tomatensauce, Mozzarella, frisches Gemüse der Saison",
-		price: "12,90",
-		category: "pizza",
-		popular: false,
-		ingredients: ["Tomate", "Käse", "Gemüse"],
-	},
-
-	// Ciabatta
-	{
-		name: "Ciabatta Verde",
-		description: "Ciabatta mit Kräutern und Olivenöl",
-		price: "8,90",
-		category: "ciabatta",
-		popular: false,
-		ingredients: ["Brot", "Kräuter", "Olivenöl"],
-	},
-	{
-		name: "Ciabatta Piccante",
-		description: "Ciabatta mit scharfer Salami und Käse überbacken",
-		price: "12,90",
-		category: "ciabatta",
-		popular: true,
-		ingredients: ["Brot", "Salami", "Käse"],
-	},
-
-	// Wraps
-	{
-		name: "Chicken Wrap",
-		description: "Gegrilltes Hühnchen, Salat, hausgemachte Sauce",
-		price: "9,50",
-		category: "wrap",
-		popular: true,
-		ingredients: ["Hühnchen", "Salat", "Sauce"],
-	},
-	{
-		name: "Veggie Wrap",
-		description: "Gegrilltes Gemüse, Hummus, Rucola",
-		price: "9,00",
-		category: "wrap",
-		popular: false,
-		ingredients: ["Gemüse", "Hummus", "Rucola"],
-	},
-];
+import { categories, menuItems, formatPrice, type MenuItem } from "@/data/menu";
 
 function MenuCard({
 	item,
 	index,
 }: {
-	item: typeof menuItems[0];
+	item: MenuItem;
 	index: number;
 }) {
 	const [isHovered, setIsHovered] = useState(false);
@@ -170,7 +85,7 @@ function MenuCard({
 
 				<div className="flex items-center justify-between">
 					<span className="text-2xl font-bold text-bordeaux">
-						{item.price} €
+						{formatPrice(item.price)} €
 					</span>
 					<motion.div
 						whileHover={{ scale: 1.1 }}

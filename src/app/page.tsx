@@ -5,6 +5,7 @@ import About from "@/components/About";
 import Timeline from "@/components/Timeline";
 import ClientWidgets from "@/components/ClientWidgets";
 import Menu from "@/components/Menu";
+import Order from "@/components/Order";
 import Delivery from "@/components/Delivery";
 import Testimonials from "@/components/Testimonials";
 import ComingSoon from "@/components/ComingSoon";
@@ -21,6 +22,7 @@ export default function Home() {
       <Timeline />
       <ClientWidgets />
       <Menu />
+      <Order />
       <Delivery />
       <Testimonials />
       <ComingSoon />
