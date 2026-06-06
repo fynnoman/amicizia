@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { CircleStamp, OliveBranch, Fleuron, Tomato } from "./Ornaments";
 
 export default function Hero() {
@@ -7,17 +6,17 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Hero photograph — chef tossing herbs, golden hour */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <Image
-          src="/photos/amicizia-3.jpg"
-          alt="Frische Kräuter in der Küche von AMICIZIA"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover scale-110 animate-[kenburns_24s_ease-in-out_infinite_alternate]"
-        />
-      </div>
+      {/* Background video */}
+      <video
+        className="absolute inset-0 w-full h-full object-cover z-0"
+        src="/Italienische_Küche_Teigrollen_Video.mp4"
+        autoPlay
+        loop
+        muted
+        playsInline
+        preload="auto"
+        aria-hidden="true"
+      />
 
       {/* Sun-baked terracotta wash over the photo */}
       <div

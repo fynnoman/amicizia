@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
+import ChefShowcase from "@/components/ChefShowcase";
 import About from "@/components/About";
 import Timeline from "@/components/Timeline";
 import ClientWidgets from "@/components/ClientWidgets";
@@ -19,6 +20,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Marquee />
+      <ChefShowcase />
       <About />
       <Timeline />
       <ClientWidgets />

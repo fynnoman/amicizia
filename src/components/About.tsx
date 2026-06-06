@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   CircleStamp,
@@ -16,27 +16,18 @@ export default function About() {
   const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
-  // Parallax for the photo on scroll
-  const photoRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: photoRef,
-    offset: ["start end", "end start"],
-  });
-  const photoY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
-  const photoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.02, 1.08]);
-
   return (
     <section
       id="about"
       ref={ref}
-      className="paper-grain relative py-28 md:py-36 px-6 lg:px-12 overflow-hidden bg-paper"
+      className="paper-grain relative pt-20 md:pt-24 pb-28 md:pb-32 px-6 lg:px-12 overflow-hidden bg-paper"
     >
       {/* Soft terracotta wash on right */}
       <div className="absolute top-20 -right-32 w-[480px] h-[480px] rounded-full bg-terracotta/[0.06] blur-[80px] hidden lg:block" />
 
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 md:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -146,9 +137,8 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* Right: real photograph in a paper frame with scroll parallax */}
+          {/* Right: real photograph in a paper frame */}
           <motion.div
-            ref={photoRef}
             initial={{ opacity: 0, scale: 0.94, rotate: 1.5 }}
             animate={isInView ? { opacity: 1, scale: 1, rotate: 1 } : {}}
             transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
@@ -159,20 +149,15 @@ export default function About() {
               {/* Inner terracotta keyline */}
               <div className="pointer-events-none absolute inset-2 border border-terracotta/40 z-20" />
 
-              {/* The image with parallax */}
+              {/* The image */}
               <div className="relative aspect-[4/5] overflow-hidden bg-espresso/10">
-                <motion.div
-                  className="absolute inset-0"
-                  style={{ y: photoY, scale: photoScale }}
-                >
-                  <Image
-                    src="/photos/amicizia-2.jpg"
-                    alt="Hände waschen eine frische Tomate im goldenen Abendlicht"
-                    fill
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </motion.div>
+                <Image
+                  src="/photos/amicizia-2.jpg"
+                  alt="Hände waschen eine frische Tomate im goldenen Abendlicht"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  className="object-cover"
+                />
                 {/* Subtle warm vignette over photo */}
                 <div
                   className="absolute inset-0 pointer-events-none"
