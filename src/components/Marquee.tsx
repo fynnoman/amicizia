@@ -5,16 +5,16 @@ import { useState, useEffect } from "react";
 import { Fleuron } from "./Ornaments";
 
 const familyQuotes = [
-  { text: "Mangia, che ti fa bene!", author: "la nonna" },
-  { text: "Krosse Kruste, guter Geschmack.", author: "Gast" },
-  { text: "Der Ofen macht den Unterschied.", author: "Gast" },
-  { text: "Pizza con amore, sempre.", author: "famiglia AMICIZIA" },
+  { text: "Krosse Kruste, ehrlicher Geschmack.", author: "Gast" },
+  { text: "Pizza wie bei Nonna — nur in Saarlouis.", author: "Gast" },
+  { text: "Der Steinofen macht den Unterschied.", author: "Gast" },
+  { text: "Frischer geht nicht.", author: "Gast" },
 ];
 
 const marqueeWords = [
-  "pizza", "amore", "amicizia", "saarlouis",
-  "frisch", "knusprig", "handgemacht", "ofenfrisch",
-  "famiglia", "tradizione", "buon appetito",
+  "Pizza", "frisch", "handgemacht", "Steinofen",
+  "Saarlouis", "ofenfrisch", "knusprig", "Familie",
+  "mit Liebe gemacht", "Amicizia", "seit 2013",
 ];
 
 export default function Marquee() {

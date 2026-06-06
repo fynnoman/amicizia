@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { CircleStamp, OliveBranch, Fleuron, Tomato } from "./Ornaments";
 
 export default function Hero() {
@@ -6,33 +7,33 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background video, warm overlay */}
-      <video
-        className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/Italienische_Küche_Teigrollen_Video.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
-      />
-      {/* Sun-baked terracotta wash over the video */}
+      {/* Hero photograph — chef tossing herbs, golden hour */}
+      <div className="absolute inset-0 z-0 overflow-hidden">
+        <Image
+          src="/photos/amicizia-3.jpg"
+          alt="Frische Kräuter in der Küche von AMICIZIA"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover scale-110 animate-[kenburns_24s_ease-in-out_infinite_alternate]"
+        />
+      </div>
+
+      {/* Sun-baked terracotta wash over the photo */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(42,24,16,0.7) 0%, rgba(138,44,31,0.55) 45%, rgba(42,24,16,0.85) 100%)",
+            "linear-gradient(180deg, rgba(42,24,16,0.78) 0%, rgba(138,44,31,0.55) 45%, rgba(42,24,16,0.92) 100%)",
         }}
       />
       <div
-        className="absolute inset-0 z-0 pointer-events-none mix-blend-overlay opacity-30"
+        className="absolute inset-0 z-0 pointer-events-none mix-blend-overlay opacity-25"
         style={{
           background:
-            "radial-gradient(60% 60% at 50% 30%, rgba(242,232,208,0.55), transparent 70%)",
+            "radial-gradient(60% 60% at 50% 30%, rgba(242,232,208,0.5), transparent 70%)",
         }}
       />
-      {/* Tiny film grain */}
       <div className="grain-overlay z-0" />
 
       {/* Floating decorative olive branches */}
@@ -59,14 +60,14 @@ export default function Hero() {
         <div className="reveal delay-1 flex items-center gap-4 text-paper-soft/70 mb-8">
           <span className="h-px w-12 bg-paper-soft/60" />
           <span className="font-display italic tracking-[0.35em] uppercase text-[0.72rem]">
-            Trattoria di Famiglia · dal 2013
+            Trattoria · Saarlouis · seit 2013
           </span>
           <span className="h-px w-12 bg-paper-soft/60" />
         </div>
 
         {/* Handwritten Italian whisper above the headline */}
         <p className="reveal delay-2 font-hand text-3xl md:text-4xl text-terracotta-soft/90 -mb-2 ml-1 -rotate-2">
-          benvenuti a casa,
+          herzlich willkommen,
         </p>
 
         {/* Main display headline */}
@@ -74,12 +75,12 @@ export default function Hero() {
           <span className="block">AMI<span className="italic-display">cizia</span></span>
         </h1>
 
-        {/* Sub line — Italian + German */}
+        {/* Sub line */}
         <div className="reveal delay-4 mt-6 max-w-2xl">
           <p className="font-display italic text-2xl md:text-3xl text-paper-soft/90 leading-snug">
-            Pizza, pasta &amp; piccoli piaceri della casa —
+            Pizza, Pasta &amp; kleine Familien&shy;rezepte —
             <span className="font-hand text-terracotta-soft text-3xl ml-2">
-              cucinato con amore.
+              mit Liebe gemacht.
             </span>
           </p>
           <p className="mt-4 font-serif text-paper-soft/65 text-base md:text-lg leading-relaxed max-w-xl">
@@ -92,14 +93,14 @@ export default function Hero() {
         {/* CTAs */}
         <div className="reveal delay-5 mt-10 flex flex-col sm:flex-row gap-4">
           <a href="#menu" className="btn-terra">
-            Il nostro menu
+            Zur Speisekarte
           </a>
           <a
             href="#order"
             className="btn-ghost !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-espresso"
           >
             <Tomato size={18} />
-            Ordina &amp; ritira
+            Bestellen &amp; abholen
           </a>
         </div>
 
@@ -107,8 +108,8 @@ export default function Hero() {
         <div className="reveal delay-6 mt-14 grid grid-cols-3 gap-6 max-w-xl">
           {[
             { kicker: "I.",   label: "Saarlouis",       sub: "Industriestraße 20" },
-            { kicker: "II.",  label: "Tutti i giorni",  sub: "ab 10:00 Uhr" },
-            { kicker: "III.", label: "Forno a legna",   sub: "Pizza al taglio" },
+            { kicker: "II.",  label: "Täglich geöffnet", sub: "ab 10:00 Uhr" },
+            { kicker: "III.", label: "Steinofen",       sub: "knusprig & frisch" },
           ].map((b) => (
             <div key={b.kicker} className="border-l border-paper-soft/30 pl-4">
               <div className="font-display italic text-terracotta-soft text-sm tracking-[0.3em]">
@@ -129,7 +130,7 @@ export default function Hero() {
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-paper-soft/55">
         <Fleuron size={16} />
         <span className="font-display italic text-[10px] tracking-[0.4em] uppercase">
-          scorri ↓
+          scroll ↓
         </span>
       </div>
     </section>

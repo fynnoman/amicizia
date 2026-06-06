@@ -22,7 +22,7 @@ export default function Contact() {
             transition={{ duration: 0.6 }}
             className="flex justify-center mb-5 text-terracotta"
           >
-            <Divider label="VIII · Contatti" />
+            <Divider label="VIII · Kontakt" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
@@ -30,8 +30,8 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
           >
-            Vieni a{" "}
-            <span className="italic-display text-terracotta">trovarci</span>
+            So findest du{" "}
+            <span className="italic-display text-terracotta">uns</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -39,7 +39,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-hand text-2xl text-espresso-soft mt-3"
           >
-            Industriestraße 20 — die Tür ist offen.
+            Industriestraße 20, Saarlouis — die Tür ist offen.
           </motion.p>
         </div>
 
@@ -58,7 +58,7 @@ export default function Contact() {
                 <div className="flex items-center justify-between mb-6">
                   <div>
                     <div className="font-display italic text-terracotta tracking-[0.4em] text-[0.7rem] uppercase">
-                      Cartolina da
+                      Postkarte aus
                     </div>
                     <div className="display-lg text-terracotta text-3xl mt-1">
                       Saarlouis
@@ -67,7 +67,7 @@ export default function Contact() {
                   {/* "stamp" */}
                   <div className="border-2 border-terracotta px-3 py-2 rotate-3">
                     <div className="font-display italic text-terracotta text-[10px] leading-none">
-                      DAL
+                      seit
                     </div>
                     <div className="font-display text-terracotta text-xl leading-none">
                       2013
@@ -78,25 +78,25 @@ export default function Contact() {
                 <div className="space-y-7">
                   <InfoRow
                     icon={<OliveBranch size={22} />}
-                    title="Indirizzo · Adresse"
+                    title="Adresse"
                   >
                     Industriestraße 20<br />66740 Saarlouis
                   </InfoRow>
 
                   <InfoRow
                     icon={<Sun size={22} />}
-                    title="Orari · Öffnungszeiten"
+                    title="Öffnungszeiten"
                   >
-                    tutti i giorni · jeden Tag
+                    täglich geöffnet
                     <br />
                     <span className="font-hand text-terracotta text-2xl">
-                      dalle 10:00 →
+                      ab 10:00 Uhr →
                     </span>
                   </InfoRow>
 
                   <InfoRow
                     icon={<Fleuron size={20} />}
-                    title="Resta in contatto · Instagram"
+                    title="Instagram"
                   >
                     <a
                       href="https://www.instagram.com/amicizia.saarlouis/"
@@ -110,7 +110,7 @@ export default function Contact() {
                 </div>
 
                 <div className="mt-8 pt-6 border-t border-dashed border-espresso/25 font-hand text-2xl text-espresso-soft -rotate-1">
-                  ti aspettiamo ♡
+                  Wir freuen uns auf dich ♡
                 </div>
               </div>
             </div>
@@ -146,7 +146,7 @@ export default function Contact() {
             >
               <div>
                 <div className="font-display italic text-terracotta text-xs tracking-[0.25em] uppercase">
-                  La nostra casa
+                  Unsere Adresse
                 </div>
                 <p className="font-display text-espresso text-xl mt-1">
                   AMICIZIA Trattoria
@@ -161,7 +161,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 className="btn-terra !py-2 !px-4 !text-[0.7rem]"
               >
-                Route
+                Route planen
               </a>
             </motion.div>
           </motion.div>

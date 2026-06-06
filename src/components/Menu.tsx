@@ -26,9 +26,9 @@ const categoryIcon: Record<MenuCategoryKey, React.ReactNode> = {
 };
 
 const categoryLabel: Record<MenuCategoryKey, string> = {
-  pizza: "Pizze · al forno",
-  ciabatta: "Ciabatte · dal panificio",
-  wrap: "Wraps · alla casa",
+  pizza: "Pizza · aus dem Steinofen",
+  ciabatta: "Ciabatta · frisch gebacken",
+  wrap: "Wraps · hausgemacht",
 };
 
 function MenuRow({ item, index }: { item: MenuItem; index: number }) {
@@ -47,7 +47,7 @@ function MenuRow({ item, index }: { item: MenuItem; index: number }) {
           </span>
           {item.popular && (
             <span className="font-hand text-terracotta text-base -rotate-3">
-              ★ il preferito
+              ★ beliebt
             </span>
           )}
         </div>
@@ -121,7 +121,7 @@ export default function Menu() {
             transition={{ duration: 0.6 }}
             className="flex justify-center mb-5 text-terracotta"
           >
-            <Divider label="IV · Il Menu" />
+            <Divider label="IV · Speisekarte" />
           </motion.div>
 
           <motion.h2
@@ -130,7 +130,7 @@ export default function Menu() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
           >
-            La nostra <span className="italic-display text-terracotta">cucina</span>
+            Unsere <span className="italic-display text-terracotta">Küche</span>
           </motion.h2>
 
           <motion.p
@@ -167,7 +167,7 @@ export default function Menu() {
                   AMI<span className="italic-display">cizia</span>
                 </div>
                 <div className="font-hand text-espresso text-base -mt-1">
-                  il menu della casa
+                  unsere Speisekarte
                 </div>
               </div>
               <OliveBranch size={36} className="-scale-x-100" />
@@ -215,7 +215,7 @@ export default function Menu() {
             </div>
 
             <p className="text-center font-hand text-2xl md:text-3xl text-espresso-soft mt-4 -rotate-1">
-              buon appetito ♡
+              guten Appetit ♡
             </p>
           </div>
         </motion.div>
@@ -228,7 +228,7 @@ export default function Menu() {
           className="text-center mt-14"
         >
           <a href="#order" className="btn-terra">
-            Ordina &amp; ritira →
+            Jetzt bestellen &amp; abholen →
           </a>
           <p className="font-display italic text-espresso-soft text-sm mt-4 tracking-wider">
             online vorbestellen, frisch bei uns abholen

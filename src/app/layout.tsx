@@ -23,17 +23,17 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "AMICIZIA — Trattoria di Famiglia · Saarlouis",
+  title: "AMICIZIA — Italienisches Familienrestaurant · Saarlouis",
   description:
-    "Pizza, pasta e amore. Eine kleine italienische Familien-Trattoria in Saarlouis — seit 2013 con amore.",
+    "Frische Pizza, Pasta & kleine Familienrezepte aus Saarlouis. Eine italienische Familien-Trattoria mit Steinofen, seit über 12 Jahren mit Liebe gemacht.",
   keywords: [
     "AMICIZIA",
-    "Trattoria",
-    "Pizza",
-    "Saarlouis",
-    "Italiener",
+    "Pizza Saarlouis",
+    "Italiener Saarlouis",
     "Familienrestaurant",
-    "Italienisch",
+    "italienisches Restaurant",
+    "Steinofen Pizza",
+    "Trattoria",
   ],
 };
 

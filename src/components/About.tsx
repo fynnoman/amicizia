@@ -1,6 +1,7 @@
 "use client";
 
-import { motion, useInView } from "framer-motion";
+import Image from "next/image";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import {
   CircleStamp,
@@ -12,8 +13,17 @@ import {
 } from "./Ornaments";
 
 export default function About() {
-  const ref = useRef(null);
+  const ref = useRef<HTMLElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+
+  // Parallax for the photo on scroll
+  const photoRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: photoRef,
+    offset: ["start end", "end start"],
+  });
+  const photoY = useTransform(scrollYProgress, [0, 1], ["-12%", "12%"]);
+  const photoScale = useTransform(scrollYProgress, [0, 0.5, 1], [1.08, 1.02, 1.08]);
 
   return (
     <section
@@ -33,7 +43,7 @@ export default function About() {
             transition={{ duration: 0.6 }}
             className="flex justify-center mb-5 text-terracotta"
           >
-            <Divider label="II · La Famiglia" />
+            <Divider label="II · Über uns" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
@@ -41,7 +51,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
           >
-            La nostra <span className="italic-display text-terracotta">storia</span>
+            Unsere <span className="italic-display text-terracotta">Geschichte</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -76,22 +86,23 @@ export default function About() {
             >
               <p>
                 Angefangen hat alles 2013 — mit einem Ofen, einem Traum und
-                einer Großmutter, die nie aufgehört hat zu rufen{" "}
+                einer Großmutter, die nie aufgehört hat zu sagen{" "}
                 <span className="font-hand text-terracotta text-2xl">
-                  „mangia, mangia!&quot;
+                  „iss, iss noch was!&quot;
                 </span>
               </p>
               <p>
                 Heute, zwölf Jahre und unzählige Pizzen später, sind wir
                 immer noch dieselbe Familie. Nur der Ofen ist neuer.{" "}
                 <span className="italic text-espresso">
-                  Der Teig ruht über Nacht, die Tomaten sind aus San Marzano,
-                  und der Mozzarella schmeckt nach Süditalien.
+                  Unser Teig ruht über Nacht, die Tomaten kommen aus
+                  San&nbsp;Marzano, und der Mozzarella schmeckt nach
+                  Süditalien.
                 </span>
               </p>
               <p className="italic text-espresso-soft">
-                &ldquo;Danke an alle, die uns schon gefunden haben — und an
-                alle, die jetzt das erste Mal an unseren Tisch kommen.&rdquo;
+                &ldquo;Danke an alle, die uns schon kennen — und an alle,
+                die jetzt das erste Mal an unseren Tisch kommen.&rdquo;
               </p>
             </motion.div>
 
@@ -103,10 +114,10 @@ export default function About() {
               className="mt-9"
             >
               <div className="font-hand text-4xl text-terracotta -rotate-3">
-                — la famiglia AMICIZIA
+                — Familie AMICIZIA
               </div>
               <div className="font-display italic text-espresso-soft/70 text-sm mt-1 ml-1 tracking-wider">
-                Saarlouis, Italia nel cuore
+                Saarlouis, mit italienischem Herz
               </div>
             </motion.div>
 
@@ -118,9 +129,9 @@ export default function About() {
               className="flex flex-wrap gap-10 mt-10 pt-8 border-t border-espresso/15"
             >
               {[
-                { value: "12+", label: "anni di forno", icon: <Sun size={18} /> },
-                { value: "00:00", label: "ore di sonno", icon: <Tomato size={18} /> },
-                { value: "∞",   label: "amore", icon: <Fleuron size={18} /> },
+                { value: "12+", label: "Jahre Erfahrung",  icon: <Sun size={18} /> },
+                { value: "100%", label: "frisch jeden Tag", icon: <Tomato size={18} /> },
+                { value: "∞",   label: "Liebe im Essen",   icon: <Fleuron size={18} /> },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="display-lg text-terracotta text-4xl">{stat.value}</div>
@@ -135,70 +146,78 @@ export default function About() {
             </motion.div>
           </div>
 
-          {/* Right: framed visual */}
+          {/* Right: real photograph in a paper frame with scroll parallax */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.94 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : {}}
-            transition={{ duration: 0.8, delay: 0.3 }}
+            ref={photoRef}
+            initial={{ opacity: 0, scale: 0.94, rotate: 1.5 }}
+            animate={isInView ? { opacity: 1, scale: 1, rotate: 1 } : {}}
+            transition={{ duration: 0.9, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
             className="relative"
           >
-            {/* The framed card */}
-            <div className="postcard p-6 md:p-8 aspect-[4/5] flex flex-col items-center justify-between text-center relative overflow-hidden">
-              {/* paper grain inside */}
-              <div className="grain-overlay" />
+            {/* Outer paper frame */}
+            <div className="relative bg-paper-soft border border-espresso/15 depth-shadow p-4 md:p-5">
+              {/* Inner terracotta keyline */}
+              <div className="pointer-events-none absolute inset-2 border border-terracotta/40 z-20" />
 
-              {/* top mark */}
-              <div className="relative z-10">
-                <div className="font-display italic text-terracotta tracking-[0.4em] text-xs">
-                  EST. MMXIII
-                </div>
-                <div className="mt-2 text-terracotta">
-                  <Fleuron size={20} />
-                </div>
-              </div>
-
-              {/* center */}
-              <div className="relative z-10 px-3">
-                <div className="font-display italic text-espresso-soft tracking-[0.2em] text-xs uppercase">
-                  Trattoria
-                </div>
-                <h3
-                  className="display-xl text-terracotta mt-1 leading-none"
-                  style={{ fontSize: "clamp(2.5rem, 7vw, 4.5rem)" }}
+              {/* The image with parallax */}
+              <div className="relative aspect-[4/5] overflow-hidden bg-espresso/10">
+                <motion.div
+                  className="absolute inset-0"
+                  style={{ y: photoY, scale: photoScale }}
                 >
-                  AMI<span className="italic-display">cizia</span>
-                </h3>
-                <div className="mt-3 font-hand text-2xl text-espresso">
-                  — con amore —
-                </div>
-                <div className="mt-3 font-display italic text-espresso-soft text-sm tracking-wider">
-                  Industriestraße 20 · Saarlouis
-                </div>
+                  <Image
+                    src="/photos/amicizia-2.jpg"
+                    alt="Hände waschen eine frische Tomate im goldenen Abendlicht"
+                    fill
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
+                </motion.div>
+                {/* Subtle warm vignette over photo */}
+                <div
+                  className="absolute inset-0 pointer-events-none"
+                  style={{
+                    background:
+                      "radial-gradient(70% 80% at 50% 60%, transparent 40%, rgba(42,24,16,0.45) 100%)",
+                  }}
+                />
+                <div className="grain-overlay opacity-30" />
               </div>
 
-              {/* bottom */}
-              <div className="relative z-10 flex items-center gap-3 text-espresso-soft">
-                <OliveBranch size={26} />
-                <div className="font-display italic text-xs tracking-[0.3em]">
-                  TUTTI I GIORNI · 10:00 →
+              {/* Caption strip */}
+              <div className="relative pt-4 flex items-center justify-between">
+                <div>
+                  <div className="font-hand text-terracotta text-2xl leading-none">
+                    Frische jeden Tag.
+                  </div>
+                  <div className="font-display italic text-espresso-soft/80 text-xs tracking-[0.25em] uppercase mt-1">
+                    aus unserer Küche · Saarlouis
+                  </div>
                 </div>
-                <OliveBranch size={26} className="-scale-x-100" />
+                <div className="text-terracotta">
+                  <Fleuron size={18} />
+                </div>
               </div>
             </div>
 
-            {/* Floating stamp top-right */}
-            <div className="absolute -top-8 -right-6 text-terracotta tilt-r animate-float">
+            {/* Floating circular stamp top-right */}
+            <div className="absolute -top-10 -right-8 text-terracotta tilt-r animate-float pointer-events-none">
               <CircleStamp size={140} />
             </div>
 
-            {/* Floating "Aperto" tag bottom-left */}
+            {/* Pinned "Aperto!" tag bottom-left */}
             <div className="absolute -bottom-6 -left-6 bg-paper-soft px-5 py-3 border border-espresso/15 depth-shadow tilt-l">
               <div className="font-hand text-terracotta text-2xl leading-none">
-                Aperto!
+                Geöffnet!
               </div>
               <div className="font-display italic text-espresso-soft text-[10px] tracking-[0.3em] uppercase mt-1">
                 den ganzen Tag
               </div>
+            </div>
+
+            {/* Decorative olive branch peeking from behind */}
+            <div className="absolute -bottom-12 -right-4 text-olive/60 -z-10 hidden md:block">
+              <OliveBranch size={120} />
             </div>
           </motion.div>
         </div>

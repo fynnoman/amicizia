@@ -5,11 +5,11 @@ import { useRef } from "react";
 import { Fleuron, OliveBranch, CircleStamp } from "./Ornaments";
 
 const quickLinks = [
-  { label: "Casa", href: "#hero" },
-  { label: "La Famiglia", href: "#about" },
-  { label: "Il Menu", href: "#menu" },
-  { label: "Ordina", href: "#order" },
-  { label: "Contatti", href: "#contact" },
+  { label: "Start", href: "#hero" },
+  { label: "Über uns", href: "#about" },
+  { label: "Speisekarte", href: "#menu" },
+  { label: "Bestellen", href: "#order" },
+  { label: "Kontakt", href: "#contact" },
 ];
 
 export default function Footer() {
@@ -74,7 +74,7 @@ export default function Footer() {
               Seit 2013 — Pizza, pasta &amp; piccoli piaceri della casa.
             </p>
             <p className="font-hand text-terracotta-soft text-2xl mt-4">
-              grazie di essere qui ♡
+              schön, dass du da bist ♡
             </p>
           </motion.div>
 
@@ -85,7 +85,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Naviga
+              Navigation
             </h4>
             <div className="space-y-2.5">
               {quickLinks.map((l) => (
@@ -110,7 +110,7 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Trovarci
+              So findest du uns
             </h4>
             <div className="space-y-3 font-serif text-paper-soft/65 text-base leading-relaxed">
               <p>
@@ -119,7 +119,7 @@ export default function Footer() {
                 66740 Saarlouis
               </p>
               <p className="font-display italic text-paper-soft/70 text-sm">
-                tutti i giorni · ab 10:00
+                täglich geöffnet · ab 10:00 Uhr
               </p>
               <a
                 href="https://www.instagram.com/amicizia.saarlouis/"
@@ -144,10 +144,10 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-3 font-serif italic text-paper-soft/45 text-xs">
-          <p>© {new Date().getFullYear()} AMICIZIA · Saarlouis. Tutti i diritti riservati.</p>
+          <p>© {new Date().getFullYear()} AMICIZIA · Saarlouis. Alle Rechte vorbehalten.</p>
           <p className="flex items-center gap-2">
             <OliveBranch size={14} />
-            Fatto con amore — mit Liebe gemacht in Saarlouis.
+            Mit Liebe gemacht in Saarlouis.
             <OliveBranch size={14} className="-scale-x-100" />
           </p>
         </div>

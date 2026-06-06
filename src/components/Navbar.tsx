@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Fleuron } from "./Ornaments";
 
 const navLinks = [
-  { name: "Casa",       href: "#hero" },
-  { name: "La Famiglia", href: "#about" },
-  { name: "Menu",       href: "#menu" },
-  { name: "Contatti",   href: "#contact" },
+  { name: "Start",       href: "#hero" },
+  { name: "Über uns",    href: "#about" },
+  { name: "Speisekarte", href: "#menu" },
+  { name: "Kontakt",     href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -81,7 +81,7 @@ export default function Navbar() {
               href="#order"
               className={`btn-terra !py-2.5 !px-5 !text-[0.7rem]`}
             >
-              Ordina ora
+              Bestellen
             </a>
           </div>
 
@@ -154,10 +154,10 @@ export default function Navbar() {
               onClick={() => setMobileOpen(false)}
               className="btn-terra mt-4"
             >
-              Ordina ora
+              Jetzt bestellen
             </motion.a>
             <span className="font-hand text-2xl text-terracotta mt-2">
-              buon appetito ♡
+              Wir freuen uns auf dich ♡
             </span>
           </motion.div>
         )}

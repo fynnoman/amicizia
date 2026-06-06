@@ -28,7 +28,7 @@ export default function ComingSoon() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="display-lg text-3xl md:text-4xl text-espresso"
         >
-          Seguici su{" "}
+          Folgt uns auf{" "}
           <span className="italic-display text-terracotta">Instagram</span>
         </motion.h2>
         <motion.p

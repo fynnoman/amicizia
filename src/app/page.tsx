@@ -6,6 +6,7 @@ import Timeline from "@/components/Timeline";
 import ClientWidgets from "@/components/ClientWidgets";
 import Menu from "@/components/Menu";
 import Order from "@/components/Order";
+import PhotoBanner from "@/components/PhotoBanner";
 import Delivery from "@/components/Delivery";
 import Testimonials from "@/components/Testimonials";
 import ComingSoon from "@/components/ComingSoon";
@@ -23,12 +24,12 @@ export default function Home() {
       <ClientWidgets />
       <Menu />
       <Order />
+      <PhotoBanner />
       <Delivery />
       <Testimonials />
       <ComingSoon />
       <Contact />
       <Footer />
-      {/* client-side widgets rendered via ClientWidgets */}
     </>
   );
 }

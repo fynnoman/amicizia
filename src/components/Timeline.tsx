@@ -7,38 +7,38 @@ import { Divider, Fleuron, OliveBranch } from "./Ornaments";
 const milestones = [
   {
     year: "2013",
-    title: "Il principio",
+    title: "Der Anfang",
     description:
       "Ein kleiner Ofen, ein großer Traum. Mit Mehl an den Händen und Mut im Bauch hat alles begonnen.",
   },
   {
     year: "2015",
-    title: "I primi affezionati",
+    title: "Die ersten Stammgäste",
     description:
-      "Die ersten Stammgäste. Manche kommen seit damals jeden Donnerstag — Tisch sechs, immer.",
+      "Manche kommen seit damals jeden Donnerstag — Tisch sechs, immer derselbe.",
   },
   {
     year: "2018",
-    title: "I figli entrano in cucina",
+    title: "Die Kinder steigen ein",
     description:
-      "Aus dem Familienprojekt wird ein Familienbetrieb. Jeder hat einen Posten. Auch der Hund.",
+      "Aus dem Familienprojekt wird ein Familienbetrieb. Jeder hat seinen Posten. Auch der Hund.",
   },
   {
     year: "2022",
-    title: "Dodici anni",
+    title: "Zwölf Jahre",
     description:
       "Tausende Pizzen, hunderte Hochzeitstage gefeiert, ein paar Tränen gelacht. Wir sind noch lange nicht satt.",
   },
   {
     year: "2025",
-    title: "Una nuova casa",
+    title: "Ein neues Zuhause",
     description:
       "Frische Wände, neuer Steinofen, gleiche Liebe. AMICIZIA hat ein neues Zuhause — Industriestraße 20.",
   },
   {
-    year: "domani",
-    title: "Il futuro",
-    description: "Da kommt noch was. Wir verraten noch nichts. Bleibt hungrig.",
+    year: "morgen",
+    title: "Es kommt noch was",
+    description: "Wir haben große Pläne. Wir verraten noch nichts. Bleibt hungrig.",
   },
 ];
 
@@ -95,7 +95,7 @@ function Content({
   item: typeof milestones[0];
   alignRight?: boolean;
 }) {
-  const isFuture = item.year === "domani";
+  const isFuture = item.year === "morgen";
   return (
     <div className={alignRight ? "inline-block text-right" : "inline-block"}>
       <span
@@ -125,7 +125,7 @@ function ItemMobile({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const isFuture = item.year === "domani";
+  const isFuture = item.year === "morgen";
 
   return (
     <div ref={ref} className="relative flex gap-5">
@@ -189,7 +189,7 @@ export default function Timeline() {
             transition={{ duration: 0.6 }}
             className="flex justify-center mb-5 text-terracotta"
           >
-            <Divider label="III · Cronaca" />
+            <Divider label="III · Unsere Reise" />
           </motion.div>
 
           <motion.h2
@@ -198,8 +198,8 @@ export default function Timeline() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
           >
-            Dodici anni di{" "}
-            <span className="italic-display text-terracotta">forno</span>
+            Zwölf Jahre{" "}
+            <span className="italic-display text-terracotta">Steinofen</span>
           </motion.h2>
 
           <motion.p
@@ -208,7 +208,7 @@ export default function Timeline() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-hand text-2xl text-espresso-soft mt-3"
           >
-            jeder Meilenstein eine kleine Geschichte ♡
+            jeder Meilenstein erzählt eine Geschichte ♡
           </motion.p>
 
           <div className="mt-6 flex justify-center text-terracotta">

@@ -330,6 +330,19 @@ html, body {
 }
 .animate-slow-spin { animation: slow-spin 60s linear infinite; }
 
+/* Ken-Burns slow zoom for hero photo */
+@keyframes kenburns {
+  0%   { transform: scale(1.08) translate(0, 0); }
+  50%  { transform: scale(1.18) translate(-1.5%, 1%); }
+  100% { transform: scale(1.10) translate(1.5%, -1%); }
+}
+
+/* Parallax band drift */
+@keyframes drift-band {
+  0%   { transform: translate3d(0, -4%, 0) scale(1.18); }
+  100% { transform: translate3d(0, 4%, 0) scale(1.18); }
+}
+
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }

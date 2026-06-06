@@ -7,17 +7,17 @@ import { Divider, ForkKnife, Sun, OliveBranch, Fleuron } from "./Ornaments";
 const features = [
   {
     icon: <ForkKnife size={28} />,
-    title: "Ritira sul posto",
+    title: "Frisch abholen",
     subtitle: "Abholung",
     body:
       "Bestelle online, bezahle bequem — und hole deine Pizza ofenfrisch bei uns ab. Schneller geht's nicht.",
   },
   {
     icon: <Sun size={28} />,
-    title: "Mangia con noi",
-    subtitle: "Vor Ort essen",
+    title: "Bei uns essen",
+    subtitle: "Vor Ort",
     body:
-      "Unser Tisch ist gedeckt. Komm wie du bist, bleib so lang du willst. Espresso geht aufs Haus.",
+      "Unser Tisch ist gedeckt. Komm wie du bist, bleib so lange du willst. Der Espresso geht aufs Haus.",
   },
 ];
 
@@ -49,7 +49,7 @@ export default function Delivery() {
             transition={{ duration: 0.6 }}
             className="flex justify-center mb-5 text-paper-soft/85"
           >
-            <Divider label="VI · A casa o da noi" />
+            <Divider label="VI · Abholen oder bleiben" />
           </motion.div>
           <motion.h2
             initial={{ opacity: 0, y: 14 }}
@@ -57,8 +57,8 @@ export default function Delivery() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-paper-soft"
           >
-            Vieni a{" "}
-            <span className="italic-display text-paper-soft/85">trovarci</span>
+            Komm{" "}
+            <span className="italic-display text-paper-soft/85">vorbei</span>
           </motion.h2>
           <motion.p
             initial={{ opacity: 0 }}
@@ -66,7 +66,7 @@ export default function Delivery() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-hand text-2xl text-paper-soft/85 mt-3"
           >
-            Hol's ab oder bleib zum Essen — beides ist richtig.
+            Hol's bei uns ab oder bleib zum Essen — beides ist richtig.
           </motion.p>
         </div>
 
@@ -96,7 +96,7 @@ export default function Delivery() {
                 <div className="flex items-center gap-3 mt-6 text-terracotta">
                   <Fleuron size={16} />
                   <span className="font-display italic text-sm tracking-wider">
-                    benvenuto
+                    willkommen
                   </span>
                 </div>
               </div>
@@ -115,7 +115,7 @@ export default function Delivery() {
             className="inline-flex items-center gap-2 px-8 py-3 bg-paper-soft text-terracotta font-display italic tracking-wider rounded-full hover:bg-paper hover:text-terracotta-deep transition-colors"
           >
             <ForkKnife size={18} />
-            Ordina ora
+            Jetzt bestellen
           </a>
         </motion.div>
       </div>

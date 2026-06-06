@@ -92,7 +92,7 @@ export default function Order() {
 	}
 	function validate() {
 		if (!name.trim() || !phone.trim()) return "Bitte Name und Telefon angeben.";
-		if (cart.length === 0) return "Il carrello è vuoto — der Warenkorb ist leer.";
+		if (cart.length === 0) return "Dein Warenkorb ist leer.";
 		return null;
 	}
 	async function placeOrder() {
@@ -138,7 +138,7 @@ export default function Order() {
 						transition={{ duration: 0.6 }}
 						className="flex justify-center mb-5 text-terracotta"
 					>
-						<Divider label="V · Ordina ora" />
+						<Divider label="V · Online bestellen" />
 					</motion.div>
 					<motion.h2
 						initial={{ opacity: 0, y: 14 }}
@@ -147,7 +147,7 @@ export default function Order() {
 						transition={{ duration: 0.6, delay: 0.1 }}
 						className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
 					>
-						Bestelle <span className="italic-display text-terracotta">online</span>
+						Direkt <span className="italic-display text-terracotta">vorbestellen</span>
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0 }}
@@ -156,7 +156,7 @@ export default function Order() {
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="font-hand text-2xl text-espresso-soft mt-3"
 					>
-						Wähle, bezahle, hole frisch ab. Tutto qui.
+						Wähle, bezahle, hole frisch bei uns ab.
 					</motion.p>
 				</div>
 
@@ -244,7 +244,7 @@ export default function Order() {
 						transition={{ type: "spring", stiffness: 380, damping: 28 }}
 						onClick={() => setMobileCartOpen(true)}
 						className="lg:hidden fixed bottom-5 right-5 z-40 btn-terra !py-3 !px-5 gap-3"
-						aria-label={`Carrello öffnen, ${totalQty} Artikel`}
+						aria-label={`Warenkorb öffnen, ${totalQty} Artikel`}
 					>
 						<span className="relative flex items-center justify-center w-6 h-6">
 							<ForkKnife size={20} />
@@ -287,7 +287,7 @@ export default function Order() {
 								<div className="w-12 h-1.5 bg-espresso/15 rounded-full mx-auto mb-3" />
 								<div className="flex items-center justify-between">
 									<h3 className="font-display italic text-xl text-espresso">
-										Il tuo carrello
+										Dein Warenkorb
 									</h3>
 									<button
 										onClick={() => setMobileCartOpen(false)}
@@ -352,7 +352,7 @@ function OrderCard({
 			<div className="ticket relative p-5 transition-all duration-300 group-hover:-translate-y-0.5">
 				{item.popular && (
 					<span className="absolute -top-3 left-4 bg-terracotta text-paper-soft px-3 py-1 font-display italic text-[0.65rem] tracking-[0.25em] uppercase rotate-[-3deg]">
-						il preferito
+						beliebt
 					</span>
 				)}
 
@@ -408,7 +408,7 @@ function OrderCard({
 						<svg className="w-3.5 h-3.5" fill="none" stroke="currentColor" strokeWidth={3} viewBox="0 0 24 24">
 							<path strokeLinecap="round" strokeLinejoin="round" d="M12 4v16m8-8H4" />
 						</svg>
-						aggiungi
+						Hinzufügen
 					</motion.button>
 				</div>
 			</div>
@@ -454,11 +454,11 @@ function CartPanel({
 				<div className="relative px-6 py-5 border-b border-espresso/12 flex items-center justify-between">
 					<div>
 						<div className="font-display italic text-terracotta text-xs tracking-[0.25em] uppercase">
-							Il tuo carrello
+							Dein Warenkorb
 						</div>
 						<div className="font-display text-2xl text-espresso mt-0.5">
 							{cart.length === 0
-								? "ancora vuoto"
+								? "noch leer"
 								: `${cart.reduce((s, it) => s + it.qty, 0)} Artikel`}
 						</div>
 					</div>
@@ -473,7 +473,7 @@ function CartPanel({
 							<PizzaSlice size={56} />
 						</div>
 						<p className="font-hand text-espresso-soft text-2xl -rotate-1">
-							scegli il tuo preferito
+							Wähle dein Lieblingsgericht
 						</p>
 					</div>
 				) : (
@@ -531,7 +531,7 @@ function CartPanel({
 						className="flex items-center justify-between pt-3 border-t border-espresso/20"
 					>
 						<span className="font-display italic text-espresso text-lg">
-							Totale
+							Gesamt
 						</span>
 						<motion.span
 							key={subtotal}
@@ -545,9 +545,9 @@ function CartPanel({
 				)}
 
 				<div className="space-y-3 pt-2">
-					<Input id={`${formId}-name`}  label="Nome · Name"      value={name}  onChange={onName}  placeholder="Vorname Nachname" />
-					<Input id={`${formId}-phone`} label="Telefono · Tel."  value={phone} onChange={onPhone} placeholder="0151 1234567" type="tel" />
-					<Input id={`${formId}-note`}  label="Nota · Anmerkung" value={note}  onChange={onNote}  placeholder="senza cipolla / ohne Zwiebeln" />
+					<Input id={`${formId}-name`}  label="Name"               value={name}  onChange={onName}  placeholder="Vorname Nachname" />
+					<Input id={`${formId}-phone`} label="Telefon"            value={phone} onChange={onPhone} placeholder="0151 1234567" type="tel" />
+					<Input id={`${formId}-note`}  label="Anmerkung (optional)" value={note} onChange={onNote}  placeholder="z. B. ohne Zwiebeln" />
 				</div>
 
 				<motion.button
@@ -563,11 +563,11 @@ function CartPanel({
 								<circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="42" strokeLinecap="round" opacity="0.4" />
 								<path d="M22 12a10 10 0 0 1-10 10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
 							</svg>
-							<span>preparo il conto…</span>
+							<span>wird vorbereitet…</span>
 						</>
 					) : (
 						<>
-							<span>paga in sicurezza</span>
+							<span>Sicher bezahlen</span>
 							{cart.length > 0 && (
 								<span className="opacity-80 tabnum">· {formatPrice(subtotal)} €</span>
 							)}

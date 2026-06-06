@@ -76,10 +76,10 @@ export default function EasterEgg() {
                 <Fleuron size={28} />
               </div>
               <p className="font-hand text-terracotta text-5xl leading-none">
-                Buon appetito!
+                Guten Appetit!
               </p>
               <p className="font-display italic text-espresso-soft text-sm mt-3 tracking-wider">
-                hai trovato un piccolo segreto della casa.
+                Du hast ein kleines Geheimnis vom Haus gefunden.
               </p>
               <div className="flex justify-center gap-4 mt-4 text-terracotta">
                 <Tomato size={24} />

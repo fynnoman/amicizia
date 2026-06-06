@@ -103,7 +103,7 @@ export default function Testimonials() {
 						transition={{ duration: 0.6 }}
 						className="flex justify-center mb-5 text-terracotta"
 					>
-						<Divider label="VII · Gli ospiti" />
+						<Divider label="VII · Unsere Gäste" />
 					</motion.div>
 					<motion.h2
 						initial={{ opacity: 0, y: 14 }}
@@ -111,8 +111,8 @@ export default function Testimonials() {
 						transition={{ duration: 0.6, delay: 0.1 }}
 						className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
 					>
-						Cosa dicono i{" "}
-						<span className="italic-display text-terracotta">nostri ospiti</span>
+						Was unsere{" "}
+						<span className="italic-display text-terracotta">Gäste sagen</span>
 					</motion.h2>
 					<motion.p
 						initial={{ opacity: 0 }}
@@ -120,7 +120,7 @@ export default function Testimonials() {
 						transition={{ duration: 0.6, delay: 0.2 }}
 						className="font-hand text-2xl text-espresso-soft mt-3"
 					>
-						kleine Worte, die uns satt machen.
+						kleine Worte, die uns satt machen ♡
 					</motion.p>
 					<div className="flex justify-center mt-4 text-terracotta">
 						<Fleuron size={16} />

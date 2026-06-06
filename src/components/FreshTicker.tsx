@@ -6,18 +6,18 @@ import { ChefHat, Fleuron, Tomato } from "./Ornaments";
 
 const dailySpecials = [
   {
-    name: "Pizza al Tartufo",
-    description: "Trüffelcreme, Mozzarella di bufala, Rucola, Parmigiano Reggiano",
+    name: "Pizza Tartufo",
+    description: "Trüffelcreme, Büffelmozzarella, Rucola, Parmesan",
     price: "16,90",
   },
   {
-    name: "Margherita di Nonna",
-    description: "San Marzano, Fior di latte, Basilikum aus dem Hinterhof",
+    name: "Margherita Speziale",
+    description: "San-Marzano-Tomaten, Fior di Latte, frisches Basilikum",
     price: "9,90",
   },
   {
     name: "Prosciutto e Rucola",
-    description: "Parmaschinken 24M, Rucola, Parmesan, gutes Olivenöl",
+    description: "Parmaschinken 24 Mt., Rucola, Parmesan, gutes Olivenöl",
     price: "14,90",
   },
 ];
@@ -55,7 +55,7 @@ export default function FreshTicker() {
             <div className="flex items-center gap-2">
               <ChefHat size={18} />
               <span className="font-display italic text-xs tracking-[0.25em] uppercase">
-                Oggi in cucina
+                Heute in der Küche
               </span>
             </div>
           </div>
@@ -66,6 +66,7 @@ export default function FreshTicker() {
             <span className="font-display italic tracking-[0.25em] uppercase text-xs">
               frisch aus dem Ofen
             </span>
+            {/* keep German */}
           </div>
 
           <AnimatePresence mode="wait">
@@ -87,7 +88,7 @@ export default function FreshTicker() {
                   {s.price} €
                 </span>
                 <span className="font-hand text-paper-soft/40 text-lg">
-                  · oggi solo
+                  · nur heute
                 </span>
               </div>
             </motion.div>
@@ -117,7 +118,7 @@ export default function FreshTicker() {
         </div>
 
         <p className="mt-6 text-center font-display italic text-espresso-soft text-sm tracking-wider">
-          la lavagna cambia ogni giorno — die Tafel ändert sich täglich.
+          unsere Tafel ändert sich täglich — frag uns, was heute auf den Teller kommt.
         </p>
       </motion.div>
     </section>
