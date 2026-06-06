@@ -2,6 +2,14 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import {
+  CircleStamp,
+  OliveBranch,
+  Divider,
+  Sun,
+  Tomato,
+  Fleuron,
+} from "./Ornaments";
 
 export default function About() {
   const ref = useRef(null);
@@ -11,137 +19,186 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="relative py-32 px-6 lg:px-12 overflow-hidden pattern-autumn"
+      className="paper-grain relative py-28 md:py-36 px-6 lg:px-12 overflow-hidden bg-paper"
     >
-      {/* Background accent */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-cream -skew-x-12 translate-x-20 hidden lg:block" />
+      {/* Soft terracotta wash on right */}
+      <div className="absolute top-20 -right-32 w-[480px] h-[480px] rounded-full bg-terracotta/[0.06] blur-[80px] hidden lg:block" />
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
-          {/* Left: Text */}
+      <div className="max-w-7xl mx-auto">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center mb-5 text-terracotta"
+          >
+            <Divider label="II · La Famiglia" />
+          </motion.div>
+          <motion.h2
+            initial={{ opacity: 0, y: 14 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
+          >
+            La nostra <span className="italic-display text-terracotta">storia</span>
+          </motion.h2>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-hand text-2xl text-espresso-soft mt-2"
+          >
+            seit über zwölf Jahren am gleichen Tisch
+          </motion.p>
+        </div>
+
+        <div className="grid lg:grid-cols-[1.05fr_0.95fr] gap-14 lg:gap-20 items-center">
+          {/* Left: text */}
           <div>
             <motion.p
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6 }}
-              className="text-bordeaux text-sm tracking-[0.3em] uppercase font-medium mb-4"
+              initial={{ opacity: 0, y: 14 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.25 }}
+              className="font-display italic text-3xl md:text-4xl text-espresso leading-snug mb-7"
             >
-              Wer wir sind
-            </motion.p>
-
-            <motion.h2
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4 leading-tight"
-            >
-              Mehr als nur
+              Wir sind kein Restaurant.
               <br />
-              <span className="text-bordeaux">ein Restaurant</span>
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, rotate: 2 }}
-              animate={isInView ? { opacity: 1, rotate: -1 } : {}}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="text-2xl text-bordeaux/40 mb-8 -rotate-1"
-            >
-              AMICIZIA — Authentische italienische Küche
+              Wir sind eine <span className="text-terracotta">Familie,</span>{" "}
+              die kocht.
             </motion.p>
 
             <motion.div
-              initial={{ scaleX: 0 }}
-              animate={isInView ? { scaleX: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="w-16 h-[2px] bg-bordeaux mb-8 origin-left"
-            />
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg text-foreground/70 leading-relaxed mb-6"
+              className="space-y-5 font-serif text-lg leading-relaxed text-espresso-soft"
             >
-              Wir sind ein lokales Restaurant in Saarlouis. Leidenschaft für gutes Essen steht für
-              uns an erster Stelle.
-            </motion.p>
+              <p>
+                Angefangen hat alles 2013 — mit einem Ofen, einem Traum und
+                einer Großmutter, die nie aufgehört hat zu rufen{" "}
+                <span className="font-hand text-terracotta text-2xl">
+                  „mangia, mangia!&quot;
+                </span>
+              </p>
+              <p>
+                Heute, zwölf Jahre und unzählige Pizzen später, sind wir
+                immer noch dieselbe Familie. Nur der Ofen ist neuer.{" "}
+                <span className="italic text-espresso">
+                  Der Teig ruht über Nacht, die Tomaten sind aus San Marzano,
+                  und der Mozzarella schmeckt nach Süditalien.
+                </span>
+              </p>
+              <p className="italic text-espresso-soft">
+                &ldquo;Danke an alle, die uns schon gefunden haben — und an
+                alle, die jetzt das erste Mal an unseren Tisch kommen.&rdquo;
+              </p>
+            </motion.div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="text-lg text-foreground/70 leading-relaxed mb-6"
-            >
-              Auch wenn unser Standort neu ist, sind wir im Geschäft schon seit
-              über 12 Jahren. Mit viel Erfahrung, Liebe zum Detail und der
-              Freude, unsere Gäste glücklich zu machen, haben wir jetzt unseren
-              neuen Platz gefunden.
-            </motion.p>
-
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.6, delay: 0.45 }}
-              className="text-lg text-foreground/50 leading-relaxed mb-8 italic"
-            >
-              &ldquo;Danke an alle, die uns schon unterstützen – und an alle,
-              die uns noch entdecken werden&rdquo; ❤️
-            </motion.p>
-
-            {/* Stats */}
+            {/* Signature */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="flex gap-10"
+              className="mt-9"
+            >
+              <div className="font-hand text-4xl text-terracotta -rotate-3">
+                — la famiglia AMICIZIA
+              </div>
+              <div className="font-display italic text-espresso-soft/70 text-sm mt-1 ml-1 tracking-wider">
+                Saarlouis, Italia nel cuore
+              </div>
+            </motion.div>
+
+            {/* Stats — vintage style */}
+            <motion.div
+              initial={{ opacity: 0, y: 14 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.55 }}
+              className="flex flex-wrap gap-10 mt-10 pt-8 border-t border-espresso/15"
             >
               {[
-                { value: "12+", label: "Jahre Erfahrung" },
-                { value: "—", label: "Team" },
-                { value: "∞", label: "Liebe im Essen" },
-              ].map((stat, i) => (
-                <motion.div
-                  key={stat.label}
-                  whileHover={{ y: -3 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  <span className="text-3xl font-bold text-bordeaux">
-                    {stat.value}
-                  </span>
-                  <p className="text-xs text-foreground/40 mt-1 tracking-wide">
-                    {stat.label}
-                  </p>
-                </motion.div>
+                { value: "12+", label: "anni di forno", icon: <Sun size={18} /> },
+                { value: "00:00", label: "ore di sonno", icon: <Tomato size={18} /> },
+                { value: "∞",   label: "amore", icon: <Fleuron size={18} /> },
+              ].map((stat) => (
+                <div key={stat.label}>
+                  <div className="display-lg text-terracotta text-4xl">{stat.value}</div>
+                  <div className="flex items-center gap-2 mt-1 text-espresso-soft">
+                    <span className="text-terracotta">{stat.icon}</span>
+                    <span className="font-display italic text-sm tracking-wider">
+                      {stat.label}
+                    </span>
+                  </div>
+                </div>
               ))}
             </motion.div>
           </div>
 
-          {/* Right: Visual */}
+          {/* Right: framed visual */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.94 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <div className="relative aspect-[4/5] rounded-3xl overflow-hidden bg-bordeaux">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-white p-8">
-                  <p className="text-3xl font-bold tracking-wider mb-2">AMICIZIA</p>
-                  <p className="text-white/40 tracking-[0.2em] text-xs uppercase mb-4">Industriestraße 20 · Saarlouis</p>
-                  <p className="text-white/60 text-xl -rotate-3">con amore</p>
+            {/* The framed card */}
+            <div className="postcard p-6 md:p-8 aspect-[4/5] flex flex-col items-center justify-between text-center relative overflow-hidden">
+              {/* paper grain inside */}
+              <div className="grain-overlay" />
+
+              {/* top mark */}
+              <div className="relative z-10">
+                <div className="font-display italic text-terracotta tracking-[0.4em] text-xs">
+                  EST. MMXIII
+                </div>
+                <div className="mt-2 text-terracotta">
+                  <Fleuron size={20} />
                 </div>
               </div>
-              <div className="absolute inset-4 border border-white/10 rounded-2xl" />
+
+              {/* center */}
+              <div className="relative z-10 px-3">
+                <div className="font-display italic text-espresso-soft tracking-[0.2em] text-xs uppercase">
+                  Trattoria
+                </div>
+                <h3
+                  className="display-xl text-terracotta mt-1 leading-none"
+                  style={{ fontSize: "clamp(2.5rem, 7vw, 4.5rem)" }}
+                >
+                  AMI<span className="italic-display">cizia</span>
+                </h3>
+                <div className="mt-3 font-hand text-2xl text-espresso">
+                  — con amore —
+                </div>
+                <div className="mt-3 font-display italic text-espresso-soft text-sm tracking-wider">
+                  Industriestraße 20 · Saarlouis
+                </div>
+              </div>
+
+              {/* bottom */}
+              <div className="relative z-10 flex items-center gap-3 text-espresso-soft">
+                <OliveBranch size={26} />
+                <div className="font-display italic text-xs tracking-[0.3em]">
+                  TUTTI I GIORNI · 10:00 →
+                </div>
+                <OliveBranch size={26} className="-scale-x-100" />
+              </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl shadow-xl p-5">
-              <p className="text-xs text-foreground/40 mb-0.5">Geöffnet</p>
-              <p className="text-lg font-bold text-bordeaux">Den ganzen Tag</p>
-              <p className="text-xs text-foreground/30">Ab 10:00 Uhr</p>
+            {/* Floating stamp top-right */}
+            <div className="absolute -top-8 -right-6 text-terracotta tilt-r animate-float">
+              <CircleStamp size={140} />
             </div>
 
-            <div className="absolute -top-4 -right-4 bg-bordeaux rounded-2xl shadow-xl px-5 py-3">
-              <p className="text-white text-lg">AMICIZIA</p>
+            {/* Floating "Aperto" tag bottom-left */}
+            <div className="absolute -bottom-6 -left-6 bg-paper-soft px-5 py-3 border border-espresso/15 depth-shadow tilt-l">
+              <div className="font-hand text-terracotta text-2xl leading-none">
+                Aperto!
+              </div>
+              <div className="font-display italic text-espresso-soft text-[10px] tracking-[0.3em] uppercase mt-1">
+                den ganzen Tag
+              </div>
             </div>
           </motion.div>
         </div>

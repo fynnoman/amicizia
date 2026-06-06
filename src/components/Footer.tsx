@@ -2,87 +2,133 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Fleuron, OliveBranch, CircleStamp } from "./Ornaments";
+
+const quickLinks = [
+  { label: "Casa", href: "#hero" },
+  { label: "La Famiglia", href: "#about" },
+  { label: "Il Menu", href: "#menu" },
+  { label: "Ordina", href: "#order" },
+  { label: "Contatti", href: "#contact" },
+];
 
 export default function Footer() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const inView = useInView(ref, { once: true });
 
   return (
-    <footer ref={ref} className="bg-foreground text-white py-20 px-6 lg:px-12">
-      <div className="max-w-7xl mx-auto">
-        <div className="grid md:grid-cols-3 gap-12 mb-16">
+    <footer
+      ref={ref}
+      className="relative bg-espresso text-paper-soft pt-20 pb-10 px-6 lg:px-12 overflow-hidden"
+    >
+      {/* Top deckle: warm light */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-30"
+        style={{
+          background:
+            "radial-gradient(60% 80% at 20% 10%, rgba(183,62,44,0.45), transparent 60%), radial-gradient(60% 80% at 90% 90%, rgba(107,100,40,0.25), transparent 65%)",
+        }}
+      />
+      <div className="grain-overlay opacity-25" />
+
+      <div className="relative max-w-7xl mx-auto">
+        {/* Decorative top */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.8 }}
+          className="flex items-center gap-4 mb-12 text-paper-soft/60"
+        >
+          <span className="h-px flex-1 bg-paper-soft/15" />
+          <Fleuron size={18} />
+          <span className="font-display italic tracking-[0.4em] text-xs uppercase">
+            Trattoria di Famiglia
+          </span>
+          <Fleuron size={18} />
+          <span className="h-px flex-1 bg-paper-soft/15" />
+        </motion.div>
+
+        <div className="grid md:grid-cols-[1.4fr_1fr_1fr] gap-12">
           {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 18 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold tracking-[0.2em] mb-4">
-              AMICIZIA
-            </h3>
-            <p className="text-white/50 leading-relaxed text-sm">
-              Ein lokales Pizzarestaurant – seit über 12 Jahren. Frische Pizza,
-              jeden Tag in Saarlouis.
+            <div className="flex items-center gap-3">
+              <CircleStamp size={70} className="text-terracotta-soft/80" />
+              <div>
+                <div
+                  className="display-lg text-paper-soft text-2xl tracking-[0.18em] leading-none"
+                  style={{ fontVariationSettings: '"opsz" 144, "SOFT" 60' }}
+                >
+                  AMICIZIA
+                </div>
+                <div className="font-hand text-terracotta-soft text-xl -mt-0.5">
+                  trattoria di famiglia
+                </div>
+              </div>
+            </div>
+            <p className="font-serif text-paper-soft/55 text-base leading-relaxed mt-5 max-w-sm">
+              Eine kleine italienische Familien-Trattoria in Saarlouis.
+              Seit 2013 — Pizza, pasta &amp; piccoli piaceri della casa.
+            </p>
+            <p className="font-hand text-terracotta-soft text-2xl mt-4">
+              grazie di essere qui ♡
             </p>
           </motion.div>
 
           {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 18 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            <h4 className="text-sm font-semibold tracking-wider uppercase text-white/80 mb-6">
-              Quick Links
+            <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
+              Naviga
             </h4>
-            <div className="space-y-3">
-              {["Start", "Über uns", "Speisekarte", "Kontakt"].map((link) => (
+            <div className="space-y-2.5">
+              {quickLinks.map((l) => (
                 <a
-                  key={link}
-                  href={`#${
-                    link === "Start"
-                      ? "hero"
-                      : link === "Über uns"
-                      ? "about"
-                      : link === "Speisekarte"
-                      ? "menu"
-                      : "contact"
-                  }`}
-                  className="block text-white/40 hover:text-white transition-colors duration-300 text-sm"
+                  key={l.label}
+                  href={l.href}
+                  className="flex items-center gap-2 text-paper-soft/55 hover:text-paper-soft transition-colors duration-300 font-display italic text-base group"
                 >
-                  {link}
+                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-terracotta-soft">
+                    →
+                  </span>
+                  {l.label}
                 </a>
               ))}
             </div>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            initial={{ opacity: 0, y: 18 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h4 className="text-sm font-semibold tracking-wider uppercase text-white/80 mb-6">
-              Kontakt
+            <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
+              Trovarci
             </h4>
-            <div className="space-y-3 text-sm text-white/40">
-              <p>Industriestraße 20</p>
-              <p>66740 Saarlouis</p>
+            <div className="space-y-3 font-serif text-paper-soft/65 text-base leading-relaxed">
+              <p>
+                Industriestraße 20
+                <br />
+                66740 Saarlouis
+              </p>
+              <p className="font-display italic text-paper-soft/70 text-sm">
+                tutti i giorni · ab 10:00
+              </p>
               <a
                 href="https://www.instagram.com/amicizia.saarlouis/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block hover:text-white transition-colors duration-300"
+                className="inline-flex items-center gap-2 text-paper-soft hover:text-terracotta-soft transition-colors duration-300"
               >
-                Instagram: @amicizia.saarlouis
-              </a>
-              <a
-                href="https://instagram.com/amicizia"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm text-foreground/60 hover:text-bordeaux transition-colors"
-              >
-                Instagram
+                <Fleuron size={14} />
+                @amicizia.saarlouis
               </a>
             </div>
           </motion.div>
@@ -91,16 +137,18 @@ export default function Footer() {
         {/* Divider */}
         <motion.div
           initial={{ scaleX: 0 }}
-          animate={isInView ? { scaleX: 1 } : {}}
+          animate={inView ? { scaleX: 1 } : {}}
           transition={{ duration: 1, delay: 0.4 }}
-          className="h-px bg-white/10 mb-8"
+          className="h-px bg-paper-soft/12 my-10 origin-left"
         />
 
-        {/* Bottom Bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/30">
-          <p>© {new Date().getFullYear()} AMICIZIA. Alle Rechte vorbehalten.</p>
-          <p>
-            Mit Liebe gemacht in Saarlouis
+        {/* Bottom bar */}
+        <div className="flex flex-col md:flex-row justify-between items-center gap-3 font-serif italic text-paper-soft/45 text-xs">
+          <p>© {new Date().getFullYear()} AMICIZIA · Saarlouis. Tutti i diritti riservati.</p>
+          <p className="flex items-center gap-2">
+            <OliveBranch size={14} />
+            Fatto con amore — mit Liebe gemacht in Saarlouis.
+            <OliveBranch size={14} className="-scale-x-100" />
           </p>
         </div>
       </div>

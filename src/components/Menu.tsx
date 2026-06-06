@@ -2,224 +2,239 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState } from "react";
-import { categories, menuItems, formatPrice, type MenuItem } from "@/data/menu";
+import {
+  categories,
+  menuItems,
+  formatPrice,
+  type MenuItem,
+  type MenuCategoryKey,
+} from "@/data/menu";
+import {
+  Divider,
+  Fleuron,
+  PizzaSlice,
+  PastaSwirl,
+  Wheat,
+  OliveBranch,
+  Tomato,
+} from "./Ornaments";
 
-function MenuCard({
-	item,
-	index,
+const categoryIcon: Record<MenuCategoryKey, React.ReactNode> = {
+  pizza: <PizzaSlice size={26} />,
+  ciabatta: <Wheat size={26} />,
+  wrap: <PastaSwirl size={26} />,
+};
+
+const categoryLabel: Record<MenuCategoryKey, string> = {
+  pizza: "Pizze · al forno",
+  ciabatta: "Ciabatte · dal panificio",
+  wrap: "Wraps · alla casa",
+};
+
+function MenuRow({ item, index }: { item: MenuItem; index: number }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 14 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.45, delay: index * 0.04 }}
+      className="group py-4 border-b border-espresso/12 last:border-0"
+    >
+      <div className="dot-leader">
+        <div className="name flex items-baseline gap-2">
+          <span className="font-display text-espresso text-xl md:text-2xl tracking-tight group-hover:text-terracotta transition-colors">
+            {item.name}
+          </span>
+          {item.popular && (
+            <span className="font-hand text-terracotta text-base -rotate-3">
+              ★ il preferito
+            </span>
+          )}
+        </div>
+        <span className="leader" aria-hidden />
+        <span className="price font-display text-terracotta text-xl md:text-2xl tabnum">
+          {formatPrice(item.price)} €
+        </span>
+      </div>
+      <p className="font-serif italic text-espresso-soft text-base mt-1 max-w-prose">
+        {item.description}
+      </p>
+    </motion.div>
+  );
+}
+
+function CategoryBlock({
+  cat,
+  items,
 }: {
-	item: MenuItem;
-	index: number;
+  cat: MenuCategoryKey;
+  items: MenuItem[];
 }) {
-	const [isHovered, setIsHovered] = useState(false);
-
-	return (
-		<div className="card-tilt">
-			<motion.div
-				layout
-				initial={{ opacity: 0, y: 30 }}
-				animate={{ opacity: 1, y: 0 }}
-				exit={{ opacity: 0, scale: 0.95 }}
-				transition={{ duration: 0.4, delay: index * 0.04 }}
-				onMouseEnter={() => setIsHovered(true)}
-				onMouseLeave={() => setIsHovered(false)}
-				className="card-inner group bg-white rounded-2xl p-6 transition-all duration-500 relative overflow-hidden"
-			>
-				{item.popular && (
-					<div className="absolute top-4 right-4">
-						<span className="bg-bordeaux/10 text-bordeaux text-xs font-semibold px-3 py-1 rounded-full">
-							Beliebt ✦
-						</span>
-					</div>
-				)}
-
-				{/* Ingredient icons animation */}
-				<div className="h-12 mb-3 flex items-center gap-1">
-					<AnimatePresence>
-						{isHovered ? (
-							item.ingredients.map((ingredient, i) => (
-								<motion.span
-									key={ingredient + i}
-									initial={{ scale: 0, y: 10, opacity: 0 }}
-									animate={{ scale: 1, y: 0, opacity: 1 }}
-									exit={{ scale: 0, y: -10, opacity: 0 }}
-									transition={{
-										type: "spring",
-										stiffness: 400,
-										damping: 15,
-										delay: i * 0.08,
-									}}
-									className="text-2xl inline-block"
-								>
-									{ingredient}
-								</motion.span>
-							))
-						) : (
-							<motion.div
-								initial={{ opacity: 0 }}
-								animate={{ opacity: 1 }}
-								className="flex items-center gap-1"
-							>
-								{item.ingredients.slice(0, 2).map((ingredient, i) => (
-									<span key={i} className="text-xl opacity-40">
-										{ingredient}
-									</span>
-								))}
-								{item.ingredients.length > 2 && (
-									<span className="text-xs text-foreground/20 ml-1">
-										+{item.ingredients.length - 2}
-									</span>
-								)}
-							</motion.div>
-						)}
-					</AnimatePresence>
-				</div>
-
-				<h3 className="text-xl font-bold text-foreground group-hover:text-bordeaux transition-colors duration-300 mb-2">
-					{item.name}
-				</h3>
-
-				<p className="text-foreground/40 text-sm leading-relaxed mb-6">
-					{item.description}
-				</p>
-
-				<div className="flex items-center justify-between">
-					<span className="text-2xl font-bold text-bordeaux">
-						{formatPrice(item.price)} €
-					</span>
-					<motion.div
-						whileHover={{ scale: 1.1 }}
-						whileTap={{ scale: 0.95 }}
-						className="w-9 h-9 rounded-full bg-bordeaux/10 flex items-center justify-center group-hover:bg-bordeaux transition-all duration-300 cursor-pointer"
-					>
-						<svg
-							className="w-4 h-4 text-bordeaux group-hover:text-white transition-colors"
-							fill="none"
-							stroke="currentColor"
-							viewBox="0 0 24 24"
-						>
-							<path
-								strokeLinecap="round"
-								strokeLinejoin="round"
-								strokeWidth={2}
-								d="M14 5l7 7m0 0l-7 7m7-7H3"
-							/>
-						</svg>
-					</motion.div>
-				</div>
-
-				{/* Subtle gradient on hover */}
-				<div className="absolute inset-0 bg-gradient-to-t from-bordeaux/[0.02] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-2xl" />
-			</motion.div>
-		</div>
-	);
+  return (
+    <div>
+      <div className="flex items-center gap-3 mb-5 text-terracotta">
+        <span>{categoryIcon[cat]}</span>
+        <h3 className="font-display italic text-2xl md:text-3xl tracking-wide">
+          {categoryLabel[cat]}
+        </h3>
+        <span className="flex-1 h-px bg-terracotta/35" />
+      </div>
+      <div>
+        {items.map((item, i) => (
+          <MenuRow key={item.id} item={item} index={i} />
+        ))}
+      </div>
+    </div>
+  );
 }
 
 export default function Menu() {
-	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, margin: "-100px" });
-	const [activeCategory, setActiveCategory] = useState("all");
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeCategory, setActiveCategory] =
+    useState<MenuItem["category"] | "all">("all");
 
-	const filtered =
-		activeCategory === "all"
-			? menuItems
-			: menuItems.filter((item) => item.category === activeCategory);
+  const filtered =
+    activeCategory === "all"
+      ? menuItems
+      : menuItems.filter((it) => it.category === activeCategory);
 
-	return (
-		<section
-			id="menu"
-			ref={ref}
-			className="relative py-32 px-6 lg:px-12 bg-cream"
-		>
-			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-16">
-					<motion.p
-						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.6 }}
-						className="text-bordeaux text-sm tracking-[0.3em] uppercase font-medium mb-4"
-					>
-						Was gibt&apos;s bei uns
-					</motion.p>
+  const grouped: Record<MenuCategoryKey, MenuItem[]> = {
+    pizza: [],
+    ciabatta: [],
+    wrap: [],
+  };
+  filtered.forEach((it) => grouped[it.category].push(it));
 
-					<motion.h2
-						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
-						transition={{ duration: 0.6, delay: 0.1 }}
-						className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4"
-					>
-						Unsere <span className="text-bordeaux">Speisekarte</span>
-					</motion.h2>
+  return (
+    <section
+      id="menu"
+      ref={ref}
+      className="paper-grain relative py-28 md:py-36 px-6 lg:px-12 bg-paper overflow-hidden"
+    >
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <motion.div
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6 }}
+            className="flex justify-center mb-5 text-terracotta"
+          >
+            <Divider label="IV · Il Menu" />
+          </motion.div>
 
-					<motion.p
-						initial={{ opacity: 0 }}
-						animate={isInView ? { opacity: 1 } : {}}
-						transition={{ duration: 0.6, delay: 0.2 }}
-						className="text-xl text-foreground/40 mb-2"
-					>
-						Unsere Pizzen — frisch und bodenständig.
-					</motion.p>
+          <motion.h2
+            initial={{ opacity: 0, y: 14 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.1 }}
+            className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
+          >
+            La nostra <span className="italic-display text-terracotta">cucina</span>
+          </motion.h2>
 
-					<motion.div
-						initial={{ scaleX: 0 }}
-						animate={isInView ? { scaleX: 1 } : {}}
-						transition={{ duration: 0.8, delay: 0.3 }}
-						className="w-16 h-[2px] bg-bordeaux mx-auto mt-6"
-					/>
-				</div>
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={inView ? { opacity: 1 } : {}}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="font-hand text-2xl text-espresso-soft mt-3"
+          >
+            klein, ehrlich, jeden Tag frisch gemacht.
+          </motion.p>
+        </div>
 
-				{/* Category Filter */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.6, delay: 0.4 }}
-					className="flex flex-wrap justify-center gap-3 mb-16"
-				>
-					{categories.map((cat) => (
-						<button
-							key={cat.key}
-							onClick={() => setActiveCategory(cat.key)}
-							className={`px-6 py-2.5 rounded-full text-sm font-medium tracking-wider uppercase transition-all duration-300 ${
-								activeCategory === cat.key
-									? "bg-bordeaux text-white shadow-lg shadow-bordeaux/25"
-									: "bg-white text-foreground/50 hover:text-bordeaux hover:shadow-md"
-							}`}
-						>
-							{cat.name}
-						</button>
-					))}
-				</motion.div>
+        {/* The menu paper */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.8, delay: 0.25 }}
+          className="relative bg-paper-soft border border-espresso/15 depth-shadow"
+        >
+          {/* Decorative outside borders */}
+          <div className="pointer-events-none absolute inset-3 border border-terracotta/35" />
+          <div className="pointer-events-none absolute inset-5 border-t border-b border-terracotta/15" />
+          <div className="grain-overlay" />
 
-				{/* Menu Grid */}
-				<AnimatePresence mode="wait">
-					<motion.div
-						key={activeCategory}
-						initial={{ opacity: 0 }}
-						animate={{ opacity: 1 }}
-						exit={{ opacity: 0 }}
-						className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-					>
-						{filtered.map((item, i) => (
-							<MenuCard key={item.name} item={item} index={i} />
-						))}
-					</motion.div>
-				</AnimatePresence>
+          <div className="relative p-8 md:p-14">
+            {/* Top crown */}
+            <div className="flex items-center justify-center gap-4 mb-8 text-terracotta">
+              <OliveBranch size={36} />
+              <div className="text-center">
+                <div className="font-display italic text-terracotta tracking-[0.4em] text-[0.7rem] uppercase">
+                  Trattoria
+                </div>
+                <div className="display-lg text-terracotta text-3xl">
+                  AMI<span className="italic-display">cizia</span>
+                </div>
+                <div className="font-hand text-espresso text-base -mt-1">
+                  il menu della casa
+                </div>
+              </div>
+              <OliveBranch size={36} className="-scale-x-100" />
+            </div>
 
-				{/* CTA */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					animate={isInView ? { opacity: 1, y: 0 } : {}}
-					transition={{ duration: 0.6, delay: 0.6 }}
-					className="text-center mt-16"
-				>
-					<a
-						href="#order"
-						className="inline-flex items-center gap-3 px-10 py-4 bg-bordeaux text-white text-sm font-semibold tracking-wider uppercase rounded-full hover:bg-bordeaux-dark transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-bordeaux/25"
-					>
-						Komplettes Pizza-Angebot
-					</a>
-				</motion.div>
-			</div>
-		</section>
-	);
+            {/* Filter chips — paper tone, italic */}
+            <div className="flex flex-wrap justify-center gap-2 mb-10">
+              {categories.map((cat) => (
+                <button
+                  key={cat.key}
+                  onClick={() => setActiveCategory(cat.key)}
+                  className={`px-5 py-1.5 rounded-full font-display italic text-sm tracking-wide border transition-all duration-300 ${
+                    activeCategory === cat.key
+                      ? "bg-espresso text-paper-soft border-espresso"
+                      : "bg-transparent text-espresso/70 border-espresso/30 hover:border-terracotta hover:text-terracotta"
+                  }`}
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Categories grid */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeCategory}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="grid md:grid-cols-2 gap-10 md:gap-x-16 md:gap-y-12"
+              >
+                {(["pizza", "ciabatta", "wrap"] as MenuCategoryKey[]).map((k) =>
+                  grouped[k].length > 0 ? (
+                    <CategoryBlock key={k} cat={k} items={grouped[k]} />
+                  ) : null
+                )}
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Closing flourish */}
+            <div className="flex items-center justify-center gap-3 mt-14 text-terracotta">
+              <Tomato size={22} />
+              <Fleuron size={20} />
+              <Wheat size={22} />
+            </div>
+
+            <p className="text-center font-hand text-2xl md:text-3xl text-espresso-soft mt-4 -rotate-1">
+              buon appetito ♡
+            </p>
+          </div>
+        </motion.div>
+
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 14 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center mt-14"
+        >
+          <a href="#order" className="btn-terra">
+            Ordina &amp; ritira →
+          </a>
+          <p className="font-display italic text-espresso-soft text-sm mt-4 tracking-wider">
+            online vorbestellen, frisch bei uns abholen
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
 }

@@ -2,90 +2,123 @@
 
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import { ChefHat, Fleuron, Tomato } from "./Ornaments";
 
 const dailySpecials = [
-  { name: "Pizza Truffle", description: "Trüffelcreme, Mozzarella, Rucola, Parmesan" },
-  { name: "Margherita Spezial", description: "Basilikum, frischer Mozzarella, San Marzano" },
-  { name: "Prosciutto e Rucola", description: "Scharfer Prosciutto, Rucola & Parmesan" },
+  {
+    name: "Pizza al Tartufo",
+    description: "Trüffelcreme, Mozzarella di bufala, Rucola, Parmigiano Reggiano",
+    price: "16,90",
+  },
+  {
+    name: "Margherita di Nonna",
+    description: "San Marzano, Fior di latte, Basilikum aus dem Hinterhof",
+    price: "9,90",
+  },
+  {
+    name: "Prosciutto e Rucola",
+    description: "Parmaschinken 24M, Rucola, Parmesan, gutes Olivenöl",
+    price: "14,90",
+  },
 ];
 
 export default function FreshTicker() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [currentSpecial, setCurrentSpecial] = useState(0);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const [i, setI] = useState(0);
 
   useEffect(() => {
-    // slower rotation to reduce CPU on idle tabs
-    const interval = setInterval(() => {
-      setCurrentSpecial((prev) => (prev + 1) % dailySpecials.length);
-    }, 9000);
-    return () => clearInterval(interval);
+    const t = setInterval(() => {
+      setI((p) => (p + 1) % dailySpecials.length);
+    }, 8000);
+    return () => clearInterval(t);
   }, []);
 
+  const s = dailySpecials[i];
+
   return (
-    <section ref={ref} className="py-16 px-6 lg:px-12">
+    <section ref={ref} className="py-16 md:py-20 px-6 lg:px-12 bg-paper">
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={isInView ? { opacity: 1, y: 0 } : {}}
+        initial={{ opacity: 0, y: 24 }}
+        animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.8 }}
         className="max-w-4xl mx-auto"
       >
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-bordeaux via-bordeaux-dark to-bordeaux p-8 md:p-12">
-          {/* Background pattern */}
-          <div className="absolute inset-0 opacity-5" style={{
-            backgroundImage: `radial-gradient(circle, white 1px, transparent 1px)`,
-            backgroundSize: "20px 20px",
-          }} />
+        {/* Wood hook for the chalkboard */}
+        <div className="flex justify-center mb-2">
+          <div className="w-2 h-6 bg-espresso-soft rounded-full" />
+        </div>
 
-          <div className="relative z-10">
-            {/* Header */}
-            <div className="flex items-center gap-3 mb-6">
-              <div className="relative flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-green-400 animate-pulse-dot" />
-                <span className="text-white/60 text-xs tracking-[0.2em] uppercase font-medium">
-                  Frisch aus der Küche
+        <div className="chalkboard relative p-8 md:p-12 tilt-xs">
+          {/* Chef hat top-left */}
+          <div className="absolute -top-3 -left-3 bg-paper-soft text-espresso px-3 py-2 rotate-[-8deg] border border-espresso/20 depth-shadow">
+            <div className="flex items-center gap-2">
+              <ChefHat size={18} />
+              <span className="font-display italic text-xs tracking-[0.25em] uppercase">
+                Oggi in cucina
+              </span>
+            </div>
+          </div>
+
+          {/* live dot */}
+          <div className="flex items-center gap-3 mb-6 text-paper-soft/70">
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-300 animate-pulse-dot" />
+            <span className="font-display italic tracking-[0.25em] uppercase text-xs">
+              frisch aus dem Ofen
+            </span>
+          </div>
+
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -16 }}
+              transition={{ duration: 0.5 }}
+            >
+              <div className="font-hand text-paper-soft text-5xl md:text-7xl leading-none">
+                {s.name}
+              </div>
+              <p className="font-hand text-paper-soft/80 text-xl md:text-2xl mt-4 max-w-2xl leading-snug">
+                {s.description}
+              </p>
+              <div className="mt-6 flex items-center gap-4">
+                <span className="font-hand text-terracotta-soft text-4xl md:text-5xl">
+                  {s.price} €
+                </span>
+                <span className="font-hand text-paper-soft/40 text-lg">
+                  · oggi solo
                 </span>
               </div>
-            </div>
+            </motion.div>
+          </AnimatePresence>
 
-            {/* Special Display */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentSpecial}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.5 }}
-                className="flex items-center gap-6"
-              >
-                {/* decorative icon removed */}
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                    {dailySpecials[currentSpecial].name}
-                  </h3>
-                  <p className="text-white/60 text-sm md:text-base">
-                    {dailySpecials[currentSpecial].description}
-                  </p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
+          {/* indicator dots */}
+          <div className="flex gap-2 mt-8">
+            {dailySpecials.map((_, k) => (
+              <button
+                key={k}
+                onClick={() => setI(k)}
+                aria-label={`Spezial ${k + 1}`}
+                className={`h-1.5 rounded-full transition-all duration-500 ${
+                  k === i ? "w-10 bg-paper-soft" : "w-2 bg-paper-soft/30"
+                }`}
+              />
+            ))}
+          </div>
 
-            {/* Dots indicator */}
-            <div className="flex gap-2 mt-8">
-              {dailySpecials.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentSpecial(i)}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${
-                    i === currentSpecial ? "w-8 bg-white" : "w-1.5 bg-white/30"
-                  }`}
-                />
-              ))}
-            </div>
-
-            <p className="text-white/30 text-lg mt-6">Unsere Empfehlungen heute</p>
+          {/* Corner ornaments */}
+          <div className="absolute bottom-3 right-3 text-paper-soft/40">
+            <Tomato size={22} />
+          </div>
+          <div className="absolute top-3 right-3 text-paper-soft/30">
+            <Fleuron size={16} />
           </div>
         </div>
+
+        <p className="mt-6 text-center font-display italic text-espresso-soft text-sm tracking-wider">
+          la lavagna cambia ogni giorno — die Tafel ändert sich täglich.
+        </p>
       </motion.div>
     </section>
   );

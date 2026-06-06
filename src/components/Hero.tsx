@@ -1,10 +1,12 @@
+import { CircleStamp, OliveBranch, Fleuron, Tomato } from "./Ornaments";
+
 export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background video */}
+      {/* Background video, warm overlay */}
       <video
         className="absolute inset-0 w-full h-full object-cover z-0"
         src="/Italienische_Küche_Teigrollen_Video.mp4"
@@ -15,62 +17,120 @@ export default function Hero() {
         preload="auto"
         aria-hidden="true"
       />
+      {/* Sun-baked terracotta wash over the video */}
+      <div
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(42,24,16,0.7) 0%, rgba(138,44,31,0.55) 45%, rgba(42,24,16,0.85) 100%)",
+        }}
+      />
+      <div
+        className="absolute inset-0 z-0 pointer-events-none mix-blend-overlay opacity-30"
+        style={{
+          background:
+            "radial-gradient(60% 60% at 50% 30%, rgba(242,232,208,0.55), transparent 70%)",
+        }}
+      />
+      {/* Tiny film grain */}
+      <div className="grain-overlay z-0" />
 
-      {/* Background — layered for depth (reduced blur on small screens) */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-bordeaux/40 via-bordeaux/30 to-bordeaux-dark/50 pointer-events-none">
-        <div className="absolute -top-1/4 -right-1/4 w-[680px] h-[680px] rounded-full bg-bordeaux-light/10 blur-[60px] sm:blur-[120px] bg-blob" />
-        <div className="absolute -bottom-1/4 -left-1/4 w-[540px] h-[540px] rounded-full bg-bordeaux-dark/15 blur-[60px] sm:blur-[120px] bg-blob" />
-        <div className="absolute inset-0 hero-noise opacity-20" />
+      {/* Floating decorative olive branches */}
+      <div className="absolute top-28 left-[-20px] z-10 text-paper-soft/30 animate-float hidden md:block">
+        <OliveBranch size={140} />
+      </div>
+      <div
+        className="absolute bottom-32 right-[-30px] z-10 text-paper-soft/30 animate-float hidden md:block"
+        style={{ animationDelay: "1.2s" }}
+      >
+        <OliveBranch size={170} className="-scale-x-100" />
       </div>
 
-      {/* Content — CSS-only reveals to avoid client JS */}
-      <div className="relative z-10 text-center px-6 w-full max-w-[90vw] mx-auto glass-panel depth-shadow p-8 rounded-3xl bg-bordeaux/25 border border-white/10 backdrop-blur-md">
-        <p className="reveal delay-1 text-xl md:text-2xl text-white/60 mb-6 font-handwriting">
-          seit über 12 Jahren mit Herz
+      {/* Top-right vintage stamp */}
+      <div className="absolute top-28 right-6 lg:right-12 z-10 hidden sm:block">
+        <div className="text-paper-soft/85 animate-slow-spin">
+          <CircleStamp size={120} />
+        </div>
+      </div>
+
+      {/* Content */}
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-12 text-paper-soft">
+        {/* Eyebrow */}
+        <div className="reveal delay-1 flex items-center gap-4 text-paper-soft/70 mb-8">
+          <span className="h-px w-12 bg-paper-soft/60" />
+          <span className="font-display italic tracking-[0.35em] uppercase text-[0.72rem]">
+            Trattoria di Famiglia · dal 2013
+          </span>
+          <span className="h-px w-12 bg-paper-soft/60" />
+        </div>
+
+        {/* Handwritten Italian whisper above the headline */}
+        <p className="reveal delay-2 font-hand text-3xl md:text-4xl text-terracotta-soft/90 -mb-2 ml-1 -rotate-2">
+          benvenuti a casa,
         </p>
 
-        <h1 className="reveal delay-2 text-[clamp(3rem,12vw,11rem)] font-bold text-white tracking-[0.05em] leading-[0.9] mb-6">
-          AMICIZIA
+        {/* Main display headline */}
+        <h1 className="reveal delay-3 display-xl text-[clamp(4rem,14vw,12rem)] text-paper-soft">
+          <span className="block">AMI<span className="italic-display">cizia</span></span>
         </h1>
 
-        <p className="reveal delay-3 text-white/35 text-xs md:text-sm tracking-[0.4em] uppercase mb-8">
-          Pizza · Tradition · Genuss
-        </p>
+        {/* Sub line — Italian + German */}
+        <div className="reveal delay-4 mt-6 max-w-2xl">
+          <p className="font-display italic text-2xl md:text-3xl text-paper-soft/90 leading-snug">
+            Pizza, pasta &amp; piccoli piaceri della casa —
+            <span className="font-hand text-terracotta-soft text-3xl ml-2">
+              cucinato con amore.
+            </span>
+          </p>
+          <p className="mt-4 font-serif text-paper-soft/65 text-base md:text-lg leading-relaxed max-w-xl">
+            Eine kleine italienische Familien-Trattoria mitten in Saarlouis.
+            Frischer Teig, San-Marzano-Tomaten, Olivenöl aus dem Süden — und
+            ein Tisch, an dem du dich zuhause fühlst.
+          </p>
+        </div>
 
-        <div className="reveal delay-4 w-24 h-px bg-white/25 mx-auto mb-8" />
-
-        <p className="reveal delay-5 text-white/70 text-base md:text-lg font-light mb-3">
-          Pizza · con Amore
-        </p>
-
-        <p className="reveal delay-6 text-white/35 text-sm mb-12">
-          Saarlouis · Abholung · Täglich geöffnet
-        </p>
-
-        <div className="reveal delay-7 flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="#menu"
-            className="px-10 py-4 bg-white text-bordeaux text-sm font-semibold tracking-wider uppercase rounded-full transition-all duration-300 hover:scale-[1.03] hover:shadow-xl hover:shadow-white/10"
-          >
-            Speisekarte
+        {/* CTAs */}
+        <div className="reveal delay-5 mt-10 flex flex-col sm:flex-row gap-4">
+          <a href="#menu" className="btn-terra">
+            Il nostro menu
           </a>
           <a
             href="#order"
-            className="px-10 py-4 border border-white/20 text-white text-sm font-semibold tracking-wider uppercase rounded-full transition-all duration-300 hover:bg-white/10 hover:scale-[1.03] hover:border-white/40"
+            className="btn-ghost !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-espresso"
           >
-            Abholung
+            <Tomato size={18} />
+            Ordina &amp; ritira
           </a>
+        </div>
+
+        {/* Three bottom marks */}
+        <div className="reveal delay-6 mt-14 grid grid-cols-3 gap-6 max-w-xl">
+          {[
+            { kicker: "I.",   label: "Saarlouis",       sub: "Industriestraße 20" },
+            { kicker: "II.",  label: "Tutti i giorni",  sub: "ab 10:00 Uhr" },
+            { kicker: "III.", label: "Forno a legna",   sub: "Pizza al taglio" },
+          ].map((b) => (
+            <div key={b.kicker} className="border-l border-paper-soft/30 pl-4">
+              <div className="font-display italic text-terracotta-soft text-sm tracking-[0.3em]">
+                {b.kicker}
+              </div>
+              <div className="font-display text-paper-soft text-base mt-1">
+                {b.label}
+              </div>
+              <div className="font-serif text-paper-soft/55 text-xs mt-0.5">
+                {b.sub}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
 
-      {/* Scroll indicator — simple CSS animation */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-white/25 text-[10px] tracking-[0.3em] uppercase">
-          Scroll
+      {/* Scroll indicator */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-paper-soft/55">
+        <Fleuron size={16} />
+        <span className="font-display italic text-[10px] tracking-[0.4em] uppercase">
+          scorri ↓
         </span>
-        <div className="w-5 h-8 rounded-full border border-white/15 flex items-start justify-center pt-2">
-          <div className="w-0.5 h-1.5 bg-white/30 rounded-full animate-bounce" />
-        </div>
       </div>
     </section>
   );

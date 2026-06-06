@@ -2,53 +2,48 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import { Divider, Fleuron } from "./Ornaments";
 
 const reviews = [
 	{
-		text: "Beste Pizza in Saarlouis, keine Diskussion! Der Teig ist perfekt und die Zutaten super frisch. Komme jede Woche!",
+		text: "Beste Pizza in Saarlouis, keine Diskussion. Der Teig ist perfekt, die Zutaten frisch. Komme jede Woche.",
 		author: "Marcel K.",
 		rating: 5,
-		source: "Google",
 	},
 	{
-		text: "Familiäre Atmosphäre und unglaublich leckere Pizza.",
+		text: "Familiäre Atmosphäre und unglaublich leckere Pizza. Man wird sofort begrüßt wie zu Hause.",
 		author: "Sofia L.",
 		rating: 5,
-		source: "Google",
 	},
 	{
-		text: "Schnelle Lieferung, alles war heiß und frisch. Die Pizza hatte genau den richtigen Kick!",
+		text: "Schnelle Abholung, alles war heiß und ofenfrisch. Genau der richtige Kick.",
 		author: "Tim B.",
 		rating: 5,
-		source: "Google",
 	},
 	{
-		text: "Endlich ein guter Italiener in der Gegend! Man merkt, dass hier mit Liebe gekocht wird. Absolut empfehlenswert.",
+		text: "Endlich ein echter Italiener in der Gegend. Man schmeckt, dass mit Liebe gekocht wird.",
 		author: "Anna M.",
 		rating: 5,
-		source: "Google",
 	},
 	{
-		text: "Die Ciabatta Piccante ist ein Traum! Preis-Leistung top.",
+		text: "Die Ciabatta Piccante ist ein Traum. Preis-Leistung absolut top.",
 		author: "Lisa R.",
 		rating: 5,
-		source: "Google",
 	},
 	{
-		text: "Meine Kinder lieben die Pizza von AMICIZIA.",
+		text: "Meine Kinder lieben die Pizza von AMICIZIA — und ich auch.",
 		author: "Jens P.",
 		rating: 5,
-		source: "Google",
 	},
 ];
 
-function StarRating({ rating }: { rating: number }) {
+function Stars({ n }: { n: number }) {
 	return (
 		<div className="flex gap-0.5">
 			{Array.from({ length: 5 }).map((_, i) => (
 				<svg
 					key={i}
-					className={`w-4 h-4 ${i < rating ? "text-bordeaux" : "text-foreground/10"}`}
+					className={`w-3.5 h-3.5 ${i < n ? "text-terracotta" : "text-espresso/15"}`}
 					fill="currentColor"
 					viewBox="0 0 20 20"
 				>
@@ -59,86 +54,105 @@ function StarRating({ rating }: { rating: number }) {
 	);
 }
 
+function PolaroidCard({
+	r,
+	rotate,
+}: {
+	r: typeof reviews[0];
+	rotate: string;
+}) {
+	return (
+		<div className={`relative polaroid w-[300px] shrink-0 ${rotate}`}>
+			<span className="tape" />
+			<div className="bg-paper-deep/60 h-44 mb-4 flex items-center justify-center relative">
+				<div className="grain-overlay opacity-40" />
+				<div className="relative text-center px-5">
+					<Stars n={r.rating} />
+					<p className="font-hand text-2xl text-espresso leading-snug mt-3">
+						&ldquo;{r.text}&rdquo;
+					</p>
+				</div>
+			</div>
+			<div className="px-1 flex items-center justify-between">
+				<div className="font-hand text-2xl text-terracotta leading-none">
+					— {r.author}
+				</div>
+				<div className="font-display italic text-[10px] tracking-[0.25em] uppercase text-espresso-soft">
+					Google
+				</div>
+			</div>
+		</div>
+	);
+}
+
 export default function Testimonials() {
 	const ref = useRef(null);
-	const isInView = useInView(ref, { once: true, margin: "-100px" });
+	const inView = useInView(ref, { once: true, margin: "-100px" });
+	const rotations = ["tilt-l", "tilt-r", "tilt-xs", "tilt-r", "tilt-l", "tilt-xs"];
 
 	return (
-		<section ref={ref} className="py-32 px-6 lg:px-12 overflow-hidden">
-			<div className="max-w-7xl mx-auto">
-				<div className="text-center mb-16">
-					<motion.p
-						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
+		<section
+			ref={ref}
+			className="paper-grain relative py-28 md:py-32 overflow-hidden bg-paper"
+		>
+			<div className="max-w-7xl mx-auto px-6 lg:px-12">
+				<div className="text-center mb-14">
+					<motion.div
+						initial={{ opacity: 0, y: 14 }}
+						animate={inView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.6 }}
-						className="text-bordeaux text-sm tracking-[0.3em] uppercase font-medium mb-4"
+						className="flex justify-center mb-5 text-terracotta"
 					>
-						Was andere sagen
-					</motion.p>
-
+						<Divider label="VII · Gli ospiti" />
+					</motion.div>
 					<motion.h2
-						initial={{ opacity: 0, y: 20 }}
-						animate={isInView ? { opacity: 1, y: 0 } : {}}
+						initial={{ opacity: 0, y: 14 }}
+						animate={inView ? { opacity: 1, y: 0 } : {}}
 						transition={{ duration: 0.6, delay: 0.1 }}
-						className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-4"
+						className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
 					>
-						Unsere <span className="text-bordeaux">Gäste</span> sprechen
+						Cosa dicono i{" "}
+						<span className="italic-display text-terracotta">nostri ospiti</span>
 					</motion.h2>
-
 					<motion.p
 						initial={{ opacity: 0 }}
-						animate={isInView ? { opacity: 1 } : {}}
+						animate={inView ? { opacity: 1 } : {}}
 						transition={{ duration: 0.6, delay: 0.2 }}
-						className="text-xl text-foreground/40"
+						className="font-hand text-2xl text-espresso-soft mt-3"
 					>
-						Echte Bewertungen
+						kleine Worte, die uns satt machen.
 					</motion.p>
+					<div className="flex justify-center mt-4 text-terracotta">
+						<Fleuron size={16} />
+					</div>
 				</div>
 			</div>
 
-			{/* Row 1: Scroll left — CSS only */}
-			<div className="mb-6 overflow-hidden">
-				<div className="flex gap-6 testimonial-row-left">
-					{[...reviews.slice(0, 3), ...reviews.slice(0, 3), ...reviews.slice(0, 3), ...reviews.slice(0, 3)].map((review, i) => (
-						<div
-							key={i}
-							className="flex-shrink-0 w-[360px] bg-white rounded-2xl p-6 border border-foreground/5"
-						>
-							<StarRating rating={review.rating} />
-							<p className="text-foreground/60 text-sm leading-relaxed mt-4 mb-5">
-								&ldquo;{review.text}&rdquo;
-							</p>
-							<div className="flex items-center justify-between">
-								<p className="font-semibold text-foreground text-sm">{review.author}</p>
-								<span className="text-[10px] tracking-wider uppercase text-foreground/30 font-medium bg-foreground/5 px-2 py-1 rounded-full">
-									{review.source}
-								</span>
-							</div>
-						</div>
+			{/* Row 1 — left */}
+			<div className="mb-10 overflow-hidden">
+				<div className="flex gap-7 testimonial-row-left px-6">
+					{[...reviews, ...reviews, ...reviews].map((r, i) => (
+						<PolaroidCard
+							key={`l-${i}`}
+							r={r}
+							rotate={rotations[i % rotations.length]}
+						/>
 					))}
 				</div>
 			</div>
 
-			{/* Row 2: Scroll right — CSS only */}
+			{/* Row 2 — right */}
 			<div className="overflow-hidden">
-				<div className="flex gap-6 testimonial-row-right">
-					{[...reviews.slice(3), ...reviews.slice(3), ...reviews.slice(3), ...reviews.slice(3)].map((review, i) => (
-						<div
-							key={i}
-							className="flex-shrink-0 w-[360px] bg-white rounded-2xl p-6 border border-foreground/5"
-						>
-							<StarRating rating={review.rating} />
-							<p className="text-foreground/60 text-sm leading-relaxed mt-4 mb-5">
-								&ldquo;{review.text}&rdquo;
-							</p>
-							<div className="flex items-center justify-between">
-								<p className="font-semibold text-foreground text-sm">{review.author}</p>
-								<span className="text-[10px] tracking-wider uppercase text-foreground/30 font-medium bg-foreground/5 px-2 py-1 rounded-full">
-									{review.source}
-								</span>
-							</div>
-						</div>
-					))}
+				<div className="flex gap-7 testimonial-row-right px-6">
+					{[...reviews.slice().reverse(), ...reviews.slice().reverse(), ...reviews.slice().reverse()].map(
+						(r, i) => (
+							<PolaroidCard
+								key={`r-${i}`}
+								r={r}
+								rotate={rotations[(i + 2) % rotations.length]}
+							/>
+						)
+					)}
 				</div>
 			</div>
 		</section>
