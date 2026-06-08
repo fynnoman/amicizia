@@ -1,4 +1,5 @@
 import { CircleStamp, OliveBranch, Fleuron, Tomato } from "./Ornaments";
+import HeroVideoBackground from "./HeroVideoBackground";
 
 export default function Hero() {
   return (
@@ -6,16 +7,12 @@ export default function Hero() {
       id="hero"
       className="relative min-h-screen flex items-center overflow-hidden"
     >
-      {/* Background video */}
-      <video
+      {/* Background video — own component so a client useEffect can
+          re-trigger play() across Safari/Chrome quirks (tab visibility,
+          stalled buffers, silent autoplay refusals). */}
+      <HeroVideoBackground
         className="absolute inset-0 w-full h-full object-cover z-0"
-        src="/Italienische_Küche_Teigrollen_Video.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
-        preload="auto"
-        aria-hidden="true"
+        src="/hero-video.mp4"
       />
 
       {/* Sun-baked terracotta wash over the photo */}
