@@ -15,19 +15,19 @@ export default function Hero() {
         src="/hero-video.mp4"
       />
 
-      {/* Sun-baked terracotta wash over the photo */}
+      {/* Deep ink wash over the photo */}
       <div
         className="absolute inset-0 z-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(42,24,16,0.78) 0%, rgba(138,44,31,0.55) 45%, rgba(42,24,16,0.92) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.85) 0%, rgba(8,7,5,0.72) 45%, rgba(0,0,0,0.96) 100%)",
         }}
       />
       <div
         className="absolute inset-0 z-0 pointer-events-none mix-blend-overlay opacity-25"
         style={{
           background:
-            "radial-gradient(60% 60% at 50% 30%, rgba(242,232,208,0.5), transparent 70%)",
+            "radial-gradient(60% 60% at 50% 30%, rgba(232,197,136,0.35), transparent 70%)",
         }}
       />
       <div className="grain-overlay z-0" />
@@ -93,7 +93,7 @@ export default function Hero() {
           </a>
           <a
             href="#order"
-            className="btn-ghost !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-espresso"
+            className="btn-ghost !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-paper"
           >
             <Tomato size={18} />
             Bestellen &amp; abholen

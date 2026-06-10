@@ -19,14 +19,14 @@ export default function Footer() {
   return (
     <footer
       ref={ref}
-      className="relative bg-espresso text-paper-soft pt-20 pb-10 px-6 lg:px-12 overflow-hidden"
+      className="relative bg-paper-deep text-paper-soft pt-20 pb-10 px-6 lg:px-12 overflow-hidden border-t border-paper-soft/10"
     >
-      {/* Top deckle: warm light */}
+      {/* Top deckle: warm champagne glow */}
       <div
-        className="absolute inset-0 pointer-events-none opacity-30"
+        className="absolute inset-0 pointer-events-none opacity-40"
         style={{
           background:
-            "radial-gradient(60% 80% at 20% 10%, rgba(183,62,44,0.45), transparent 60%), radial-gradient(60% 80% at 90% 90%, rgba(107,100,40,0.25), transparent 65%)",
+            "radial-gradient(60% 80% at 20% 10%, rgba(232,197,136,0.18), transparent 60%), radial-gradient(60% 80% at 90% 90%, rgba(181,167,103,0.16), transparent 65%)",
         }}
       />
       <div className="grain-overlay opacity-25" />

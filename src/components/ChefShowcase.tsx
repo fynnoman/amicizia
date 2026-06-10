@@ -12,7 +12,7 @@ export default function ChefShowcase() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-[80vh] md:h-[88vh] overflow-hidden bg-espresso"
+      className="relative w-full h-[80vh] md:h-[88vh] overflow-hidden bg-paper-deep"
       aria-label="In unserer Küche"
     >
       {/* Photograph — chef tossing herbs, golden hour */}
@@ -25,19 +25,19 @@ export default function ChefShowcase() {
         className="object-cover scale-105 animate-[kenburns_32s_ease-in-out_infinite_alternate]"
       />
 
-      {/* Warm cinematic gradient */}
+      {/* Deep ink cinematic gradient */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(42,24,16,0.55) 0%, rgba(42,24,16,0.18) 35%, rgba(42,24,16,0.35) 70%, rgba(42,24,16,0.78) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 35%, rgba(0,0,0,0.55) 70%, rgba(0,0,0,0.92) 100%)",
         }}
       />
       <div
         className="absolute inset-0 z-10 pointer-events-none mix-blend-soft-light opacity-50"
         style={{
           background:
-            "radial-gradient(60% 60% at 55% 50%, rgba(242,232,208,0.55), transparent 70%)",
+            "radial-gradient(60% 60% at 55% 50%, rgba(232,197,136,0.45), transparent 70%)",
         }}
       />
       <div className="grain-overlay z-10 opacity-35" />

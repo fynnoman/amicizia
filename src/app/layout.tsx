@@ -45,7 +45,7 @@ export default function RootLayout({
   return (
     <html
       lang="de"
-      className={`${fraunces.variable} ${garamond.variable} ${caveat.variable} h-full antialiased`}
+      className={`${fraunces.variable} ${garamond.variable} ${caveat.variable} h-full antialiased [color-scheme:dark]`}
     >
       <body className="min-h-full flex flex-col bg-paper text-espresso">{children}</body>
     </html>

@@ -42,7 +42,7 @@ export default function Marquee() {
   }, [displayedText, isTyping, currentQuote]);
 
   return (
-    <div className="relative bg-espresso overflow-hidden">
+    <div className="relative bg-paper-deep overflow-hidden border-y border-paper-soft/10">
       {/* Family quote — typewriter */}
       <div className="py-6 border-b border-paper-soft/10">
         <div className="max-w-4xl mx-auto px-6 flex items-center justify-center min-h-[44px]">

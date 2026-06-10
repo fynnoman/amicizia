@@ -177,8 +177,8 @@ export default function Order() {
 									onClick={() => setActiveCategory(cat.key)}
 									className={`px-5 py-2 rounded-full font-display italic text-sm tracking-wide border transition-all duration-300 ${
 										activeCategory === cat.key
-											? "bg-espresso text-paper-soft border-espresso"
-											: "bg-paper-soft/60 text-espresso/70 border-espresso/15 hover:border-terracotta hover:text-terracotta"
+											? "bg-terracotta text-paper border-terracotta"
+											: "bg-paper-deep/60 text-espresso/70 border-paper-soft/15 hover:border-terracotta hover:text-terracotta"
 									}`}
 								>
 									{cat.name}
@@ -253,7 +253,7 @@ export default function Order() {
 								initial={{ scale: 1.4 }}
 								animate={{ scale: 1 }}
 								transition={{ type: "spring", stiffness: 500, damping: 20 }}
-								className="absolute -top-2 -right-2 bg-paper-soft text-terracotta text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center"
+								className="absolute -top-2 -right-2 bg-paper-soft text-paper text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center"
 							>
 								{totalQty}
 							</motion.span>
@@ -273,7 +273,7 @@ export default function Order() {
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
 							onClick={() => setMobileCartOpen(false)}
-							className="lg:hidden fixed inset-0 bg-espresso/45 backdrop-blur-sm z-40"
+							className="lg:hidden fixed inset-0 bg-paper/75 backdrop-blur-sm z-40"
 						/>
 						<motion.div
 							key="sheet"
@@ -281,10 +281,10 @@ export default function Order() {
 							animate={{ y: 0 }}
 							exit={{ y: "100%" }}
 							transition={{ type: "spring", stiffness: 280, damping: 32 }}
-							className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-paper-soft rounded-t-3xl max-h-[92vh] overflow-y-auto"
+							className="lg:hidden fixed bottom-0 inset-x-0 z-50 bg-paper-deep rounded-t-3xl max-h-[92vh] overflow-y-auto border-t border-paper-soft/15"
 						>
-							<div className="sticky top-0 bg-paper-soft pt-3 pb-2 px-6 border-b border-espresso/10 z-10">
-								<div className="w-12 h-1.5 bg-espresso/15 rounded-full mx-auto mb-3" />
+							<div className="sticky top-0 bg-paper-deep pt-3 pb-2 px-6 border-b border-paper-soft/10 z-10">
+								<div className="w-12 h-1.5 bg-paper-soft/25 rounded-full mx-auto mb-3" />
 								<div className="flex items-center justify-between">
 									<h3 className="font-display italic text-xl text-espresso">
 										Dein Warenkorb
@@ -351,7 +351,7 @@ function OrderCard({
 		>
 			<div className="ticket relative p-5 transition-all duration-300 group-hover:-translate-y-0.5">
 				{item.popular && (
-					<span className="absolute -top-3 left-4 bg-terracotta text-paper-soft px-3 py-1 font-display italic text-[0.65rem] tracking-[0.25em] uppercase rotate-[-3deg]">
+					<span className="absolute -top-3 left-4 bg-terracotta text-paper px-3 py-1 font-display italic text-[0.65rem] tracking-[0.25em] uppercase rotate-[-3deg]">
 						beliebt
 					</span>
 				)}
@@ -442,7 +442,7 @@ function CartPanel({
 			className={`relative ${
 				compact
 					? ""
-					: "bg-paper-soft border border-espresso/15 depth-shadow"
+					: "bg-paper-deep border border-paper-soft/15 depth-shadow"
 			}`}
 		>
 			{/* Decorative inner border */}
@@ -500,13 +500,13 @@ function CartPanel({
 									<div className="flex items-center gap-1.5 shrink-0">
 										<button
 											onClick={() => onChangeQty(it.id, it.qty - 1)}
-											className="w-7 h-7 rounded-full bg-paper-deep/70 text-espresso hover:bg-terracotta hover:text-paper-soft transition-colors flex items-center justify-center font-bold"
+											className="w-7 h-7 rounded-full bg-paper/70 text-espresso hover:bg-terracotta hover:text-paper transition-colors flex items-center justify-center font-bold"
 											aria-label="Weniger"
 										>−</button>
 										<div className="w-6 text-center font-display text-base tabnum">{it.qty}</div>
 										<button
 											onClick={() => onChangeQty(it.id, it.qty + 1)}
-											className="w-7 h-7 rounded-full bg-paper-deep/70 text-espresso hover:bg-terracotta hover:text-paper-soft transition-colors flex items-center justify-center font-bold"
+											className="w-7 h-7 rounded-full bg-paper/70 text-espresso hover:bg-terracotta hover:text-paper transition-colors flex items-center justify-center font-bold"
 											aria-label="Mehr"
 										>+</button>
 										<button
@@ -622,7 +622,7 @@ function Input({
 				onChange={(e) => onChange(e.target.value)}
 				type={type}
 				placeholder={placeholder}
-				className="w-full px-4 py-2.5 rounded-md border border-espresso/20 bg-paper text-espresso text-base font-serif focus:outline-none focus:border-terracotta focus:bg-paper-soft transition-colors placeholder:italic placeholder:text-espresso-soft/50"
+				className="w-full px-4 py-2.5 rounded-md border border-paper-soft/20 bg-paper text-espresso text-base font-serif focus:outline-none focus:border-terracotta focus:bg-paper-deep transition-colors placeholder:italic placeholder:text-espresso-soft/50"
 			/>
 		</div>
 	);

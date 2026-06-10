@@ -27,7 +27,7 @@ export default function Delivery() {
   return (
     <section
       ref={ref}
-      className="relative py-28 md:py-32 px-6 lg:px-12 bg-terracotta overflow-hidden text-paper-soft"
+      className="relative py-28 md:py-32 px-6 lg:px-12 bg-paper-deep overflow-hidden text-paper-soft border-y border-terracotta/25"
     >
       {/* texture and accents */}
       <div className="grain-overlay opacity-30" />
@@ -77,7 +77,7 @@ export default function Delivery() {
               initial={{ opacity: 0, y: 24 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.7, delay: 0.2 + i * 0.12 }}
-              className="relative bg-paper-soft text-espresso p-8 border border-paper-soft/30 depth-shadow group hover:-translate-y-1 transition-transform duration-500"
+              className="relative bg-paper text-espresso p-8 border border-terracotta/30 depth-shadow group hover:-translate-y-1 transition-transform duration-500"
             >
               <div className="pointer-events-none absolute inset-2 border border-terracotta/30" />
               <div className="relative">
@@ -112,7 +112,7 @@ export default function Delivery() {
         >
           <a
             href="#order"
-            className="inline-flex items-center gap-2 px-8 py-3 bg-paper-soft text-terracotta font-display italic tracking-wider rounded-full hover:bg-paper hover:text-terracotta-deep transition-colors"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-terracotta text-paper font-display italic tracking-wider rounded-full hover:bg-terracotta-deep hover:text-paper transition-colors"
           >
             <ForkKnife size={18} />
             Jetzt bestellen

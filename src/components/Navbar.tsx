@@ -29,7 +29,7 @@ export default function Navbar() {
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           scrolled
-            ? "bg-paper/95 backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(42,24,16,0.35)] border-b border-espresso/10"
+            ? "bg-paper/95 backdrop-blur-md shadow-[0_8px_24px_-12px_rgba(0,0,0,0.8)] border-b border-espresso/15"
             : "bg-transparent"
         }`}
       >

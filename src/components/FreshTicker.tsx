@@ -51,7 +51,7 @@ export default function FreshTicker() {
 
         <div className="chalkboard relative p-8 md:p-12 tilt-xs">
           {/* Chef hat top-left */}
-          <div className="absolute -top-3 -left-3 bg-paper-soft text-espresso px-3 py-2 rotate-[-8deg] border border-espresso/20 depth-shadow">
+          <div className="absolute -top-3 -left-3 bg-paper-deep text-paper-soft px-3 py-2 rotate-[-8deg] border border-paper-soft/20 depth-shadow">
             <div className="flex items-center gap-2">
               <ChefHat size={18} />
               <span className="font-display italic text-xs tracking-[0.25em] uppercase">

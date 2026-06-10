@@ -51,19 +51,19 @@ export default function PhotoBanner() {
         />
       </motion.div>
 
-      {/* Warm cinematic gradient over photo */}
+      {/* Deep ink cinematic gradient over photo */}
       <div
         className="absolute inset-0 z-10 pointer-events-none"
         style={{
           background:
-            "linear-gradient(180deg, rgba(42,24,16,0.55) 0%, rgba(42,24,16,0.25) 35%, rgba(42,24,16,0.4) 65%, rgba(42,24,16,0.85) 100%)",
+            "linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.42) 35%, rgba(0,0,0,0.55) 65%, rgba(0,0,0,0.95) 100%)",
         }}
       />
       <div
         className="absolute inset-0 z-10 pointer-events-none mix-blend-soft-light opacity-50"
         style={{
           background:
-            "radial-gradient(70% 70% at 50% 45%, rgba(242,232,208,0.55), transparent 70%)",
+            "radial-gradient(70% 70% at 50% 45%, rgba(232,197,136,0.45), transparent 70%)",
         }}
       />
       <div className="grain-overlay z-10 opacity-40" />

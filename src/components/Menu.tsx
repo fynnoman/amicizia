@@ -148,7 +148,7 @@ export default function Menu() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.25 }}
-          className="relative bg-paper-soft border border-espresso/15 depth-shadow"
+          className="relative bg-paper-deep border border-paper-soft/15 depth-shadow"
         >
           {/* Decorative outside borders */}
           <div className="pointer-events-none absolute inset-3 border border-terracotta/35" />
@@ -181,7 +181,7 @@ export default function Menu() {
                   onClick={() => setActiveCategory(cat.key)}
                   className={`px-5 py-1.5 rounded-full font-display italic text-sm tracking-wide border transition-all duration-300 ${
                     activeCategory === cat.key
-                      ? "bg-espresso text-paper-soft border-espresso"
+                      ? "bg-terracotta text-paper border-terracotta"
                       : "bg-transparent text-espresso/70 border-espresso/30 hover:border-terracotta hover:text-terracotta"
                   }`}
                 >

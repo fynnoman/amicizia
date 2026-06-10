@@ -145,12 +145,12 @@ export default function About() {
             className="relative"
           >
             {/* Outer paper frame */}
-            <div className="relative bg-paper-soft border border-espresso/15 depth-shadow p-4 md:p-5">
+            <div className="relative bg-paper-deep border border-paper-soft/15 depth-shadow p-4 md:p-5">
               {/* Inner terracotta keyline */}
               <div className="pointer-events-none absolute inset-2 border border-terracotta/40 z-20" />
 
               {/* The image */}
-              <div className="relative aspect-[4/5] overflow-hidden bg-espresso/10">
+              <div className="relative aspect-[4/5] overflow-hidden bg-paper-soft/5">
                 <Image
                   src="/photos/amicizia-2.jpg"
                   alt="Hände waschen eine frische Tomate im goldenen Abendlicht"
@@ -163,7 +163,7 @@ export default function About() {
                   className="absolute inset-0 pointer-events-none"
                   style={{
                     background:
-                      "radial-gradient(70% 80% at 50% 60%, transparent 40%, rgba(42,24,16,0.45) 100%)",
+                      "radial-gradient(70% 80% at 50% 60%, transparent 40%, rgba(0,0,0,0.65) 100%)",
                   }}
                 />
                 <div className="grain-overlay opacity-30" />
@@ -191,7 +191,7 @@ export default function About() {
             </div>
 
             {/* Pinned "Aperto!" tag bottom-left */}
-            <div className="absolute -bottom-6 -left-6 bg-paper-soft px-5 py-3 border border-espresso/15 depth-shadow tilt-l">
+            <div className="absolute -bottom-6 -left-6 bg-paper-deep px-5 py-3 border border-paper-soft/15 depth-shadow tilt-l">
               <div className="font-hand text-terracotta text-2xl leading-none">
                 Geöffnet!
               </div>

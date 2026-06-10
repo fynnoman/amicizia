@@ -70,7 +70,7 @@ export default function EasterEgg() {
             transition={{ delay: 0.25, duration: 0.55, type: "spring" }}
             className="fixed inset-0 z-[102] flex items-center justify-center pointer-events-none"
           >
-            <div className="relative bg-paper-soft border border-espresso/20 depth-shadow px-14 py-10 text-center max-w-md">
+            <div className="relative bg-paper-deep border border-paper-soft/20 depth-shadow px-14 py-10 text-center max-w-md">
               <div className="pointer-events-none absolute inset-2 border border-terracotta/40" />
               <div className="flex justify-center text-terracotta mb-2">
                 <Fleuron size={28} />

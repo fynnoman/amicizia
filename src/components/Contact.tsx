@@ -142,7 +142,7 @@ export default function Contact() {
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute -bottom-7 left-6 right-6 bg-paper-soft border border-espresso/15 depth-shadow p-5 flex items-center justify-between"
+              className="absolute -bottom-7 left-6 right-6 bg-paper-deep border border-paper-soft/15 depth-shadow p-5 flex items-center justify-between"
             >
               <div>
                 <div className="font-display italic text-terracotta text-xs tracking-[0.25em] uppercase">

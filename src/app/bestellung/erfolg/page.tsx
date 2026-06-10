@@ -15,7 +15,7 @@ export default async function OrderSuccessPage({
 	const { ref } = await searchParams;
 
 	return (
-		<main className="min-h-screen bg-cream relative overflow-hidden flex items-center justify-center px-6 py-16">
+		<main className="min-h-screen bg-paper text-espresso relative overflow-hidden flex items-center justify-center px-6 py-16">
 			<div
 				aria-hidden="true"
 				className="absolute inset-0 pointer-events-none"
@@ -28,7 +28,7 @@ export default async function OrderSuccessPage({
 				<div className="relative inline-block mb-8">
 					<div className="w-28 h-28 mx-auto rounded-full bg-gradient-to-br from-bordeaux to-bordeaux-dark flex items-center justify-center shadow-2xl shadow-bordeaux/30 reveal delay-1">
 						<svg
-							className="w-14 h-14 text-white"
+							className="w-14 h-14 text-paper"
 							fill="none"
 							stroke="currentColor"
 							strokeWidth={3}
@@ -70,7 +70,7 @@ export default async function OrderSuccessPage({
 				</p>
 
 				{ref && (
-					<div className="reveal delay-4 inline-block bg-white border border-bordeaux/15 rounded-2xl px-6 py-4 mb-10 depth-shadow">
+					<div className="reveal delay-4 inline-block bg-paper-deep border border-bordeaux/15 rounded-2xl px-6 py-4 mb-10 depth-shadow">
 						<p className="text-[11px] text-foreground/45 uppercase tracking-wider mb-1">
 							Deine Bestellnummer
 						</p>
@@ -99,7 +99,7 @@ export default async function OrderSuccessPage({
 				<div className="reveal delay-6 flex flex-col sm:flex-row gap-3 justify-center">
 					<Link
 						href="/"
-						className="px-8 py-3.5 bg-bordeaux text-white text-sm font-semibold tracking-wider uppercase rounded-full hover:bg-bordeaux-dark transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-bordeaux/25"
+						className="px-8 py-3.5 bg-bordeaux text-paper text-sm font-semibold tracking-wider uppercase rounded-full hover:bg-bordeaux-dark transition-all duration-300 hover:scale-105 hover:shadow-xl shadow-bordeaux/25"
 					>
 						Zurück zur Startseite
 					</Link>
@@ -121,7 +121,7 @@ export default async function OrderSuccessPage({
 
 function Step({ num, title, text }: { num: string; title: string; text: string }) {
 	return (
-		<div className="bg-white rounded-2xl p-5 border border-foreground/5">
+		<div className="bg-paper-deep rounded-2xl p-5 border border-foreground/5">
 			<div className="w-9 h-9 rounded-full bg-bordeaux/10 text-bordeaux font-bold flex items-center justify-center mx-auto mb-3 text-base">
 				{num}
 			</div>
