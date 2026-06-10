@@ -2,14 +2,39 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import { Fleuron, OliveBranch, CircleStamp } from "./Ornaments";
 
-const quickLinks = [
-  { label: "Start", href: "#hero" },
-  { label: "Über uns", href: "#about" },
-  { label: "Speisekarte", href: "#menu" },
-  { label: "Bestellen", href: "#order" },
-  { label: "Kontakt", href: "#contact" },
+const pizzaLinks = [
+  { label: "Pizzeria Saarlouis", href: "/pizzeria-saarlouis" },
+  { label: "Pizza Saarlouis", href: "/pizza-saarlouis" },
+  { label: "Steinofen-Pizza", href: "/steinofen-pizza-saarlouis" },
+  { label: "Beste Pizza", href: "/beste-pizza-saarlouis" },
+  { label: "Pizza bestellen", href: "/pizza-bestellen-saarlouis" },
+];
+
+const italyLinks = [
+  { label: "Italiener Saarlouis", href: "/italiener-saarlouis" },
+  { label: "Italienisches Restaurant", href: "/italienisches-restaurant-saarlouis" },
+  { label: "Trattoria Saarlouis", href: "/trattoria-saarlouis" },
+  { label: "Italienisch essen", href: "/italienisch-essen-saarlouis" },
+];
+
+const supportLinks = [
+  { label: "Speisekarte", href: "/speisekarte" },
+  { label: "Reservierung", href: "/reservierung" },
+  { label: "Öffnungszeiten", href: "/oeffnungszeiten" },
+  { label: "Kontakt", href: "/kontakt" },
+  { label: "Über uns", href: "/ueber-uns" },
+  { label: "FAQ", href: "/faq" },
+];
+
+const areaLinks = [
+  { label: "Italiener Dillingen", href: "/italiener-dillingen" },
+  { label: "Pizzeria Saarwellingen", href: "/pizzeria-saarwellingen" },
+  { label: "Italiener Roden", href: "/italiener-roden" },
+  { label: "Italiener Fraulautern", href: "/italiener-fraulautern" },
+  { label: "Italiener Wallerfangen", href: "/italiener-wallerfangen" },
 ];
 
 export default function Footer() {
@@ -48,14 +73,14 @@ export default function Footer() {
           <span className="h-px flex-1 bg-paper-soft/15" />
         </motion.div>
 
-        <div className="grid md:grid-cols-[1.4fr_1fr_1fr] gap-12">
-          {/* Brand */}
+        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
+          {/* Brand + NAP */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <div className="flex items-center gap-3">
+            <Link href="/" className="flex items-center gap-3">
               <CircleStamp size={70} className="text-terracotta-soft/80" />
               <div>
                 <div
@@ -68,69 +93,105 @@ export default function Footer() {
                   trattoria di famiglia
                 </div>
               </div>
-            </div>
-            <p className="font-serif text-paper-soft/55 text-base leading-relaxed mt-5 max-w-sm">
-              Eine kleine italienische Familien-Trattoria in Saarlouis.
-              Seit 2013 — Pizza, pasta &amp; piccoli piaceri della casa.
-            </p>
-            <p className="font-hand text-terracotta-soft text-2xl mt-4">
-              schön, dass du da bist ♡
-            </p>
+            </Link>
+            <address className="not-italic font-serif text-paper-soft/65 text-base leading-relaxed mt-5">
+              Industriestraße 20<br />
+              66740 Saarlouis<br />
+              <span className="font-display italic text-paper-soft/55 text-sm">
+                täglich · ab 10:00 Uhr
+              </span>
+            </address>
+            <a
+              href="https://www.instagram.com/amicizia.saarlouis/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-4 text-paper-soft hover:text-terracotta-soft transition-colors duration-300"
+            >
+              <Fleuron size={14} />
+              @amicizia.saarlouis
+            </a>
           </motion.div>
 
-          {/* Quick Links */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Navigation
+              Pizza in Saarlouis
             </h4>
-            <div className="space-y-2.5">
-              {quickLinks.map((l) => (
-                <a
-                  key={l.label}
-                  href={l.href}
-                  className="flex items-center gap-2 text-paper-soft/55 hover:text-paper-soft transition-colors duration-300 font-display italic text-base group"
-                >
-                  <span className="opacity-0 group-hover:opacity-100 transition-opacity text-terracotta-soft">
-                    →
-                  </span>
-                  {l.label}
-                </a>
+            <ul className="space-y-2">
+              {pizzaLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
               ))}
-            </div>
+            </ul>
           </motion.div>
 
-          {/* Contact */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              So findest du uns
+              Italiener &amp; Trattoria
             </h4>
-            <div className="space-y-3 font-serif text-paper-soft/65 text-base leading-relaxed">
-              <p>
-                Industriestraße 20
-                <br />
-                66740 Saarlouis
-              </p>
-              <p className="font-display italic text-paper-soft/70 text-sm">
-                täglich geöffnet · ab 10:00 Uhr
-              </p>
-              <a
-                href="https://www.instagram.com/amicizia.saarlouis/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-paper-soft hover:text-terracotta-soft transition-colors duration-300"
-              >
-                <Fleuron size={14} />
-                @amicizia.saarlouis
-              </a>
-            </div>
+            <ul className="space-y-2">
+              {italyLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mt-7 mb-3">
+              Aus der Umgebung
+            </h4>
+            <ul className="space-y-2">
+              {areaLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
+              Service
+            </h4>
+            <ul className="space-y-2">
+              {supportLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
 

@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Fleuron } from "./Ornaments";
 
 const navLinks = [
-  { name: "Start",       href: "#hero" },
-  { name: "Über uns",    href: "#about" },
-  { name: "Speisekarte", href: "#menu" },
-  { name: "Kontakt",     href: "#contact" },
+  { name: "Pizzeria",    href: "/pizzeria-saarlouis" },
+  { name: "Speisekarte", href: "/speisekarte" },
+  { name: "Über uns",    href: "/ueber-uns" },
+  { name: "Kontakt",     href: "/kontakt" },
 ];
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-3 group" data-logo>
+          <a href="/" className="flex items-center gap-3 group" data-logo>
             <span
               className={`transition-colors duration-500 ${
                 scrolled ? "text-terracotta" : "text-paper-soft"
@@ -78,7 +78,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#order"
+              href="/pizza-bestellen-saarlouis"
               className={`btn-terra !py-2.5 !px-5 !text-[0.7rem]`}
             >
               Bestellen
@@ -150,7 +150,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              href="#order"
+              href="/pizza-bestellen-saarlouis"
               onClick={() => setMobileOpen(false)}
               className="btn-terra mt-4"
             >

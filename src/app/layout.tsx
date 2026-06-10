@@ -1,6 +1,13 @@
 import type { Metadata } from "next";
 import { Fraunces, EB_Garamond, Caveat } from "next/font/google";
 import "./globals.css";
+import JsonLd from "@/components/seo/JsonLd";
+import {
+  restaurantSchema,
+  websiteSchema,
+  organizationSchema,
+} from "@/lib/schema";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, DEFAULT_OG_IMAGE } from "@/data/business";
 
 const fraunces = Fraunces({
   variable: "--font-fraunces",
@@ -23,18 +30,79 @@ const caveat = Caveat({
 });
 
 export const metadata: Metadata = {
-  title: "AMICIZIA — Italienisches Familienrestaurant · Saarlouis",
-  description:
-    "Frische Pizza, Pasta & kleine Familienrezepte aus Saarlouis. Eine italienische Familien-Trattoria mit Steinofen, seit über 12 Jahren mit Liebe gemacht.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: SITE_NAME,
+    template: "%s · AMICIZIA Saarlouis",
+  },
+  description: SITE_TAGLINE,
+  applicationName: "AMICIZIA",
+  authors: [{ name: "AMICIZIA Trattoria" }],
+  creator: "AMICIZIA Trattoria",
+  publisher: "AMICIZIA Trattoria",
+  generator: "Next.js",
+  category: "Restaurant",
+  classification: "Italienisches Restaurant · Pizzeria",
   keywords: [
-    "AMICIZIA",
+    "Pizzeria Saarlouis",
     "Pizza Saarlouis",
     "Italiener Saarlouis",
-    "Familienrestaurant",
-    "italienisches Restaurant",
-    "Steinofen Pizza",
-    "Trattoria",
+    "Italienisches Restaurant Saarlouis",
+    "Trattoria Saarlouis",
+    "Steinofen Pizza Saarlouis",
+    "Pizza bestellen Saarlouis",
+    "Italienisch essen Saarlouis",
+    "Beste Pizza Saarlouis",
+    "AMICIZIA Saarlouis",
+    "Italiener Industriestraße Saarlouis",
+    "Pizzeria Saarland",
+    "Italiener in der Nähe Saarlouis",
   ],
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  openGraph: {
+    type: "website",
+    locale: "de_DE",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_NAME,
+    description: SITE_TAGLINE,
+    images: [
+      {
+        url: DEFAULT_OG_IMAGE.url,
+        width: DEFAULT_OG_IMAGE.width,
+        height: DEFAULT_OG_IMAGE.height,
+        alt: DEFAULT_OG_IMAGE.alt,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: SITE_NAME,
+    description: SITE_TAGLINE,
+    images: [DEFAULT_OG_IMAGE.url],
+  },
+  formatDetection: {
+    telephone: true,
+    address: true,
+    email: true,
+  },
+  verification: {
+    // Add Google Search Console verification token here once available:
+    // google: "XXX",
+  },
 };
 
 export default function RootLayout({
@@ -47,7 +115,10 @@ export default function RootLayout({
       lang="de"
       className={`${fraunces.variable} ${garamond.variable} ${caveat.variable} h-full antialiased [color-scheme:dark]`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-espresso">{children}</body>
+      <body className="min-h-full flex flex-col bg-paper text-espresso">
+        <JsonLd data={[restaurantSchema(), websiteSchema(), organizationSchema()]} />
+        {children}
+      </body>
     </html>
   );
 }
