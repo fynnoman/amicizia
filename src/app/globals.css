@@ -497,3 +497,7 @@ html, body {
 
 /* Tabular numerics for prices */
 .tabnum { font-variant-numeric: tabular-nums; }
+
+/* Hide scrollbar for horizontal chip strips on mobile */
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }

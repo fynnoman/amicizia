@@ -93,10 +93,10 @@ export default function Testimonials() {
 	return (
 		<section
 			ref={ref}
-			className="paper-grain relative py-28 md:py-32 overflow-hidden bg-paper"
+			className="paper-grain relative py-16 sm:py-20 md:py-32 overflow-hidden bg-paper"
 		>
-			<div className="max-w-7xl mx-auto px-6 lg:px-12">
-				<div className="text-center mb-14">
+			<div className="max-w-7xl mx-auto px-5 sm:px-6 lg:px-12">
+				<div className="text-center mb-10 sm:mb-14">
 					<motion.div
 						initial={{ opacity: 0, y: 14 }}
 						animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -118,9 +118,9 @@ export default function Testimonials() {
 						initial={{ opacity: 0 }}
 						animate={inView ? { opacity: 1 } : {}}
 						transition={{ duration: 0.6, delay: 0.2 }}
-						className="font-hand text-2xl text-espresso-soft mt-3"
+						className="font-display italic text-base sm:text-lg text-espresso-soft mt-3 tracking-wide"
 					>
-						kleine Worte, die uns satt machen ♡
+						Rückmeldungen unserer Stammgäste.
 					</motion.p>
 					<div className="flex justify-center mt-4 text-terracotta">
 						<Fleuron size={16} />

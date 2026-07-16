@@ -18,7 +18,7 @@ export default function Footer() {
   return (
     <footer
       ref={ref}
-      className="relative bg-paper-deep text-paper-soft pt-20 pb-10 px-6 lg:px-12 overflow-hidden border-t border-paper-soft/10"
+      className="relative bg-paper-deep text-paper-soft pt-14 sm:pt-20 pb-10 px-5 sm:px-6 lg:px-12 overflow-hidden border-t border-paper-soft/10"
     >
       {/* Top deckle: warm champagne glow */}
       <div
@@ -36,18 +36,18 @@ export default function Footer() {
           initial={{ opacity: 0 }}
           animate={inView ? { opacity: 1 } : {}}
           transition={{ duration: 0.8 }}
-          className="flex items-center gap-4 mb-12 text-paper-soft/60"
+          className="flex items-center gap-3 sm:gap-4 mb-10 sm:mb-12 text-paper-soft/60"
         >
           <span className="h-px flex-1 bg-paper-soft/15" />
-          <Fleuron size={18} />
-          <span className="font-display italic tracking-[0.4em] text-xs uppercase">
+          <Fleuron size={16} />
+          <span className="font-display italic tracking-[0.28em] sm:tracking-[0.4em] text-[0.65rem] sm:text-xs uppercase whitespace-nowrap">
             Familienbetrieb · Saarlouis
           </span>
-          <Fleuron size={18} />
+          <Fleuron size={16} />
           <span className="h-px flex-1 bg-paper-soft/15" />
         </motion.div>
 
-        <div className="grid md:grid-cols-[1.6fr_1fr_1fr] gap-10">
+        <div className="grid md:grid-cols-[1.6fr_1fr_1fr] gap-8 sm:gap-10">
           {/* Brand + NAP */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}

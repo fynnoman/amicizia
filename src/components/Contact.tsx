@@ -12,10 +12,10 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="paper-grain relative py-28 md:py-32 px-6 lg:px-12 overflow-hidden bg-paper-deep/40"
+      className="paper-grain relative py-16 sm:py-20 md:py-32 px-5 sm:px-6 lg:px-12 overflow-hidden bg-paper-deep/40"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-14">
+        <div className="text-center mb-10 sm:mb-14">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -37,13 +37,13 @@ export default function Contact() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-hand text-2xl text-espresso-soft mt-3"
+            className="font-display italic text-base sm:text-lg text-espresso-soft mt-3 tracking-wide"
           >
-            Industriestraße 20, Saarlouis — die Tür ist offen.
+            Industriestraße 20 · Saarlouis
           </motion.p>
         </div>
 
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
+        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10 sm:gap-12 lg:gap-16 items-start">
           {/* Left: Postcard info */}
           <motion.div
             initial={{ opacity: 0, x: -24 }}
@@ -51,7 +51,7 @@ export default function Contact() {
             transition={{ duration: 0.7, delay: 0.25 }}
             className="relative"
           >
-            <div className="postcard p-8 md:p-10 relative">
+            <div className="postcard p-6 sm:p-8 md:p-10 relative">
               <div className="grain-overlay" />
 
               <div className="relative">
@@ -128,13 +128,12 @@ export default function Contact() {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2604.5!2d6.7514!3d49.3137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4795b07c8caa7e1b%3A0x0!2sIndustriestr.+20%2C+66740+Saarlouis!5e0!3m2!1sde!2sde!4v1680000000000!5m2!1sde!2sde"
                 width="100%"
-                height="520"
                 style={{ border: 0, filter: "saturate(0.85) sepia(0.18) hue-rotate(-8deg)" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
                 title="AMICIZIA Standort"
-                className="w-full"
+                className="w-full h-[320px] sm:h-[420px] lg:h-[520px]"
               />
             </div>
 
@@ -142,16 +141,16 @@ export default function Contact() {
               initial={{ opacity: 0, y: 14 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="absolute -bottom-7 left-6 right-6 bg-paper-deep border border-paper-soft/15 depth-shadow p-5 flex items-center justify-between"
+              className="absolute -bottom-7 left-3 right-3 sm:left-6 sm:right-6 bg-paper-deep border border-paper-soft/15 depth-shadow p-3 sm:p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3"
             >
               <div>
-                <div className="font-display italic text-terracotta text-xs tracking-[0.25em] uppercase">
+                <div className="font-display italic text-terracotta text-[0.65rem] sm:text-xs tracking-[0.25em] uppercase">
                   Unsere Adresse
                 </div>
-                <p className="font-display text-espresso text-xl mt-1">
+                <p className="font-display text-espresso text-base sm:text-xl mt-1">
                   AMICIZIA · Familienbetrieb
                 </p>
-                <p className="font-serif italic text-espresso-soft text-sm">
+                <p className="font-serif italic text-espresso-soft text-xs sm:text-sm">
                   Industriestraße 20 · Saarlouis
                 </p>
               </div>
@@ -159,7 +158,7 @@ export default function Contact() {
                 href="https://maps.google.com/?q=Industriestraße+20,+66740+Saarlouis"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-terra !py-2 !px-4 !text-[0.7rem]"
+                className="btn-terra !py-2 !px-4 !text-[0.7rem] whitespace-nowrap self-stretch sm:self-auto text-center"
               >
                 Route planen
               </a>

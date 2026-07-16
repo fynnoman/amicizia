@@ -167,10 +167,10 @@ export default function Timeline() {
     <section
       id="timeline"
       ref={ref}
-      className="paper-grain relative py-28 md:py-32 px-6 lg:px-12 overflow-hidden bg-paper-deep/40"
+      className="paper-grain relative py-16 sm:py-20 md:py-32 px-5 sm:px-6 lg:px-12 overflow-hidden bg-paper-deep/40"
     >
       <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-20">
+        <div className="text-center mb-12 sm:mb-16 md:mb-20">
           <motion.div
             initial={{ opacity: 0, y: 14 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}

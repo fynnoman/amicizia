@@ -51,35 +51,35 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-12 text-paper-soft">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 lg:px-12 text-paper-soft py-24 sm:py-0">
         {/* Eyebrow */}
-        <div className="reveal delay-1 flex items-center gap-4 text-paper-soft/70 mb-8">
-          <span className="h-px w-12 bg-paper-soft/60" />
-          <span className="font-display italic tracking-[0.35em] uppercase text-[0.72rem]">
+        <div className="reveal delay-1 flex items-center gap-3 sm:gap-4 text-paper-soft/70 mb-6 sm:mb-8">
+          <span className="h-px w-8 sm:w-12 bg-paper-soft/60" />
+          <span className="font-display italic tracking-[0.28em] sm:tracking-[0.35em] uppercase text-[0.6rem] sm:text-[0.72rem]">
             Betrieb · Saarlouis · seit 2013
           </span>
-          <span className="h-px w-12 bg-paper-soft/60" />
+          <span className="h-px w-8 sm:w-12 bg-paper-soft/60" />
         </div>
 
         {/* Handwritten Italian whisper above the headline */}
-        <p className="reveal delay-2 font-hand text-3xl md:text-4xl text-terracotta-soft/90 -mb-2 ml-1 -rotate-2">
+        <p className="reveal delay-2 font-hand text-2xl sm:text-3xl md:text-4xl text-terracotta-soft/90 -mb-2 ml-1 -rotate-2">
           herzlich willkommen,
         </p>
 
         {/* Main display headline */}
-        <h1 className="reveal delay-3 display-xl text-[clamp(4rem,14vw,12rem)] text-paper-soft">
+        <h1 className="reveal delay-3 display-xl text-[clamp(3.5rem,15vw,12rem)] text-paper-soft leading-[0.95]">
           <span className="block">AMI<span className="italic-display">cizia</span></span>
         </h1>
 
         {/* Sub line */}
-        <div className="reveal delay-4 mt-6 max-w-2xl">
-          <p className="font-display italic text-2xl md:text-3xl text-paper-soft/90 leading-snug">
+        <div className="reveal delay-4 mt-5 sm:mt-6 max-w-2xl">
+          <p className="font-display italic text-xl sm:text-2xl md:text-3xl text-paper-soft/90 leading-snug">
             Pizza, Pasta &amp; kleine Familien&shy;rezepte —
-            <span className="font-hand text-terracotta-soft text-3xl ml-2">
+            <span className="font-hand text-terracotta-soft text-2xl sm:text-3xl ml-2">
               mit Liebe gemacht.
             </span>
           </p>
-          <p className="mt-4 font-serif text-paper-soft/65 text-base md:text-lg leading-relaxed max-w-xl">
+          <p className="mt-4 font-serif text-paper-soft/65 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl">
             Ein kleiner italienischer Familienbetrieb mitten in Saarlouis.
             Frischer Teig aus dem Steinofen, ehrliche Zutaten und Rezepte,
             die seit 2013 unverändert sind.
@@ -87,31 +87,31 @@ export default function Hero() {
         </div>
 
         {/* CTAs */}
-        <div className="reveal delay-5 mt-10 flex flex-col sm:flex-row gap-4">
-          <a href="#menu" className="btn-terra">
+        <div className="reveal delay-5 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
+          <a href="#menu" className="btn-terra justify-center">
             Zur Speisekarte
           </a>
           <a
             href="tel:+4968311234567"
-            className="btn-ghost !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-paper"
+            className="btn-ghost justify-center !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-paper"
           >
             <Tomato size={18} />
             Anrufen zur Abholung
           </a>
         </div>
 
-        {/* Three bottom marks */}
-        <div className="reveal delay-6 mt-14 grid grid-cols-3 gap-6 max-w-xl">
+        {/* Three bottom marks — 3 col on desktop, 1 col stacked on mobile */}
+        <div className="reveal delay-6 mt-10 sm:mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 max-w-xl">
           {[
             { kicker: "I.",   label: "Saarlouis",       sub: "Industriestraße 20" },
             { kicker: "II.",  label: "Küche",           sub: "12:00 – 22:00 Uhr" },
             { kicker: "III.", label: "Steinofen",       sub: "knusprig & frisch" },
           ].map((b) => (
             <div key={b.kicker} className="border-l border-paper-soft/30 pl-4">
-              <div className="font-display italic text-terracotta-soft text-sm tracking-[0.3em]">
+              <div className="font-display italic text-terracotta-soft text-xs sm:text-sm tracking-[0.3em]">
                 {b.kicker}
               </div>
-              <div className="font-display text-paper-soft text-base mt-1">
+              <div className="font-display text-paper-soft text-sm sm:text-base mt-1">
                 {b.label}
               </div>
               <div className="font-serif text-paper-soft/55 text-xs mt-0.5">
