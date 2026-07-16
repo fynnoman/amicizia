@@ -87,10 +87,10 @@ export default function Contact() {
                     icon={<Sun size={22} />}
                     title="Öffnungszeiten"
                   >
-                    täglich geöffnet
+                    Vorbestellung ab 11:00 Uhr
                     <br />
-                    <span className="font-hand text-terracotta text-2xl">
-                      ab 10:00 Uhr →
+                    <span className="font-display italic text-terracotta text-lg">
+                      Küche 12:00 – 22:00 Uhr
                     </span>
                   </InfoRow>
 
@@ -109,8 +109,8 @@ export default function Contact() {
                   </InfoRow>
                 </div>
 
-                <div className="mt-8 pt-6 border-t border-dashed border-espresso/25 font-hand text-2xl text-espresso-soft -rotate-1">
-                  Wir freuen uns auf dich ♡
+                <div className="mt-8 pt-6 border-t border-dashed border-espresso/25 font-display italic text-base text-espresso tracking-wide">
+                  Bestellungen zur Abholung telefonisch entgegen genommen.
                 </div>
               </div>
             </div>
@@ -149,7 +149,7 @@ export default function Contact() {
                   Unsere Adresse
                 </div>
                 <p className="font-display text-espresso text-xl mt-1">
-                  AMICIZIA Trattoria
+                  AMICIZIA · Familienbetrieb
                 </p>
                 <p className="font-serif italic text-espresso-soft text-sm">
                   Industriestraße 20 · Saarlouis

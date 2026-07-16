@@ -12,7 +12,7 @@ export default function ChefShowcase() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-[80vh] md:h-[88vh] overflow-hidden bg-paper-deep"
+      className="relative w-full h-[58vh] md:h-[62vh] overflow-hidden bg-paper-deep"
       aria-label="In unserer Küche"
     >
       {/* Photograph — chef tossing herbs, golden hour */}

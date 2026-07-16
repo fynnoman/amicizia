@@ -7,7 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/api/", "/bestellung/erfolg"],
       },
       // Welcome AI search crawlers explicitly for GEO visibility
       {

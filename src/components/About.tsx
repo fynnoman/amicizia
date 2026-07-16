@@ -63,10 +63,10 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.25 }}
               className="font-display italic text-3xl md:text-4xl text-espresso leading-snug mb-7"
             >
-              Wir sind kein Restaurant.
+              Italienische Küche,
               <br />
-              Wir sind eine <span className="text-terracotta">Familie,</span>{" "}
-              die kocht.
+              geführt als{" "}
+              <span className="text-terracotta">Familienbetrieb.</span>
             </motion.p>
 
             <motion.div
@@ -76,24 +76,18 @@ export default function About() {
               className="space-y-5 font-serif text-lg leading-relaxed text-espresso-soft"
             >
               <p>
-                Angefangen hat alles 2013 — mit einem Ofen, einem Traum und
-                einer Großmutter, die nie aufgehört hat zu sagen{" "}
-                <span className="font-hand text-terracotta text-2xl">
-                  „iss, iss noch was!&quot;
-                </span>
+                AMICIZIA wurde 2013 in Saarlouis gegründet. Inhaber Rezar
+                bringt über 21 Jahre Erfahrung im Handel und in der
+                Führung eigener Betriebe mit. Aus diesem Hintergrund heraus
+                entstand der Wunsch, eine Pizzeria aufzubauen, in der jeder
+                Schritt kontrolliert und in der Küche selbst gearbeitet wird.
               </p>
               <p>
-                Heute, zwölf Jahre und unzählige Pizzen später, sind wir
-                immer noch dieselbe Familie. Nur der Ofen ist neuer.{" "}
-                <span className="italic text-espresso">
-                  Unser Teig ruht über Nacht, die Tomaten kommen aus
-                  San&nbsp;Marzano, und der Mozzarella schmeckt nach
-                  Süditalien.
-                </span>
-              </p>
-              <p className="italic text-espresso-soft">
-                &ldquo;Danke an alle, die uns schon kennen — und an alle,
-                die jetzt das erste Mal an unseren Tisch kommen.&rdquo;
+                Aus einem kleinen Standort ist über die Jahre ein
+                etablierter Betrieb geworden. Heute steht AMICIZIA für
+                Steinofen-Pizza, hausgemachte Wraps und Ciabatta sowie einen
+                geregelten Ablauf mit fester Öffnungszeit und persönlicher
+                Betreuung an der Theke.
               </p>
             </motion.div>
 
@@ -104,11 +98,11 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.5 }}
               className="mt-9"
             >
-              <div className="font-hand text-4xl text-terracotta -rotate-3">
-                — Familie AMICIZIA
+              <div className="font-display italic text-2xl text-terracotta">
+                AMICIZIA · Familienbetrieb seit 2013
               </div>
-              <div className="font-display italic text-espresso-soft/70 text-sm mt-1 ml-1 tracking-wider">
-                Saarlouis, mit italienischem Herz
+              <div className="font-display italic text-espresso-soft/70 text-sm mt-1 tracking-wider">
+                Industriestraße 20 · Saarlouis
               </div>
             </motion.div>
 
@@ -120,9 +114,9 @@ export default function About() {
               className="flex flex-wrap gap-10 mt-10 pt-8 border-t border-espresso/15"
             >
               {[
-                { value: "12+", label: "Jahre Erfahrung",  icon: <Sun size={18} /> },
-                { value: "100%", label: "frisch jeden Tag", icon: <Tomato size={18} /> },
-                { value: "∞",   label: "Liebe im Essen",   icon: <Fleuron size={18} /> },
+                { value: "2013", label: "Gründungsjahr",     icon: <Sun size={18} /> },
+                { value: "21+",  label: "Jahre Erfahrung",   icon: <Tomato size={18} /> },
+                { value: "12–22", label: "Küche geöffnet",   icon: <Fleuron size={18} /> },
               ].map((stat) => (
                 <div key={stat.label}>
                   <div className="display-lg text-terracotta text-4xl">{stat.value}</div>
@@ -190,13 +184,13 @@ export default function About() {
               <CircleStamp size={140} />
             </div>
 
-            {/* Pinned "Aperto!" tag bottom-left */}
+            {/* Pinned opening-hours tag bottom-left */}
             <div className="absolute -bottom-6 -left-6 bg-paper-deep px-5 py-3 border border-paper-soft/15 depth-shadow tilt-l">
-              <div className="font-hand text-terracotta text-2xl leading-none">
-                Geöffnet!
+              <div className="font-display text-terracotta text-lg leading-none">
+                Küche 12–22 Uhr
               </div>
               <div className="font-display italic text-espresso-soft text-[10px] tracking-[0.3em] uppercase mt-1">
-                den ganzen Tag
+                Vorbestellung ab 11 Uhr
               </div>
             </div>
 

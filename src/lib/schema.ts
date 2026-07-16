@@ -14,9 +14,9 @@ export function restaurantSchema() {
     "@type": "Restaurant",
     "@id": ORG_ID,
     name: BUSINESS.legalName,
-    alternateName: ["AMICIZIA Saarlouis", "Trattoria di Famiglia", "Amicizia Pizzeria"],
+    alternateName: ["AMICIZIA Saarlouis", "Amicizia Pizzeria"],
     description:
-      "Familiengeführte italienische Trattoria mit Steinofen in Saarlouis. Handgemachte Pizza, frische Pasta und kleine Familienrezepte seit 2013.",
+      "Italienischer Familienbetrieb mit Steinofen in Saarlouis. Steinofen-Pizza, hausgemachte Wraps und Ciabatta, seit 2013. Bestellung zur Abholung telefonisch.",
     url: SITE_URL,
     logo: `${SITE_URL}/icon.png`,
     image: [
@@ -56,10 +56,10 @@ export function restaurantSchema() {
       name,
     })),
     sameAs: [BUSINESS.socials.instagram].filter(Boolean),
-    hasMenu: `${SITE_URL}/speisekarte`,
+    hasMenu: `${SITE_URL}/#menu`,
     potentialAction: {
       "@type": "OrderAction",
-      target: `${SITE_URL}/#order`,
+      target: `tel:${BUSINESS.phone.replace(/\s+/g, "")}`,
       deliveryMethod: "http://purl.org/goodrelations/v1#PickUp",
     },
   } as const;

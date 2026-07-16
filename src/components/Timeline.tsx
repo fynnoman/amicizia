@@ -6,39 +6,34 @@ import { Divider, Fleuron, OliveBranch } from "./Ornaments";
 
 const milestones = [
   {
+    year: "vor 2013",
+    title: "21 Jahre Handel",
+    description:
+      "Inhaber Rezar arbeitet über zwei Jahrzehnte im Handel und in der Führung eigener Betriebe. Aus dieser Erfahrung entsteht die Idee, eine eigene Pizzeria zu eröffnen.",
+  },
+  {
     year: "2013",
-    title: "Der Anfang",
+    title: "Gründung von AMICIZIA",
     description:
-      "Ein kleiner Ofen, ein großer Traum. Mit Mehl an den Händen und Mut im Bauch hat alles begonnen.",
+      "AMICIZIA wird in Saarlouis gegründet. Der Betrieb startet mit klarem Konzept: Steinofen-Pizza, hausgemachte Beilagen, kurze Wege in der Küche.",
   },
   {
-    year: "2015",
-    title: "Die ersten Stammgäste",
+    year: "2015 – 2018",
+    title: "Aufbau des Stammgeschäfts",
     description:
-      "Manche kommen seit damals jeden Donnerstag — Tisch sechs, immer derselbe.",
+      "Das Sortiment wird um Ciabatta und Wraps erweitert. Feste Abläufe und ein wiederkehrender Kundenstamm etablieren den Betrieb im Saarlouiser Zentrum.",
   },
   {
-    year: "2018",
-    title: "Die Kinder steigen ein",
+    year: "2019 – 2022",
+    title: "Konsolidierung",
     description:
-      "Aus dem Familienprojekt wird ein Familienbetrieb. Jeder hat seinen Posten. Auch der Hund.",
-  },
-  {
-    year: "2022",
-    title: "Zwölf Jahre",
-    description:
-      "Tausende Pizzen, hunderte Hochzeitstage gefeiert, ein paar Tränen gelacht. Wir sind noch lange nicht satt.",
+      "AMICIZIA wächst kontrolliert. Öffnungszeiten, Einkauf und Personalstruktur werden professionalisiert. Der Betrieb läuft zuverlässig sieben Tage die Woche.",
   },
   {
     year: "2025",
-    title: "Ein neues Zuhause",
+    title: "Standort Industriestraße 20",
     description:
-      "Frische Wände, neuer Steinofen, gleiche Liebe. AMICIZIA hat ein neues Zuhause — Industriestraße 20.",
-  },
-  {
-    year: "morgen",
-    title: "Es kommt noch was",
-    description: "Wir haben große Pläne. Wir verraten noch nichts. Bleibt hungrig.",
+      "AMICIZIA arbeitet aus dem heutigen Standort in der Industriestraße 20. Steinofen, Küche und Theke sind auf den bestehenden Betriebsablauf ausgerichtet.",
   },
 ];
 
@@ -95,14 +90,11 @@ function Content({
   item: typeof milestones[0];
   alignRight?: boolean;
 }) {
-  const isFuture = item.year === "morgen";
   return (
     <div className={alignRight ? "inline-block text-right" : "inline-block"}>
       <span
-        className={`block ${
-          isFuture ? "font-hand text-5xl text-terracotta" : "display-lg text-5xl text-terracotta/30"
-        }`}
-        style={isFuture ? {} : { fontVariationSettings: '"opsz" 144' }}
+        className="block display-lg text-5xl text-terracotta/30"
+        style={{ fontVariationSettings: '"opsz" 144' }}
       >
         {item.year}
       </span>
@@ -125,7 +117,6 @@ function ItemMobile({
 }) {
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-50px" });
-  const isFuture = item.year === "morgen";
 
   return (
     <div ref={ref} className="relative flex gap-5">
@@ -154,11 +145,7 @@ function ItemMobile({
         transition={{ duration: 0.6, delay: 0.2 }}
         className="pb-12 -mt-1"
       >
-        <span
-          className={`block ${
-            isFuture ? "font-hand text-3xl text-terracotta" : "display-lg text-3xl text-terracotta/30"
-          }`}
-        >
+        <span className="block display-lg text-3xl text-terracotta/30">
           {item.year}
         </span>
         <h3 className="font-display italic text-xl text-espresso mt-1">
@@ -178,6 +165,7 @@ export default function Timeline() {
 
   return (
     <section
+      id="timeline"
       ref={ref}
       className="paper-grain relative py-28 md:py-32 px-6 lg:px-12 overflow-hidden bg-paper-deep/40"
     >
@@ -198,7 +186,7 @@ export default function Timeline() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="display-lg text-[clamp(2.5rem,6vw,5rem)] text-espresso"
           >
-            Zwölf Jahre{" "}
+            Vom Handel zum{" "}
             <span className="italic-display text-terracotta">Steinofen</span>
           </motion.h2>
 
@@ -206,9 +194,9 @@ export default function Timeline() {
             initial={{ opacity: 0 }}
             animate={inView ? { opacity: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-hand text-2xl text-espresso-soft mt-3"
+            className="font-display italic text-lg text-espresso-soft mt-4 tracking-wide"
           >
-            jeder Meilenstein erzählt eine Geschichte ♡
+            Ein Familienbetrieb, aufgebaut aus über zwei Jahrzehnten Erfahrung.
           </motion.p>
 
           <div className="mt-6 flex justify-center text-terracotta">

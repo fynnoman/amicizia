@@ -161,13 +161,13 @@ export default function Menu() {
               <OliveBranch size={36} />
               <div className="text-center">
                 <div className="font-display italic text-terracotta tracking-[0.4em] text-[0.7rem] uppercase">
-                  Trattoria
+                  Familienbetrieb · seit 2013
                 </div>
                 <div className="display-lg text-terracotta text-3xl">
                   AMI<span className="italic-display">cizia</span>
                 </div>
-                <div className="font-hand text-espresso text-base -mt-1">
-                  unsere Speisekarte
+                <div className="font-display italic text-espresso text-sm mt-1 tracking-wide">
+                  Speisekarte
                 </div>
               </div>
               <OliveBranch size={36} className="-scale-x-100" />
@@ -214,8 +214,8 @@ export default function Menu() {
               <Wheat size={22} />
             </div>
 
-            <p className="text-center font-hand text-2xl md:text-3xl text-espresso-soft mt-4 -rotate-1">
-              guten Appetit ♡
+            <p className="text-center font-display italic text-base md:text-lg text-espresso-soft mt-4 tracking-wide">
+              Bestellung zur Abholung telefonisch — Vorbestellung ab 11:00 Uhr.
             </p>
           </div>
         </motion.div>
@@ -227,11 +227,11 @@ export default function Menu() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="text-center mt-14"
         >
-          <a href="#order" className="btn-terra">
-            Jetzt bestellen &amp; abholen →
+          <a href="#contact" className="btn-terra">
+            Zur Adresse &amp; Anruf →
           </a>
           <p className="font-display italic text-espresso-soft text-sm mt-4 tracking-wider">
-            online vorbestellen, frisch bei uns abholen
+            Anrufen, Bestellung aufnehmen, frisch bei uns abholen.
           </p>
         </motion.div>
       </div>

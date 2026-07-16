@@ -56,7 +56,7 @@ export default function Hero() {
         <div className="reveal delay-1 flex items-center gap-4 text-paper-soft/70 mb-8">
           <span className="h-px w-12 bg-paper-soft/60" />
           <span className="font-display italic tracking-[0.35em] uppercase text-[0.72rem]">
-            Trattoria · Saarlouis · seit 2013
+            Betrieb · Saarlouis · seit 2013
           </span>
           <span className="h-px w-12 bg-paper-soft/60" />
         </div>
@@ -80,9 +80,9 @@ export default function Hero() {
             </span>
           </p>
           <p className="mt-4 font-serif text-paper-soft/65 text-base md:text-lg leading-relaxed max-w-xl">
-            Eine kleine italienische Familien-Trattoria mitten in Saarlouis.
-            Frischer Teig, San-Marzano-Tomaten, Olivenöl aus dem Süden — und
-            ein Tisch, an dem du dich zuhause fühlst.
+            Ein kleiner italienischer Familienbetrieb mitten in Saarlouis.
+            Frischer Teig aus dem Steinofen, ehrliche Zutaten und Rezepte,
+            die seit 2013 unverändert sind.
           </p>
         </div>
 
@@ -92,11 +92,11 @@ export default function Hero() {
             Zur Speisekarte
           </a>
           <a
-            href="#order"
+            href="tel:+4968311234567"
             className="btn-ghost !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-paper"
           >
             <Tomato size={18} />
-            Bestellen &amp; abholen
+            Anrufen zur Abholung
           </a>
         </div>
 
@@ -104,7 +104,7 @@ export default function Hero() {
         <div className="reveal delay-6 mt-14 grid grid-cols-3 gap-6 max-w-xl">
           {[
             { kicker: "I.",   label: "Saarlouis",       sub: "Industriestraße 20" },
-            { kicker: "II.",  label: "Täglich geöffnet", sub: "ab 10:00 Uhr" },
+            { kicker: "II.",  label: "Küche",           sub: "12:00 – 22:00 Uhr" },
             { kicker: "III.", label: "Steinofen",       sub: "knusprig & frisch" },
           ].map((b) => (
             <div key={b.kicker} className="border-l border-paper-soft/30 pl-4">

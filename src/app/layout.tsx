@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, EB_Garamond, Caveat } from "next/font/google";
 import "./globals.css";
-import JsonLd from "@/components/seo/JsonLd";
+import JsonLd from "@/components/JsonLd";
 import {
   restaurantSchema,
   websiteSchema,
@@ -37,9 +37,9 @@ export const metadata: Metadata = {
   },
   description: SITE_TAGLINE,
   applicationName: "AMICIZIA",
-  authors: [{ name: "AMICIZIA Trattoria" }],
-  creator: "AMICIZIA Trattoria",
-  publisher: "AMICIZIA Trattoria",
+  authors: [{ name: "AMICIZIA" }],
+  creator: "AMICIZIA",
+  publisher: "AMICIZIA",
   generator: "Next.js",
   category: "Restaurant",
   classification: "Italienisches Restaurant · Pizzeria",
@@ -48,15 +48,12 @@ export const metadata: Metadata = {
     "Pizza Saarlouis",
     "Italiener Saarlouis",
     "Italienisches Restaurant Saarlouis",
-    "Trattoria Saarlouis",
     "Steinofen Pizza Saarlouis",
-    "Pizza bestellen Saarlouis",
+    "Pizza abholen Saarlouis",
     "Italienisch essen Saarlouis",
-    "Beste Pizza Saarlouis",
     "AMICIZIA Saarlouis",
     "Italiener Industriestraße Saarlouis",
     "Pizzeria Saarland",
-    "Italiener in der Nähe Saarlouis",
   ],
   alternates: {
     canonical: "/",

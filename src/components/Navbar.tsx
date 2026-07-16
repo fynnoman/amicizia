@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Fleuron } from "./Ornaments";
 
 const navLinks = [
-  { name: "Pizzeria",    href: "/pizzeria-saarlouis" },
-  { name: "Speisekarte", href: "/speisekarte" },
-  { name: "Über uns",    href: "/ueber-uns" },
-  { name: "Kontakt",     href: "/kontakt" },
+  { name: "Über uns",    href: "#about" },
+  { name: "Geschichte",  href: "#timeline" },
+  { name: "Speisekarte", href: "#menu" },
+  { name: "Kontakt",     href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -35,7 +35,7 @@ export default function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center gap-3 group" data-logo>
+          <a href="#hero" className="flex items-center gap-3 group" data-logo>
             <span
               className={`transition-colors duration-500 ${
                 scrolled ? "text-terracotta" : "text-paper-soft"
@@ -53,11 +53,11 @@ export default function Navbar() {
                 AMICIZIA
               </span>
               <span
-                className={`font-hand text-[0.95rem] -mt-0.5 transition-colors duration-500 ${
+                className={`font-display italic text-[0.72rem] tracking-[0.28em] uppercase mt-0.5 transition-colors duration-500 ${
                   scrolled ? "text-terracotta" : "text-paper-soft/80"
                 }`}
               >
-                trattoria di famiglia
+                Familienbetrieb · Saarlouis
               </span>
             </span>
           </a>
@@ -78,10 +78,10 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="/pizza-bestellen-saarlouis"
-              className={`btn-terra !py-2.5 !px-5 !text-[0.7rem]`}
+              href="tel:+4968311234567"
+              className="btn-terra !py-2.5 !px-5 !text-[0.7rem]"
             >
-              Bestellen
+              Anrufen
             </a>
           </div>
 
@@ -150,14 +150,14 @@ export default function Navbar() {
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              href="/pizza-bestellen-saarlouis"
+              href="tel:+4968311234567"
               onClick={() => setMobileOpen(false)}
               className="btn-terra mt-4"
             >
-              Jetzt bestellen
+              Anrufen zur Abholung
             </motion.a>
-            <span className="font-hand text-2xl text-terracotta mt-2">
-              Wir freuen uns auf dich ♡
+            <span className="font-display italic text-base text-espresso-soft mt-2 tracking-wide">
+              Vorbestellung ab 11:00 · Küche 12:00 – 22:00
             </span>
           </motion.div>
         )}

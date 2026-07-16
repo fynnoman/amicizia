@@ -9,9 +9,9 @@
 export const SITE_URL = "https://www.amicizia-saarlouis.de" as const;
 
 export const BUSINESS = {
-  legalName: "AMICIZIA Trattoria di Famiglia",
+  legalName: "AMICIZIA",
   shortName: "AMICIZIA",
-  tagline: "Trattoria di Famiglia",
+  tagline: "Familienbetrieb · Saarlouis",
   founded: 2013,
   cuisines: ["Italienisch", "Pizza", "Mediterran"],
   priceRange: "€€",
@@ -42,32 +42,30 @@ export const BUSINESS = {
     longitude: 6.7514,
   },
 
-  // Opening hours
+  // Opening hours — Vorbestellung telefonisch ab 11:00, Küche 12:00–22:00 täglich
   hours: {
     weekdayText: [
-      "Montag: 10:00–22:00",
-      "Dienstag: 10:00–22:00",
-      "Mittwoch: 10:00–22:00",
-      "Donnerstag: 10:00–22:00",
-      "Freitag: 10:00–23:00",
-      "Samstag: 10:00–23:00",
-      "Sonntag: 11:00–22:00",
+      "Montag: 12:00–22:00",
+      "Dienstag: 12:00–22:00",
+      "Mittwoch: 12:00–22:00",
+      "Donnerstag: 12:00–22:00",
+      "Freitag: 12:00–22:00",
+      "Samstag: 12:00–22:00",
+      "Sonntag: 12:00–22:00",
     ],
     // Schema.org OpeningHoursSpecification
     spec: [
       {
-        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"] as const,
-        opens: "10:00",
-        closes: "22:00",
-      },
-      {
-        dayOfWeek: ["Friday", "Saturday"] as const,
-        opens: "10:00",
-        closes: "23:00",
-      },
-      {
-        dayOfWeek: ["Sunday"] as const,
-        opens: "11:00",
+        dayOfWeek: [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday",
+          "Sunday",
+        ] as const,
+        opens: "12:00",
         closes: "22:00",
       },
     ],
@@ -99,12 +97,12 @@ export const BUSINESS = {
 
 export const SITE_NAME = "AMICIZIA — Pizzeria & Italiener in Saarlouis";
 export const SITE_TAGLINE =
-  "Italienische Trattoria mit Steinofen in Saarlouis — Pizza, Pasta & Familienrezepte seit 2013.";
+  "Italienischer Familienbetrieb mit Steinofen in Saarlouis — Pizza, Ciabatta und Wraps seit 2013.";
 
 /** Stable per-page-type defaults used by generateMetadata helpers. */
 export const DEFAULT_OG_IMAGE = {
   url: `${SITE_URL}/photos/amicizia-1.jpg`,
   width: 1200,
   height: 630,
-  alt: "AMICIZIA Trattoria — Italienische Pizzeria in Saarlouis",
+  alt: "AMICIZIA — Italienischer Familienbetrieb in Saarlouis",
 } as const;

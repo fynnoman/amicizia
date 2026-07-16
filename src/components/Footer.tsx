@@ -2,39 +2,13 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import Link from "next/link";
 import { Fleuron, OliveBranch, CircleStamp } from "./Ornaments";
 
-const pizzaLinks = [
-  { label: "Pizzeria Saarlouis", href: "/pizzeria-saarlouis" },
-  { label: "Pizza Saarlouis", href: "/pizza-saarlouis" },
-  { label: "Steinofen-Pizza", href: "/steinofen-pizza-saarlouis" },
-  { label: "Beste Pizza", href: "/beste-pizza-saarlouis" },
-  { label: "Pizza bestellen", href: "/pizza-bestellen-saarlouis" },
-];
-
-const italyLinks = [
-  { label: "Italiener Saarlouis", href: "/italiener-saarlouis" },
-  { label: "Italienisches Restaurant", href: "/italienisches-restaurant-saarlouis" },
-  { label: "Trattoria Saarlouis", href: "/trattoria-saarlouis" },
-  { label: "Italienisch essen", href: "/italienisch-essen-saarlouis" },
-];
-
-const supportLinks = [
-  { label: "Speisekarte", href: "/speisekarte" },
-  { label: "Reservierung", href: "/reservierung" },
-  { label: "Öffnungszeiten", href: "/oeffnungszeiten" },
-  { label: "Kontakt", href: "/kontakt" },
-  { label: "Über uns", href: "/ueber-uns" },
-  { label: "FAQ", href: "/faq" },
-];
-
-const areaLinks = [
-  { label: "Italiener Dillingen", href: "/italiener-dillingen" },
-  { label: "Pizzeria Saarwellingen", href: "/pizzeria-saarwellingen" },
-  { label: "Italiener Roden", href: "/italiener-roden" },
-  { label: "Italiener Fraulautern", href: "/italiener-fraulautern" },
-  { label: "Italiener Wallerfangen", href: "/italiener-wallerfangen" },
+const sectionLinks = [
+  { label: "Über uns",    href: "#about" },
+  { label: "Geschichte",  href: "#timeline" },
+  { label: "Speisekarte", href: "#menu" },
+  { label: "Kontakt",     href: "#contact" },
 ];
 
 export default function Footer() {
@@ -67,20 +41,20 @@ export default function Footer() {
           <span className="h-px flex-1 bg-paper-soft/15" />
           <Fleuron size={18} />
           <span className="font-display italic tracking-[0.4em] text-xs uppercase">
-            Trattoria di Famiglia
+            Familienbetrieb · Saarlouis
           </span>
           <Fleuron size={18} />
           <span className="h-px flex-1 bg-paper-soft/15" />
         </motion.div>
 
-        <div className="grid md:grid-cols-[1.4fr_1fr_1fr_1fr] gap-10">
+        <div className="grid md:grid-cols-[1.6fr_1fr_1fr] gap-10">
           {/* Brand + NAP */}
           <motion.div
             initial={{ opacity: 0, y: 18 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.6 }}
           >
-            <Link href="/" className="flex items-center gap-3">
+            <a href="#hero" className="flex items-center gap-3">
               <CircleStamp size={70} className="text-terracotta-soft/80" />
               <div>
                 <div
@@ -89,16 +63,16 @@ export default function Footer() {
                 >
                   AMICIZIA
                 </div>
-                <div className="font-hand text-terracotta-soft text-xl -mt-0.5">
-                  trattoria di famiglia
+                <div className="font-display italic text-terracotta-soft text-sm tracking-[0.25em] uppercase mt-1">
+                  Familienbetrieb · seit 2013
                 </div>
               </div>
-            </Link>
+            </a>
             <address className="not-italic font-serif text-paper-soft/65 text-base leading-relaxed mt-5">
               Industriestraße 20<br />
               66740 Saarlouis<br />
               <span className="font-display italic text-paper-soft/55 text-sm">
-                täglich · ab 10:00 Uhr
+                täglich · Vorbestellung ab 11:00, Küche 12:00 – 22:00
               </span>
             </address>
             <a
@@ -118,17 +92,17 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Pizza in Saarlouis
+              Sektionen
             </h4>
             <ul className="space-y-2">
-              {pizzaLinks.map((l) => (
+              {sectionLinks.map((l) => (
                 <li key={l.href}>
-                  <Link
+                  <a
                     href={l.href}
                     className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
                   >
                     {l.label}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -140,58 +114,20 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Italiener &amp; Trattoria
+              Bestellung
             </h4>
-            <ul className="space-y-2">
-              {italyLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-
-            <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mt-7 mb-3">
-              Aus der Umgebung
-            </h4>
-            <ul className="space-y-2">
-              {areaLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-          >
-            <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Service
-            </h4>
-            <ul className="space-y-2">
-              {supportLinks.map((l) => (
-                <li key={l.href}>
-                  <Link
-                    href={l.href}
-                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
-                  >
-                    {l.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
+            <p className="font-serif text-paper-soft/70 text-sm leading-relaxed">
+              Bestellungen zur Abholung werden ausschließlich telefonisch
+              entgegengenommen. Vorbestellung ab 11:00 Uhr möglich, Küche
+              von 12:00 bis 22:00 Uhr geöffnet.
+            </p>
+            <a
+              href="tel:+4968311234567"
+              className="inline-flex items-center gap-2 mt-4 text-paper-soft hover:text-terracotta-soft transition-colors duration-300 font-display italic text-sm"
+            >
+              <Fleuron size={14} />
+              Jetzt anrufen
+            </a>
           </motion.div>
         </div>
 
@@ -208,7 +144,7 @@ export default function Footer() {
           <p>© {new Date().getFullYear()} AMICIZIA · Saarlouis. Alle Rechte vorbehalten.</p>
           <p className="flex items-center gap-2">
             <OliveBranch size={14} />
-            Mit Liebe gemacht in Saarlouis.
+            Familienbetrieb aus Saarlouis.
             <OliveBranch size={14} className="-scale-x-100" />
           </p>
         </div>
