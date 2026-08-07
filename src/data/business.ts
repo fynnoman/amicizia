@@ -6,12 +6,21 @@
  * restaurant number before launch. All other data is authoritative.
  */
 
-export const SITE_URL = "https://www.amicizia-saarlouis.de" as const;
+export const SITE_URL = "https://www.amicizia-pizza.de" as const;
+
+/**
+ * Alternate/historical domain — kept as `sameAs` reference so search engines
+ * and AI crawlers can bridge the identity if links out in the wild still
+ * point to the old name. Do NOT reintroduce as canonical.
+ */
+export const ALT_DOMAINS = [
+  "https://www.amicizia-saarlouis.de",
+] as const;
 
 export const BUSINESS = {
   legalName: "AMICIZIA",
   shortName: "AMICIZIA",
-  tagline: "Familienbetrieb · Saarlouis",
+  tagline: "Pizzeria · Familienbetrieb · Saarlouis",
   founded: 2013,
   cuisines: ["Italienisch", "Pizza", "Mediterran"],
   priceRange: "€€",
@@ -20,10 +29,11 @@ export const BUSINESS = {
   paymentAccepted: ["Cash", "Credit Card", "EC", "Apple Pay", "Google Pay", "SumUp"],
   currenciesAccepted: "EUR",
 
-  // Contact — phone is a placeholder until the owner provides the live number.
-  phone: "+49 6831 4877800",
-  phoneDisplay: "06831 4877800",
-  email: "ciao@amicizia-saarlouis.de",
+  // Contact — live number (Mobil) für Vorbestellung zur Abholung
+  phone: "+491629906068",
+  phoneDisplay: "0162 9906068",
+  phoneTel: "+491629906068",
+  email: "ciao@amicizia-pizza.de",
 
   // Address — Industriestraße 20, 66740 Saarlouis (verify exact coords with owner)
   address: {
@@ -97,7 +107,7 @@ export const BUSINESS = {
 
 export const SITE_NAME = "AMICIZIA — Pizzeria & Italiener in Saarlouis";
 export const SITE_TAGLINE =
-  "Italienischer Familienbetrieb mit Steinofen in Saarlouis — Pizza, Ciabatta und Wraps seit 2013.";
+  "Steinofen Pizza in Saarlouis. Familienbetrieb seit 2013 in der Industriestraße 20. Vorbestellung ab 11 Uhr, Küche 12–22 Uhr täglich.";
 
 /** Stable per-page-type defaults used by generateMetadata helpers. */
 export const DEFAULT_OG_IMAGE = {

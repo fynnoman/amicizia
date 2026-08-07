@@ -2,13 +2,15 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { Fleuron } from "./Ornaments";
 
 const navLinks = [
-  { name: "Über uns",    href: "#about" },
-  { name: "Geschichte",  href: "#timeline" },
-  { name: "Speisekarte", href: "#menu" },
-  { name: "Kontakt",     href: "#contact" },
+  { name: "Speisekarte",     href: "/speisekarte" },
+  { name: "Öffnungszeiten",  href: "/oeffnungszeiten" },
+  { name: "Über uns",        href: "/ueber-uns" },
+  { name: "FAQ",             href: "/faq" },
+  { name: "Kontakt",         href: "/kontakt" },
 ];
 
 export default function Navbar() {
@@ -33,9 +35,9 @@ export default function Navbar() {
             : "bg-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-10 flex items-center justify-between h-16 sm:h-20">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-3 group" data-logo>
+          <Link href="/" className="flex items-center gap-3 group" data-logo aria-label="AMICIZIA — Pizzeria Saarlouis, Startseite">
             <span
               className={`transition-colors duration-500 ${
                 scrolled ? "text-terracotta" : "text-paper-soft"
@@ -45,7 +47,7 @@ export default function Navbar() {
             </span>
             <span className="flex flex-col leading-none">
               <span
-                className={`font-display text-[1.45rem] tracking-[0.22em] transition-colors duration-500 ${
+                className={`font-display text-[1.15rem] sm:text-[1.45rem] tracking-[0.22em] transition-colors duration-500 ${
                   scrolled ? "text-espresso" : "text-paper-soft"
                 }`}
                 style={{ fontVariationSettings: '"opsz" 144, "SOFT" 60' }}
@@ -53,33 +55,34 @@ export default function Navbar() {
                 AMICIZIA
               </span>
               <span
-                className={`font-display italic text-[0.72rem] tracking-[0.28em] uppercase mt-0.5 transition-colors duration-500 ${
+                className={`font-display italic text-[0.6rem] sm:text-[0.72rem] tracking-[0.22em] sm:tracking-[0.28em] uppercase mt-0.5 transition-colors duration-500 ${
                   scrolled ? "text-terracotta" : "text-paper-soft/80"
                 }`}
               >
-                Familienbetrieb · Saarlouis
+                Pizza · Saarlouis
               </span>
             </span>
-          </a>
+          </Link>
 
           {/* Desktop Links */}
-          <div className="hidden md:flex items-center gap-9">
+          <div className="hidden md:flex items-center gap-7 lg:gap-9">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
-                className={`relative font-display italic text-[1rem] transition-colors duration-300 ${
+                className={`relative font-display italic text-[0.95rem] lg:text-[1rem] transition-colors duration-300 ${
                   scrolled
                     ? "text-espresso hover:text-terracotta"
                     : "text-paper-soft hover:text-paper"
                 } after:absolute after:left-1/2 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-300 hover:after:left-0 hover:after:w-full`}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
             <a
-              href="tel:+4968311234567"
+              href="tel:+491629906068"
               className="btn-terra !py-2.5 !px-5 !text-[0.7rem]"
+              aria-label="Anrufen: 0162 9906068"
             >
               Anrufen
             </a>
@@ -88,8 +91,9 @@ export default function Navbar() {
           {/* Mobile Hamburger */}
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden flex flex-col gap-1.5 p-2"
-            aria-label="Menu"
+            className="md:hidden flex flex-col justify-center gap-1.5 p-3 -mr-3 min-h-[44px] min-w-[44px]"
+            aria-label={mobileOpen ? "Menü schließen" : "Menü öffnen"}
+            aria-expanded={mobileOpen}
           >
             <span
               className={`block w-6 h-0.5 transition-all duration-300 ${
@@ -130,33 +134,40 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="paper-grain fixed inset-0 z-40 bg-paper flex flex-col items-center justify-center gap-7"
+            className="paper-grain fixed inset-0 z-40 bg-paper flex flex-col items-center justify-center gap-6 px-6 overflow-y-auto py-24"
+            role="dialog"
+            aria-modal="true"
+            aria-label="Hauptnavigation"
           >
             <Fleuron size={28} className="text-terracotta" />
             {navLinks.map((link, i) => (
-              <motion.a
+              <motion.div
                 key={link.name}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
                 initial={{ opacity: 0, y: 18 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.08 + i * 0.08 }}
-                className="font-display italic text-4xl text-espresso hover:text-terracotta transition-colors"
               >
-                {link.name}
-              </motion.a>
+                <Link
+                  href={link.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="font-display italic text-3xl sm:text-4xl text-espresso hover:text-terracotta transition-colors min-h-[44px] flex items-center"
+                >
+                  {link.name}
+                </Link>
+              </motion.div>
             ))}
             <motion.a
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              href="tel:+4968311234567"
+              href="tel:+491629906068"
               onClick={() => setMobileOpen(false)}
-              className="btn-terra mt-4"
+              className="btn-terra mt-4 min-h-[48px] w-full sm:w-auto justify-center"
+              aria-label="Jetzt anrufen zur Abholung: 0162 9906068"
             >
-              Anrufen zur Abholung
+              Anrufen · 0162 9906068
             </motion.a>
-            <span className="font-display italic text-base text-espresso-soft mt-2 tracking-wide">
+            <span className="font-display italic text-sm sm:text-base text-espresso-soft mt-2 tracking-wide text-center">
               Vorbestellung ab 11:00 · Küche 12:00 – 22:00
             </span>
           </motion.div>

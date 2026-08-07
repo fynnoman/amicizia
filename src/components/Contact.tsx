@@ -2,7 +2,7 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
-import { Divider, Sun, Fleuron, OliveBranch } from "./Ornaments";
+import { Divider, Sun, Fleuron, OliveBranch, Tomato } from "./Ornaments";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -75,7 +75,24 @@ export default function Contact() {
                   </div>
                 </div>
 
-                <div className="space-y-7">
+                <div className="space-y-6 sm:space-y-7">
+                  <InfoRow
+                    icon={<Tomato size={22} />}
+                    title="Bestellung · Abholung"
+                  >
+                    <a
+                      href="tel:+491629906068"
+                      className="text-terracotta hover:text-terracotta-deep underline-offset-4 hover:underline font-display italic text-xl sm:text-2xl"
+                      aria-label="Jetzt anrufen: 0162 9906068"
+                    >
+                      0162 9906068
+                    </a>
+                    <br />
+                    <span className="font-serif italic text-espresso-soft text-sm">
+                      Vorbestellung ab 11:00 Uhr · Abholung in der Industriestraße 20
+                    </span>
+                  </InfoRow>
+
                   <InfoRow
                     icon={<OliveBranch size={22} />}
                     title="Adresse"
@@ -90,7 +107,7 @@ export default function Contact() {
                     Vorbestellung ab 11:00 Uhr
                     <br />
                     <span className="font-display italic text-terracotta text-lg">
-                      Küche 12:00 – 22:00 Uhr
+                      Küche 12:00 – 22:00 Uhr · täglich
                     </span>
                   </InfoRow>
 

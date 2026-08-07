@@ -44,17 +44,17 @@ export default function Marquee() {
   return (
     <div className="relative bg-paper-deep overflow-hidden border-y border-paper-soft/10">
       {/* Family quote — typewriter */}
-      <div className="py-6 border-b border-paper-soft/10">
-        <div className="max-w-4xl mx-auto px-6 flex items-center justify-center min-h-[44px]">
+      <div className="py-5 sm:py-6 border-b border-paper-soft/10">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-center min-h-[64px] sm:min-h-[52px]">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentQuote}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.3 }}
-              className="text-center flex items-center gap-3 flex-wrap justify-center"
+              className="text-center flex items-center gap-2 sm:gap-3 flex-wrap justify-center"
             >
-              <span className="font-hand text-paper-soft/75 text-2xl md:text-3xl leading-none">
+              <span className="font-hand text-paper-soft/75 text-xl sm:text-2xl md:text-3xl leading-tight">
                 &ldquo;{displayedText}
                 <span className="animate-blink text-paper-soft/40">|</span>&rdquo;
               </span>
@@ -63,7 +63,7 @@ export default function Marquee() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 0.3 }}
-                  className="font-display italic text-paper-soft/45 text-sm tracking-wider"
+                  className="font-display italic text-paper-soft/45 text-xs sm:text-sm tracking-wider"
                 >
                   — {familyQuotes[currentQuote].author}
                 </motion.span>
@@ -74,9 +74,9 @@ export default function Marquee() {
       </div>
 
       {/* Scrolling marquee with fleurons */}
-      <div className="py-4 overflow-hidden">
+      <div className="py-3 sm:py-4 overflow-hidden">
         <div className="marquee-track flex whitespace-nowrap">
-          <span className="marquee-content font-display italic text-paper-soft/50 text-lg tracking-[0.18em]">
+          <span className="marquee-content font-display italic text-paper-soft/50 text-base sm:text-lg tracking-[0.16em] sm:tracking-[0.18em]">
             {Array(6)
               .fill(0)
               .map((_, i) => (

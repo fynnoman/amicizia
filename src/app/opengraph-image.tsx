@@ -73,7 +73,7 @@ export default function OG() {
           }}
         >
           <div>Industriestraße 20 · 66740 Saarlouis</div>
-          <div>amicizia-saarlouis.de</div>
+          <div>amicizia-pizza.de</div>
         </div>
       </div>
     ),

@@ -62,22 +62,22 @@ function PolaroidCard({
 	rotate: string;
 }) {
 	return (
-		<div className={`relative polaroid w-[300px] shrink-0 ${rotate}`}>
+		<div className={`relative polaroid w-[240px] sm:w-[280px] md:w-[300px] shrink-0 ${rotate}`}>
 			<span className="tape" />
-			<div className="bg-paper-deep/60 h-44 mb-4 flex items-center justify-center relative">
+			<div className="bg-paper-deep/60 h-40 sm:h-44 mb-3 sm:mb-4 flex items-center justify-center relative">
 				<div className="grain-overlay opacity-40" />
-				<div className="relative text-center px-5">
+				<div className="relative text-center px-4 sm:px-5">
 					<Stars n={r.rating} />
-					<p className="font-hand text-2xl text-espresso leading-snug mt-3">
+					<p className="font-hand text-xl sm:text-2xl text-espresso leading-snug mt-2 sm:mt-3">
 						&ldquo;{r.text}&rdquo;
 					</p>
 				</div>
 			</div>
-			<div className="px-1 flex items-center justify-between">
-				<div className="font-hand text-2xl text-terracotta leading-none">
+			<div className="px-1 flex items-center justify-between gap-2">
+				<div className="font-hand text-xl sm:text-2xl text-terracotta leading-none">
 					— {r.author}
 				</div>
-				<div className="font-display italic text-[10px] tracking-[0.25em] uppercase text-espresso-soft">
+				<div className="font-display italic text-[9px] sm:text-[10px] tracking-[0.25em] uppercase text-espresso-soft">
 					Google
 				</div>
 			</div>
@@ -130,7 +130,7 @@ export default function Testimonials() {
 
 			{/* Row 1 — left */}
 			<div className="mb-10 overflow-hidden">
-				<div className="flex gap-7 testimonial-row-left px-6">
+				<div className="flex gap-4 sm:gap-7 testimonial-row-left px-4 sm:px-6">
 					{[...reviews, ...reviews, ...reviews].map((r, i) => (
 						<PolaroidCard
 							key={`l-${i}`}
@@ -143,7 +143,7 @@ export default function Testimonials() {
 
 			{/* Row 2 — right */}
 			<div className="overflow-hidden">
-				<div className="flex gap-7 testimonial-row-right px-6">
+				<div className="flex gap-4 sm:gap-7 testimonial-row-right px-4 sm:px-6">
 					{[...reviews.slice().reverse(), ...reviews.slice().reverse(), ...reviews.slice().reverse()].map(
 						(r, i) => (
 							<PolaroidCard

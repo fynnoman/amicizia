@@ -37,7 +37,7 @@ export default function FreshTicker() {
   const s = dailySpecials[i];
 
   return (
-    <section ref={ref} className="py-16 md:py-20 px-6 lg:px-12 bg-paper">
+    <section ref={ref} className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 lg:px-12 bg-paper">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
@@ -49,7 +49,7 @@ export default function FreshTicker() {
           <div className="w-2 h-6 bg-espresso-soft rounded-full" />
         </div>
 
-        <div className="chalkboard relative p-8 md:p-12 tilt-xs">
+        <div className="chalkboard relative p-5 sm:p-8 md:p-12 tilt-xs">
           {/* Chef hat top-left */}
           <div className="absolute -top-3 -left-3 bg-paper-deep text-paper-soft px-3 py-2 rotate-[-8deg] border border-paper-soft/20 depth-shadow">
             <div className="flex items-center gap-2">
@@ -77,17 +77,17 @@ export default function FreshTicker() {
               exit={{ opacity: 0, y: -16 }}
               transition={{ duration: 0.5 }}
             >
-              <div className="font-hand text-paper-soft text-5xl md:text-7xl leading-none">
+              <div className="font-hand text-paper-soft text-4xl sm:text-5xl md:text-7xl leading-tight break-words">
                 {s.name}
               </div>
-              <p className="font-hand text-paper-soft/80 text-xl md:text-2xl mt-4 max-w-2xl leading-snug">
+              <p className="font-hand text-paper-soft/80 text-lg sm:text-xl md:text-2xl mt-3 sm:mt-4 max-w-2xl leading-snug">
                 {s.description}
               </p>
-              <div className="mt-6 flex items-center gap-4">
-                <span className="font-hand text-terracotta-soft text-4xl md:text-5xl">
+              <div className="mt-5 sm:mt-6 flex flex-wrap items-center gap-3 sm:gap-4">
+                <span className="font-hand text-terracotta-soft text-3xl sm:text-4xl md:text-5xl">
                   {s.price} €
                 </span>
-                <span className="font-hand text-paper-soft/40 text-lg">
+                <span className="font-hand text-paper-soft/40 text-base sm:text-lg">
                   · nur heute
                 </span>
               </div>

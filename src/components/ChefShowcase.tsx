@@ -12,8 +12,8 @@ export default function ChefShowcase() {
   return (
     <section
       ref={ref}
-      className="relative w-full h-[58vh] md:h-[62vh] overflow-hidden bg-paper-deep"
-      aria-label="In unserer Küche"
+      className="relative w-full min-h-[520px] h-[68vh] md:h-[62vh] overflow-hidden bg-paper-deep"
+      aria-label="In der Küche der Pizzeria AMICIZIA Saarlouis"
     >
       {/* Photograph — chef tossing herbs, golden hour */}
       <Image

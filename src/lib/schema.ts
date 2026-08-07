@@ -3,7 +3,7 @@
  * NAP, hours, geo, and price-range stay consistent across pages.
  */
 
-import { BUSINESS, SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE } from "@/data/business";
+import { BUSINESS, SITE_URL, SITE_NAME, DEFAULT_OG_IMAGE, ALT_DOMAINS } from "@/data/business";
 
 const ORG_ID = `${SITE_URL}/#restaurant`;
 
@@ -55,8 +55,11 @@ export function restaurantSchema() {
       "@type": "City",
       name,
     })),
-    sameAs: [BUSINESS.socials.instagram].filter(Boolean),
-    hasMenu: `${SITE_URL}/#menu`,
+    sameAs: [
+      BUSINESS.socials.instagram,
+      ...ALT_DOMAINS,
+    ].filter(Boolean),
+    hasMenu: `${SITE_URL}/speisekarte`,
     potentialAction: {
       "@type": "OrderAction",
       target: `tel:${BUSINESS.phone.replace(/\s+/g, "")}`,
@@ -123,6 +126,8 @@ export function organizationSchema() {
     name: BUSINESS.legalName,
     url: SITE_URL,
     logo: `${SITE_URL}/icon.png`,
+    telephone: BUSINESS.phone,
+    email: BUSINESS.email,
     foundingDate: String(BUSINESS.founded),
     address: {
       "@type": "PostalAddress",
@@ -131,7 +136,10 @@ export function organizationSchema() {
       postalCode: BUSINESS.address.postalCode,
       addressCountry: BUSINESS.address.country,
     },
-    sameAs: [BUSINESS.socials.instagram].filter(Boolean),
+    sameAs: [
+      BUSINESS.socials.instagram,
+      ...ALT_DOMAINS,
+    ].filter(Boolean),
   };
 }
 

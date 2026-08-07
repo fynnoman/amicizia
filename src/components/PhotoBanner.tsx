@@ -33,8 +33,8 @@ export default function PhotoBanner() {
   return (
     <section
       ref={ref}
-      className="relative h-[120vh] md:h-[140vh] overflow-hidden bg-espresso"
-      aria-label="Frische Zutaten — jeden Tag"
+      className="relative h-[95vh] sm:h-[110vh] md:h-[140vh] overflow-hidden bg-espresso"
+      aria-label="Frische Zutaten in unserer Pizzeria in Saarlouis"
     >
       {/* Parallax background photo */}
       <motion.div
@@ -69,35 +69,35 @@ export default function PhotoBanner() {
       <div className="grain-overlay z-10 opacity-40" />
 
       {/* Sticky centerpiece — text that rises with scroll */}
-      <div className="sticky top-0 h-screen flex items-center justify-center z-20 px-6">
+      <div className="sticky top-0 h-[100svh] flex items-center justify-center z-20 px-5 sm:px-6">
         <motion.div
           style={{ y: textY, opacity: textOpacity }}
           className="text-center text-paper-soft max-w-3xl"
         >
-          <div className="flex justify-center mb-5 text-paper-soft/75">
+          <div className="flex justify-center mb-4 sm:mb-5 text-paper-soft/75">
             <Fleuron size={22} />
           </div>
-          <div className="font-display italic tracking-[0.4em] text-[0.72rem] md:text-xs uppercase text-paper-soft/70 mb-4">
+          <div className="font-display italic tracking-[0.3em] sm:tracking-[0.4em] text-[0.62rem] sm:text-[0.72rem] md:text-xs uppercase text-paper-soft/70 mb-3 sm:mb-4">
             Was bei uns auf den Teller kommt
           </div>
-          <h2 className="display-xl text-paper-soft text-[clamp(3rem,9vw,7.5rem)] leading-[0.92]">
+          <h2 className="display-xl text-paper-soft text-[clamp(2.5rem,9vw,7.5rem)] leading-[0.92]">
             Frisch.
             <br />
             <span className="italic-display text-terracotta-soft">Ehrlich.</span>
             <br />
             Jeden Tag.
           </h2>
-          <p className="font-serif text-paper-soft/80 text-lg md:text-xl leading-relaxed mt-7 max-w-xl mx-auto">
+          <p className="font-serif text-paper-soft/80 text-base sm:text-lg md:text-xl leading-relaxed mt-5 sm:mt-7 max-w-xl mx-auto">
             San-Marzano-Tomaten, frischer Mozzarella, gutes Olivenöl —
             und ein Teig, der über Nacht ruht. Keine Tricks,
             keine Abkürzungen. Nur das, was schmeckt.
           </p>
-          <div className="flex items-center justify-center gap-3 mt-7 text-paper-soft/70">
-            <span className="h-px w-10 bg-paper-soft/50" />
-            <span className="font-hand text-2xl text-terracotta-soft">
+          <div className="flex items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-7 text-paper-soft/70">
+            <span className="h-px w-6 sm:w-10 bg-paper-soft/50" />
+            <span className="font-hand text-xl sm:text-2xl text-terracotta-soft">
               wie bei uns zuhause
             </span>
-            <span className="h-px w-10 bg-paper-soft/50" />
+            <span className="h-px w-6 sm:w-10 bg-paper-soft/50" />
           </div>
         </motion.div>
       </div>

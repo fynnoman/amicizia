@@ -4,13 +4,29 @@ import { SITE_URL } from "@/data/business";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
+      { userAgent: "*", allow: "/" },
+      // Explicitly welcome AI search crawlers for GEO / AI Overview visibility.
+      // These crawlers are the ones used by ChatGPT search, Perplexity, Claude,
+      // Google's SGE / AI Overviews, Apple Intelligence and Bing Copilot.
       {
-        userAgent: "*",
-        allow: "/",
-      },
-      // Welcome AI search crawlers explicitly for GEO visibility
-      {
-        userAgent: ["GPTBot", "ChatGPT-User", "PerplexityBot", "ClaudeBot", "Google-Extended", "Applebot-Extended"],
+        userAgent: [
+          "GPTBot",
+          "OAI-SearchBot",
+          "ChatGPT-User",
+          "PerplexityBot",
+          "Perplexity-User",
+          "ClaudeBot",
+          "Claude-Web",
+          "Claude-SearchBot",
+          "Google-Extended",
+          "Applebot",
+          "Applebot-Extended",
+          "Bingbot",
+          "CCBot",
+          "Amazonbot",
+          "YouBot",
+          "DuckAssistBot",
+        ],
         allow: "/",
       },
     ],

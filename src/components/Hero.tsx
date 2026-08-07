@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[100svh] flex items-center overflow-hidden"
     >
       {/* Background video — own component so a client useEffect can
           re-trigger play() across Safari/Chrome quirks (tab visibility,
@@ -51,7 +51,7 @@ export default function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 lg:px-12 text-paper-soft py-24 sm:py-0">
+      <div className="relative z-10 w-full max-w-6xl mx-auto px-5 sm:px-6 lg:px-12 text-paper-soft py-28 sm:py-24 md:py-16">
         {/* Eyebrow */}
         <div className="reveal delay-1 flex items-center gap-3 sm:gap-4 text-paper-soft/70 mb-6 sm:mb-8">
           <span className="h-px w-8 sm:w-12 bg-paper-soft/60" />
@@ -67,8 +67,9 @@ export default function Hero() {
         </p>
 
         {/* Main display headline */}
-        <h1 className="reveal delay-3 display-xl text-[clamp(3.5rem,15vw,12rem)] text-paper-soft leading-[0.95]">
+        <h1 className="reveal delay-3 display-xl text-[clamp(3rem,14vw,12rem)] text-paper-soft leading-[0.95] break-words">
           <span className="block">AMI<span className="italic-display">cizia</span></span>
+          <span className="sr-only"> — Pizza Saarlouis, Steinofen Pizzeria seit 2013</span>
         </h1>
 
         {/* Sub line */}
@@ -88,15 +89,19 @@ export default function Hero() {
 
         {/* CTAs */}
         <div className="reveal delay-5 mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4">
-          <a href="#menu" className="btn-terra justify-center">
+          <a
+            href="#menu"
+            className="btn-terra justify-center min-h-[48px] w-full sm:w-auto"
+          >
             Zur Speisekarte
           </a>
           <a
-            href="tel:+4968311234567"
-            className="btn-ghost justify-center !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-paper"
+            href="tel:+491629906068"
+            aria-label="Anrufen zur Abholung: 0162 9906068"
+            className="btn-ghost justify-center min-h-[48px] w-full sm:w-auto !text-paper-soft !border-paper-soft/70 hover:!bg-paper-soft hover:!text-paper"
           >
             <Tomato size={18} />
-            Anrufen zur Abholung
+            Anrufen · 0162 9906068
           </a>
         </div>
 
@@ -122,8 +127,8 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-paper-soft/55">
+      {/* Scroll indicator — hidden on very small screens to avoid overlap */}
+      <div className="hidden sm:flex absolute bottom-6 left-1/2 -translate-x-1/2 z-10 flex-col items-center gap-2 text-paper-soft/55">
         <Fleuron size={16} />
         <span className="font-display italic text-[10px] tracking-[0.4em] uppercase">
           scroll ↓

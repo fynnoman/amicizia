@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, EB_Garamond, Caveat } from "next/font/google";
 import "./globals.css";
 import JsonLd from "@/components/JsonLd";
@@ -29,31 +29,53 @@ const caveat = Caveat({
   display: "swap",
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: "cover",
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0B0B0E" },
+    { media: "(prefers-color-scheme: dark)", color: "#0B0B0E" },
+  ],
+  colorScheme: "dark",
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: SITE_NAME,
-    template: "%s · AMICIZIA Saarlouis",
+    default: "Pizza Saarlouis · AMICIZIA — Steinofen Pizzeria in der Industriestraße",
+    template: "%s · AMICIZIA Pizzeria Saarlouis",
   },
   description: SITE_TAGLINE,
   applicationName: "AMICIZIA",
-  authors: [{ name: "AMICIZIA" }],
+  authors: [{ name: "AMICIZIA Pizzeria Saarlouis" }],
   creator: "AMICIZIA",
   publisher: "AMICIZIA",
   generator: "Next.js",
   category: "Restaurant",
-  classification: "Italienisches Restaurant · Pizzeria",
+  classification: "Pizzeria · Italienisches Restaurant · Steinofen",
   keywords: [
-    "Pizzeria Saarlouis",
     "Pizza Saarlouis",
+    "Pizzeria Saarlouis",
+    "Steinofen Pizza Saarlouis",
+    "beste Pizza Saarlouis",
+    "Pizza bestellen Saarlouis",
+    "Pizza abholen Saarlouis",
     "Italiener Saarlouis",
     "Italienisches Restaurant Saarlouis",
-    "Steinofen Pizza Saarlouis",
-    "Pizza abholen Saarlouis",
     "Italienisch essen Saarlouis",
+    "Trattoria Saarlouis",
+    "Pizza Industriestraße Saarlouis",
     "AMICIZIA Saarlouis",
-    "Italiener Industriestraße Saarlouis",
+    "AMICIZIA Pizza",
+    "amicizia-pizza.de",
+    "Pizza Dillingen Saar",
+    "Pizza Roden Saarlouis",
+    "Pizza Fraulautern",
+    "Pizza Lisdorf",
     "Pizzeria Saarland",
+    "Steinofen Pizzeria Saarland",
   ],
   alternates: {
     canonical: "/",
@@ -73,8 +95,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "de_DE",
     url: SITE_URL,
-    siteName: SITE_NAME,
-    title: SITE_NAME,
+    siteName: "AMICIZIA — Pizzeria Saarlouis",
+    title: "Pizza Saarlouis · AMICIZIA Steinofen Pizzeria",
     description: SITE_TAGLINE,
     images: [
       {
@@ -87,7 +109,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: SITE_NAME,
+    title: "Pizza Saarlouis · AMICIZIA Steinofen Pizzeria",
     description: SITE_TAGLINE,
     images: [DEFAULT_OG_IMAGE.url],
   },
@@ -97,8 +119,14 @@ export const metadata: Metadata = {
     email: true,
   },
   verification: {
-    // Add Google Search Console verification token here once available:
-    // google: "XXX",
+    // google: "PLACEHOLDER_GSC_TOKEN",
+  },
+  other: {
+    // Explicit geo tags — some regional bots / older AI crawlers still read these.
+    "geo.region": "DE-SL",
+    "geo.placename": "Saarlouis",
+    "geo.position": "49.3137;6.7514",
+    ICBM: "49.3137, 6.7514",
   },
 };
 
@@ -112,7 +140,7 @@ export default function RootLayout({
       lang="de"
       className={`${fraunces.variable} ${garamond.variable} ${caveat.variable} h-full antialiased [color-scheme:dark]`}
     >
-      <body className="min-h-full flex flex-col bg-paper text-espresso">
+      <body className="min-h-full flex flex-col bg-paper text-espresso overflow-x-hidden">
         <JsonLd data={[restaurantSchema(), websiteSchema(), organizationSchema()]} />
         {children}
       </body>

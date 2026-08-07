@@ -2,13 +2,28 @@
 
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import Link from "next/link";
 import { Fleuron, OliveBranch, CircleStamp } from "./Ornaments";
 
 const sectionLinks = [
-  { label: "Über uns",    href: "#about" },
-  { label: "Geschichte",  href: "#timeline" },
-  { label: "Speisekarte", href: "#menu" },
-  { label: "Kontakt",     href: "#contact" },
+  { label: "Über uns",    href: "/ueber-uns" },
+  { label: "Speisekarte", href: "/speisekarte" },
+  { label: "Öffnungszeiten", href: "/oeffnungszeiten" },
+  { label: "FAQ",         href: "/faq" },
+  { label: "Kontakt",     href: "/kontakt" },
+  { label: "Reservierung", href: "/reservierung" },
+];
+
+const topicLinks = [
+  { label: "Pizza Saarlouis",              href: "/pizza-saarlouis" },
+  { label: "Steinofen Pizza Saarlouis",    href: "/steinofen-pizza-saarlouis" },
+  { label: "Pizzeria Saarlouis",           href: "/pizzeria-saarlouis" },
+  { label: "Beste Pizza Saarlouis",        href: "/beste-pizza-saarlouis" },
+  { label: "Pizza bestellen Saarlouis",    href: "/pizza-bestellen-saarlouis" },
+  { label: "Italiener Saarlouis",          href: "/italiener-saarlouis" },
+  { label: "Italienisches Restaurant",     href: "/italienisches-restaurant-saarlouis" },
+  { label: "Trattoria Saarlouis",          href: "/trattoria-saarlouis" },
+  { label: "Italienisch essen Saarlouis",  href: "/italienisch-essen-saarlouis" },
 ];
 
 export default function Footer() {
@@ -69,21 +84,32 @@ export default function Footer() {
               </div>
             </a>
             <address className="not-italic font-serif text-paper-soft/65 text-base leading-relaxed mt-5">
+              AMICIZIA — Pizzeria Saarlouis<br />
               Industriestraße 20<br />
-              66740 Saarlouis<br />
+              66740 Saarlouis · Saarland<br />
               <span className="font-display italic text-paper-soft/55 text-sm">
                 täglich · Vorbestellung ab 11:00, Küche 12:00 – 22:00
               </span>
             </address>
-            <a
-              href="https://www.instagram.com/amicizia.saarlouis/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-4 text-paper-soft hover:text-terracotta-soft transition-colors duration-300"
-            >
-              <Fleuron size={14} />
-              @amicizia.saarlouis
-            </a>
+            <div className="flex flex-wrap items-center gap-4 mt-4">
+              <a
+                href="tel:+491629906068"
+                className="inline-flex items-center gap-2 text-paper-soft hover:text-terracotta-soft transition-colors duration-300 min-h-[36px]"
+                aria-label="Anrufen: 0162 9906068"
+              >
+                <Fleuron size={14} />
+                0162 9906068
+              </a>
+              <a
+                href="https://www.instagram.com/amicizia.saarlouis/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-paper-soft hover:text-terracotta-soft transition-colors duration-300 min-h-[36px]"
+              >
+                <Fleuron size={14} />
+                @amicizia.saarlouis
+              </a>
+            </div>
           </motion.div>
 
           <motion.div
@@ -92,17 +118,17 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.1 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Sektionen
+              Seiten
             </h4>
             <ul className="space-y-2">
               {sectionLinks.map((l) => (
                 <li key={l.href}>
-                  <a
+                  <Link
                     href={l.href}
                     className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -114,22 +140,45 @@ export default function Footer() {
             transition={{ duration: 0.6, delay: 0.2 }}
           >
             <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-5">
-              Bestellung
+              Themen
             </h4>
-            <p className="font-serif text-paper-soft/70 text-sm leading-relaxed">
-              Bestellungen zur Abholung werden ausschließlich telefonisch
-              entgegengenommen. Vorbestellung ab 11:00 Uhr möglich, Küche
-              von 12:00 bis 22:00 Uhr geöffnet.
-            </p>
-            <a
-              href="tel:+4968311234567"
-              className="inline-flex items-center gap-2 mt-4 text-paper-soft hover:text-terracotta-soft transition-colors duration-300 font-display italic text-sm"
-            >
-              <Fleuron size={14} />
-              Jetzt anrufen
-            </a>
+            <ul className="space-y-2">
+              {topicLinks.map((l) => (
+                <li key={l.href}>
+                  <Link
+                    href={l.href}
+                    className="text-paper-soft/60 hover:text-paper-soft transition-colors duration-300 font-display italic text-sm"
+                  >
+                    {l.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </motion.div>
         </div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={inView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="mt-10 sm:mt-12 pt-8 border-t border-paper-soft/12"
+        >
+          <h4 className="font-display italic text-terracotta-soft tracking-[0.3em] text-xs uppercase mb-4">
+            Bestellung zur Abholung
+          </h4>
+          <p className="font-serif text-paper-soft/70 text-sm sm:text-base leading-relaxed max-w-2xl">
+            Bestellungen zur Abholung nehmen wir telefonisch entgegen unter{" "}
+            <a
+              href="tel:+491629906068"
+              className="text-paper-soft hover:text-terracotta-soft transition-colors"
+            >
+              0162 9906068
+            </a>
+            . Vorbestellung ab 11:00 Uhr möglich, Küche 12–22 Uhr täglich.
+            AMICIZIA — deine Pizzeria in Saarlouis auf{" "}
+            <strong>amicizia-pizza.de</strong>.
+          </p>
+        </motion.div>
 
         {/* Divider */}
         <motion.div
@@ -140,8 +189,17 @@ export default function Footer() {
         />
 
         {/* Bottom bar */}
-        <div className="flex flex-col md:flex-row justify-between items-center gap-3 font-serif italic text-paper-soft/45 text-xs">
-          <p>© {new Date().getFullYear()} AMICIZIA · Saarlouis. Alle Rechte vorbehalten.</p>
+        <div className="flex flex-col md:flex-row justify-between items-center gap-3 font-serif italic text-paper-soft/45 text-xs text-center">
+          <p>
+            © {new Date().getFullYear()} AMICIZIA Pizzeria · Saarlouis. Alle Rechte
+            vorbehalten. ·{" "}
+            <a
+              href="https://www.amicizia-pizza.de"
+              className="hover:text-paper-soft transition-colors"
+            >
+              amicizia-pizza.de
+            </a>
+          </p>
           <p className="flex items-center gap-2">
             <OliveBranch size={14} />
             Familienbetrieb aus Saarlouis.
